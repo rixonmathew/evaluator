@@ -21,8 +21,12 @@ class db {
     public static function getInstance() {
         if (!self::$instance){
             //self::$instance = new PDO("mysql:host=".self::$host.";dbname=".self::$dbname,self::$username,self::$password);
-            self::$instance = new PDO("mysql:host=127.0.01;dbname=evaluator",self::$username,self::$password,NULL);
-            self::$instance->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+            try {
+                self::$instance = new PDO("mysql:host=127.0.01;dbname=evaluator",self::$username,self::$password,NULL);
+                self::$instance->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+            } catch (PDOException $e) {
+                echo $e->getMessage();
+            }
         }
         return self::$instance;
     }
