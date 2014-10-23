@@ -107,8 +107,10 @@ TEST123;
         $f1 = new foo();
         $local_array = array("First","Second");
         echo "Here is the value of $f1->bar ".PHP_EOL;
-        echo "Here is the value of {$f1->friends[1]}".PHP_EOL;
-        echo "Here is the value of $local_array[0]".PHP_EOL;
+        echo "Here is the value of {$f1->friends[1]} <br>".PHP_EOL;
+        echo "Here is the value of $local_array[0] <br>".PHP_EOL;
+        echo "Adding some more changes to the file<br>".PHP_EOL;;
+        echo "Adding some more changes to the file<br>".PHP_EOL;;
     }
 
 //    $x=10;
