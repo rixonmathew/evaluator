@@ -13,10 +13,14 @@ class authenticateController extends BaseController{
      */
     function index()
     {
-        $username = $_POST['username'];
+        $username = $_POST['email'];
         $authenticateQuery = "select first_name,last_name from user where username='$username'";
-        foreach($this->registry->db->query($authenticateQuery) as $row) {
-            echo "first_name is ".$row['first_name']." last_name is ".$row['last_name']."<br>";
-        }
+        $dbh = $this->registry->db;
+        $stmt = $dbh->query($authenticateQuery);
+        $userData = $stmt->fetch(PDO::FETCH_OBJ);
+        header('Content-Type: application/json');
+        echo json_encode($userData,JSON_PRETTY_PRINT);
+
+
     }
 }

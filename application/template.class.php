@@ -20,13 +20,8 @@ Class Template {
     private $vars = array();
 
     /**
-     *
      * @constructor
-     *
      * @access public
-     *
-     * @return void
-     *
      */
     function __construct($registry) {
         $this->registry = $registry;
@@ -37,11 +32,8 @@ Class Template {
     /**
      *
      * @set undefined vars
-     *
      * @param string $index
-     *
      * @param mixed $value
-     *
      * @return void
      *
      */
