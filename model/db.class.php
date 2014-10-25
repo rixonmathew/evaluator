@@ -26,6 +26,7 @@ class db {
                 self::$instance->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
             } catch (PDOException $e) {
                 echo $e->getMessage();
+                die("Could not connect to database.");
             }
         }
         return self::$instance;

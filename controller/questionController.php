@@ -2,18 +2,17 @@
 /**
  * Created by PhpStorm.
  * User: rixonmathew
- * Date: 23/10/14
- * Time: 7:31 PM
+ * Date: 24/10/14
+ * Time: 8:22 AM
  */
 
-class htmlViewController extends BaseController{
+class questionController extends BaseController {
 
     /**
      * @all controllers must contain an index method
      */
     function index()
     {
-
+        $this->registry->template->show('question');
     }
-
 }
