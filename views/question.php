@@ -10,6 +10,10 @@
     <!-- Optional theme -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="css/evaluator.css"/>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="js/question.js"></script>
 </head>
 <body>
 <div class="container">
@@ -21,49 +25,88 @@
         </ul>
         <h3 class="text-muted">LeapForWord English Certification</h3>
     </div>
-    <div class="row">
-        <div>
-            <div class="panel panel-default">
-                <div class="panel-heading"><strong class="">Question</strong>
-                </div>
-                <div class="panel-body">
-                    <form class="form-horizontal" name="question_details" role="form" method="post" action="">
-                        <div class="form-group">
-                            <label for="questionText" class="col-sm-3 control-label">Question</label>
-                            <textarea name="questionText" id="questionText" cols="3" rows="2"/>
-                            <label for="inputEmail3" class="col-sm-3 control-label">Email</label>
-
-                        </div>
-                        <div class="form-group">
-                            <label for="answer1" class="col-sm-3 control-label">Answer 1</label>
-
-                            <div class="col-sm-9">
-                                <input type="text" class="form-control" id="answer1" name="answer1" placeholder="Enter answer"
-                                       name="password" required="true">
-                            </div>
-                            <div class="col-sm-9">
-                                <input type="checkbox" class="form-control" id="isCorrrectAnswer1" name="isCorrrectAnswer1">
-                            </div>
-
-                            <div class="col-sm-9">
-                                <input type="button" class="form-control" value="+" onclick="">
-                            </div>
-
-                        </div>
-                        <div class="form-group last">
-                            <div class="col-sm-offset-3 col-sm-9">
-                                <button type="submit" class="btn btn-success btn-sm">Sign in</button>
-                                <button type="reset" class="btn btn-default btn-sm">Reset</button>
-                            </div>
-                        </div>
-                    </form>
-            </div>
+    <div class="panel panel-default">
+        <div class="panel panel-heading">
+            <strong>Question</strong>
         </div>
-    </div>
+        <div class="panel panel-body">
+            <form id="questionDetails" class="form" role="form" method="post" action="question">
+                <input type="hidden" id="questionAttributes" name="questionAttributes" value="default">
+                <input type="hidden" id="operation" name="operation" value="view">
+                <div class="row">
+                    <div class="col-md-1">
+                        <label for="test">Enter question</label>
+                    </div>
+                    <div class="col-md-9">
+                        <textarea rows="3" cols="70" name="text" class="form-control" required="true"></textarea>
+                    </div>
+                </div>
+                <div id="answerSet">
+                    <div id="answerSetHeading" class="row active">
+                        <div class="col-md-3">
+                            <label>Enter Answer</label>
+                        </div>
+                        <div class="col-md-2">
+                            <label>Correct</label>
+                        </div>
+                    </div>
+                    <div id="answerSet1" class="row">
+                        <div class="col-md-3">
+                            <textarea rows="3" cols="20" name="answer1" class="form-control" required="true"></textarea>
+                        </div>
+                        <div class="col-md-2">
+                            <input type="checkbox" name="isCorrectAnswer1">
+                        </div>
+                    </div>
+                    <div id="answerSet2" class="row">
+                        <div class="col-md-3">
+                            <textarea rows="3" cols="20" name="answer2" class="form-control" required="true"></textarea>
+                        </div>
+                        <div class="col-md-2">
+                            <input type="checkbox" name="isCorrectAnswer2" required="true">
+                        </div>
+                    </div>
+                    <div id="answerSet3" class="row">
+                        <div class="col-md-3">
+                            <textarea rows="3" cols="20" name="answer3" class="form-control" required="true"></textarea>
+                        </div>
+                        <div class="col-md-2">
+                            <input type="checkbox" name="isCorrectAnswer3">
+                        </div>
+                    </div>
+                    <div id="answerSet1" class="row">
+                        <div class="col-md-3">
+                            <textarea rows="3" cols="20" name="answer4" class="form-control" required="true"></textarea>
+                        </div>
+                        <div class="col-md-2">
+                            <input type="checkbox" name="isCorrectAnswer4">
+                        </div>
+                    </div>
+                </div>
+                <div id="otherInformation" class="row">
+                    <div class="col-md-2">
+                        <select class="form-control" name="complexity">
+                            <option value="Simple">Simple</option>
+                            <option value="Medium">Medium</option>
+                            <option value="Complex">Complex</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <label for="attributes">Enter attributes</label>
+                        <div contenteditable="true" id="attributesDiv">
+                            <kbd>English</kbd>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group last">
+                    <div class="col-sm-offset-3 col-sm-9">
+                        <button type="submit" class="btn btn-success btn-sm">Save</button>
+                        <button type="reset" class="btn btn-default btn-sm">Reset</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+     </div>
 </div>
-<!-- Latest compiled and minified JavaScript -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-<script src="js/question.js"></script>
 </body>
 </html>
