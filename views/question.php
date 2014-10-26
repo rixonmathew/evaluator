@@ -1,3 +1,11 @@
+<?php
+    //TODO move this to check authentication page
+    session_start();
+    if (!isset($_SESSION['login'])){
+        header ("Location: login");
+    }
+?>
+
 <!DOCTYPE html>
 <html>
 <head lang="en">
@@ -20,11 +28,17 @@
     <div class="header">
         <ul class="nav nav-pills pull-right">
             <li class="active"><a href="#">Home</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Contact</a></li>
+            <li><a href="question/allQuestions">View All Questions</a></li>
         </ul>
         <h3 class="text-muted">LeapForWord English Certification</h3>
     </div>
+
+    <? if (isset($show_alert) && $show_alert) { ?>
+        <div class="alert alert-<?=$alert_type?> alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            <?=$question_message?>
+        </div>
+    <? } ?>
     <div class="panel panel-default">
         <div class="panel panel-heading">
             <strong>Question</strong>

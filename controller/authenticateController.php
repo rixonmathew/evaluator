@@ -14,13 +14,18 @@ class authenticateController extends BaseController{
     function index()
     {
         $username = $_POST['email'];
-        $authenticateQuery = "select first_name,last_name from user where username='$username'";
+        $password = $_POST['password'];
+        $authenticateQuery = "select first_name,last_name from user where username='$username' and password='$password'";
         $dbh = $this->registry->db;
         $stmt = $dbh->query($authenticateQuery);
         $userData = $stmt->fetch(PDO::FETCH_OBJ);
-        header('Content-Type: application/json');
-        echo json_encode($userData,JSON_PRETTY_PRINT);
-
-
+        if (!isset($userData->first_name)) {
+            echo "Invalid credentials";
+            return;
+        }
+        session_start();
+        $_SESSION['login'] = "1";
+        $_SESSION['username'] = $username;
+        header ("Location: question");
     }
 }

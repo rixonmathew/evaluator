@@ -79,6 +79,7 @@ class Router{
         /*** check if the action is callable ***/
         if (is_callable(array($controller, $this->action)) == false)
         {
+            echo "Action called for controller is not valid Defaulting to index ".$class." ".$this->action;
             $action = 'index';
         }
         else

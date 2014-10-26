@@ -61,10 +61,14 @@ Field complexity is Medium
                 $this->insertAnswers($questionId,$dbh);
                 $this->insertAttributes($questionId,$dbh);
                 $dbh->commit();
-                print $dbh->lastInsertId();
+                $this->registry->template->show_alert = true;
+                $this->registry->template->alert_type = "info";
+                $this->registry->template->question_message = "Question added successfully";
             } catch(PDOExecption $e) {
                 $dbh->rollback();
-                print "Error!: " . $e->getMessage() . "</br>";
+                $this->registry->template->show_alert = true;
+                $this->registry->template->alert_type = "error";
+                $this->registry->template->question_message = "Error!: " . $e->getMessage() . "</br>";
             }
         } catch( PDOExecption $e ) {
             print "Error!: " . $e->getMessage() . "</br>";
@@ -99,4 +103,7 @@ Field complexity is Medium
         $this->registry->template->show('question');
     }
 
+    function allQuestions() {
+        $this->registry->template->show('allQuestions');
+    }
 }
