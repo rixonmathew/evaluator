@@ -63,3 +63,48 @@ select * from question_set_definition;
 
 select * from section_questions;
 
+select * from question_set;
+
+update question_set set question_set_definition_id = passage_id where passage_id>0;
+
+insert into question_set_definition(name) values("Passage 1");
+insert into question_set_definition(name) values("Passage 2");
+insert into question_set_definition(name) values("Passage 3");
+
+insert into section_questions(section_id,`order`,question_set_definition_id) values(1,1,1);
+insert into section_questions(section_id,`order`,question_set_definition_id) values(1,2,2);
+insert into section_questions(section_id,`order`,question_set_definition_id) values(1,3,3);
+
+select * from passage;
+
+
+select t.id as test_id,
+	   t.name as test_name,
+       s.name as section_name,
+       p.description as passage_text,
+       q.id as question_id,
+       q.text as question_test,
+       a.id as answer_id,
+       a.text as answer_text,
+       a.correct as is_correct
+  from test t,
+	   test_section ts,
+	   section_questions sq,
+       section s,
+       question_set_definition qsd,
+       question_set qs,
+       passage p,
+       question q,
+	   answer a
+ where ts.test_id = t.id
+   and sq.section_id = ts.section_id
+   and qsd.id = sq.question_set_definition_id
+   and qs.question_set_definition_id = qsd.id
+   and s.id = sq.section_id
+   and q.id = qs.question_id
+   and p.id = qs.passage_id
+   and a.question_id = q.id
+ order by ts.`order`,sq.`order`,qs.id;
+ 
+ select * from section_questions;
+       
