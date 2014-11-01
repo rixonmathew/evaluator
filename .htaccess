@@ -1,0 +1,6 @@
+RewriteEngine on
+RewriteBase /evaluator/
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond $1 !^(images|css|js|user_photos|favicon|robots\.txt|circles.jpg)
+RewriteRule ^(.*)$ index.php?rt=$1 [L,QSA]
