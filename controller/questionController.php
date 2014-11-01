@@ -82,6 +82,8 @@ Field complexity is Medium
             $varIsAnswerCorrect = "isCorrectAnswer".$i;
             if (isset($_POST[$varAnswerName])){
                 $answer = $_POST[$varAnswerName];
+                if (empty($answer))
+                    continue;
                 if (isset($_POST[$varIsAnswerCorrect])){
                     $isCorrect=1;
                 } else{

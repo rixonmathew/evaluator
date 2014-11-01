@@ -20,12 +20,13 @@ class authenticateController extends BaseController{
         $stmt = $dbh->query($authenticateQuery);
         $userData = $stmt->fetch(PDO::FETCH_OBJ);
         if (!isset($userData->first_name)) {
-            echo "Invalid credentials";
+            $this->registry->template->login_failed = true;
+            $this->registry->template->show('login');
             return;
         }
         session_start();
         $_SESSION['login'] = "1";
         $_SESSION['username'] = $username;
-        header ("Location: question");
+        header ("Location: landingPage");
     }
 }

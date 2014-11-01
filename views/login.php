@@ -27,6 +27,12 @@
                 <div class="panel-heading"><strong class="">Login</strong>
                 </div>
                 <div class="panel-body">
+                    <?php if (isset($login_failed)){?>
+                    <div class="alert alert-warning alert-dismissible" role="alert">
+                        <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <strong>Warning!</strong> Invalid Credentials.Please try again.
+                    </div>
+                    <?php } ?>
                     <form class="form-horizontal" role="form" method="post" action="authenticate">
                         <div class="form-group">
                             <label for="inputEmail3" class="col-sm-3 control-label">Email</label>
