@@ -9,11 +9,10 @@
 class Question {
     private $id;
     private $text;
+    private $number;
 
-    function __construct($id, $text)
+    function __construct()
     {
-        $this->id = $id;
-        $this->text = $text;
     }
 
     /**
@@ -25,12 +24,45 @@ class Question {
     }
 
     /**
+     * @param mixed $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
+    /**
      * @return mixed
      */
     public function getText()
     {
-        return $this->text;
+        return $this->getNumber().") ".$this->text;
     }
+
+    /**
+     * @param mixed $text
+     */
+    public function setText($text)
+    {
+        $this->text = $text;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getNumber()
+    {
+        return $this->number;
+    }
+
+    /**
+     * @param mixed $number
+     */
+    public function setNumber($number)
+    {
+        $this->number = $number;
+    }
+
 
 
 

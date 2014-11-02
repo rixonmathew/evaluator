@@ -107,4 +107,65 @@ select t.id as test_id,
  order by ts.`order`,sq.`order`,qs.id;
  
  select * from section_questions;
+ 
+ select s.id,
+        s.name,
+		s.type
+   from section s,
+        test_section ts
+  where ts.test_id = 1
+    and s.id = ts.section_id;
+    
+    select p.id,
+           p.description
+	  from section_questions sq,
+           question_set_definition qsd,
+           question_set qs,
+           passage p
+     where sq.section_id = 1
+	   and qsd.id = sq.question_set_definition_id
+       and qs.question_set_definition_id = qsd.id
+       and p.id = qs.passage_id
+	  group by p.id,p.description
+      order by sq.`order`;
        
+       
+select * from question_set_definition;
+
+select q.* 
+  from question_set qs,
+       question q
+ where qs.passage_id = 1
+   and q.id = qs.question_id
+   order by qs.`order`;
+
+select * from section_questions;
+	   
+update question_Set set `order` = id where id>0;      
+
+update answer set `order` = id where id > 0;
+
+select a.*
+  from answer a
+ where a.question_id = 10
+   order by a.`order`;
+  
+select a.id,a.text,a.question_id,
+    @answer_rn:=case when @q_id<>a.id then 1 else @answer_rn+1 end as rnk,
+    @q_id = a.id
+ from 
+   (select @answer_rn :=-1 ) ar,
+   (select @q_id:=-1) qq,
+   (select * from answer order by question_id,id) a;
+   
+select * from passage;
+
+update passage set number = id where id > 0;   
+
+select * from question;
+
+update question set number = id-14 where id>14;
+
+select * from answer;
+
+update answer set number = 'a' where mod(id,3)=0 and id>0;

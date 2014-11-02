@@ -45,16 +45,23 @@ if (!isset($_SESSION['login'])){
             <strong>Section <?=$sectionNumber?></strong>
         </div>
         <div class="panel panel-body">
-            <div class="row pull-right">
-                <div class="clock" style="margin:2em;"></div>
+            <div class="form-group last">
+                <div class="row">
+                    <button type="button" class="btn btn-success btn-lg" onclick="startTest()">Start</button>
+                    <button type="submit" class="btn btn-success btn-lg">Save</button>
+                    <button type="reset" class="btn btn-default btn-lg">Reset</button>
+                    <div class="pull-right">
+                        <div class="clock" style="margin:2em;"></div>
+                    </div>
+                </div>
             </div>
             <form id="sectionDetails" class="form" role="form" method="post" action="sectionEvaluation">
             <?php
-                $passages = $testDataModel->getPassages();
+                $passages = $testDataModel->getPassages($sectionNumber);
                 foreach($passages as $passage) {
                     echo "<div class=\"row\">";
                     echo "  <div class=\"col-md-9\">";
-                    echo $passage->getDescription();
+                    echo "<h2>{$passage->getDescription()}</h2>";
                     echo " </div>";
                     echo "</div><br/>";
                     echo "<div id=\"questionSet\">";
@@ -62,7 +69,7 @@ if (!isset($_SESSION['login'])){
                     foreach($questions as $question) {
                         echo "<div id=\"question\" class=\"row\">";
                         echo "    <div class=\"col-md-5\">";
-                        echo $question->getText();
+                        echo "<h3>{$question->getText()}</h3>";
                         echo "   </div>";
                         echo "</div>";
                         $answers = $testDataModel->getAnswersForQuestion($question->getId());
@@ -83,14 +90,6 @@ if (!isset($_SESSION['login'])){
                     };
                 };
             ?>
-                </div>
-                <div class="form-group last">
-                    <div class="col-sm-offset-3 col-sm-9">
-                        <button type="button" class="btn btn-success btn-sm" onclick="startTest()">Start</button>
-                        <button type="button" class="btn btn-success btn-sm" onclick="stopTest()">Stop</button>
-                        <button type="submit" class="btn btn-success btn-sm">Save</button>
-                        <button type="reset" class="btn btn-default btn-sm">Reset</button>
-                    </div>
                 </div>
             </form>
         </div>

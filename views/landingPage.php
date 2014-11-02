@@ -1,3 +1,10 @@
+<?php
+//TODO move this to check authentication page
+session_start();
+if (!isset($_SESSION['login'])){
+    header ("Location: login");
+}
+?>
 <!DOCTYPE html>
 <html>
 <head lang="en">
