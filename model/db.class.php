@@ -6,13 +6,10 @@
  * Time: 12:41 PM
  */
 
+include_once('includes/eval-config.php');
 class db {
 
-    private static $instance = NULL;
-    private static $dbname="evaluator";
-    private static $username="lfw_evaluator";
-    private static $host="127.0.0.1";
-    private static $password="Evaluator#1";  //TODO How to move this to a secure file?
+    private static $instance;
 
     private function __construct() {
 
@@ -20,9 +17,8 @@ class db {
 
     public static function getInstance() {
         if (!self::$instance){
-            //self::$instance = new PDO("mysql:host=".self::$host.";dbname=".self::$dbname,self::$username,self::$password);
             try {
-                self::$instance = new PDO("mysql:host=127.0.01;dbname=evaluator",self::$username,self::$password,NULL);
+                self::$instance = new PDO("mysql:host=".HOST.";dbname=".DATABASE,USER,PASSWORD,NULL);
                 self::$instance->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
             } catch (PDOException $e) {
                 echo $e->getMessage();
