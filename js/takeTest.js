@@ -5,6 +5,7 @@ $(function(){
 
     clock = $('.clock').FlipClock({
         clockFace: 'MinuteCounter'
+
     });
     clock.stop();
 
@@ -14,9 +15,14 @@ var clock;
 
 function startTest(){
     clock.start();
+    $("#testDetails").show();
 }
 
 function stopTest() {
     clock.stop();
     alert('Time is '+clock.timer.getElapsed());
+}
+
+function submitTest() {
+    $('#sectionDetails').submit();
 }
