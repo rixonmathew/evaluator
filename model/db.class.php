@@ -18,7 +18,7 @@ class db {
     public static function getInstance() {
         if (!self::$instance){
             try {
-                self::$instance = new PDO("mysql:host=".HOST.";dbname=".DATABASE,USER,PASSWORD,NULL);
+                self::$instance = new PDO("mysql:host=".HOST.";port=3306;dbname=".DATABASE,USER,PASSWORD,NULL);
                 self::$instance->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
             } catch (PDOException $e) {
                 echo $e->getMessage();
