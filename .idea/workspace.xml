@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7713d51e-6f50-4eea-88bb-b6a5c258804d" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/views/sectionEvaluation.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/controller/sectionEvaluationController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sql/erd/evaluator_erd.mwb.bak" afterPath="$PROJECT_DIR$/sql/erd/evaluator_erd.mwb.bak" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/takeTest.js" afterPath="$PROJECT_DIR$/js/takeTest.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/takeTest.php" afterPath="$PROJECT_DIR$/views/takeTest.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/controller/takeTestController.php" afterPath="$PROJECT_DIR$/controller/takeTestController.php" />
+    <list default="true" id="7713d51e-6f50-4eea-88bb-b6a5c258804d" name="Default" comment="Changes to evaluate the questions">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="evaluator.iws" />
@@ -514,7 +507,13 @@
       <option name="project" value="LOCAL" />
       <updated>1414948648327</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Changes to evaluate the questions">
+      <created>1414956696510</created>
+      <option name="number" value="00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1414956696510</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -570,7 +569,8 @@
     <MESSAGE value="Added functionality to display questions" />
     <MESSAGE value="Changes after uploading to website" />
     <MESSAGE value="Changes to get the test details from db" />
-    <option name="LAST_COMMIT_MESSAGE" value="Changes to get the test details from db" />
+    <MESSAGE value="Changes to evaluate the questions" />
+    <option name="LAST_COMMIT_MESSAGE" value="Changes to evaluate the questions" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
