@@ -2,13 +2,12 @@
  * Created by rixonmathew on 02/11/14.
  */
 $(function(){
-
     clock = $('.clock').FlipClock({
-        clockFace: 'MinuteCounter'
-
+        clockFace: 'MinuteCounter',
+        countdown: true,
+        autoStart: false
     });
-    clock.stop();
-
+    clock.setTime(300);
 });
 
 var clock;

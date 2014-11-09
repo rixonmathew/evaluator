@@ -1,6 +1,8 @@
 delete from user where id <10;
 
-select * from users;
+select * from user;
+
+delete from user where username = 'test@guv.org';
 
 #create initial users in the script
 insert into user(username,first_name,last_name,admin) values('naik.pranil@gmail.com','pranil','naik',true);
