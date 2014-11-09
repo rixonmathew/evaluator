@@ -31,8 +31,7 @@
                     </div>
                 </div>
             </div>
-            <div id="testDetails" hidden="true">
-
+            <div id="testDetails" class="scroll-div" hidden="true">
                 <form id="sectionDetails" class="form" role="form" method="post" action="sectionEvaluation">
                     <input type="hidden" id="sectionNumber" name="sectionNumber" value="<?=$sectionNumber?>">
                     <?php

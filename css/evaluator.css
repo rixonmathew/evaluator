@@ -13,3 +13,9 @@ center {
     margin-left: auto;
     margin-right: auto;
 }
+
+.scroll-div {
+    float: left;
+    overflow-y: auto;
+    height: 600px;
+}
