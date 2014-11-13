@@ -15,7 +15,5 @@ center {
 }
 
 .scroll-div {
-    float: left;
-    overflow-y: auto;
-    height: 600px;
+    float: none;
 }

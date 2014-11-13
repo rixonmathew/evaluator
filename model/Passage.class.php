@@ -18,7 +18,7 @@ class Passage {
      */
     public function getDescription()
     {
-        return $this->getNumber().") ".$this->description;
+        return $this->getNumber().")  ".$this->description;
     }
 
     /**
@@ -60,8 +60,4 @@ class Passage {
     {
         $this->number = $number;
     }
-
-
-
-
-} 
+}

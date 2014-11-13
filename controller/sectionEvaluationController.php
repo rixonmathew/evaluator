@@ -13,6 +13,9 @@ class sectionEvaluationController extends BaseController{
      */
     function index()
     {
+//        foreach ($_POST as $key => $value)
+//          echo "Field ".htmlspecialchars($key)." is ".htmlspecialchars($value)."<br>";
+
         $section = $_POST['sectionNumber'];
         $testDataModel = new TestDataModel(1,$this->registry->db);
         $passages = $testDataModel->getPassages($section);
@@ -42,10 +45,14 @@ class sectionEvaluationController extends BaseController{
                 $answers = $testDataModel->getAnswersForQuestion($question->getId());
                 foreach ($answers as $answer) {
                     if ($answer->getCorrect()) {
-                        $variableName = "q" . $question->getId() . "_answer_" . $answer->getId();
+                        $variableName = $question->getId() . "_answer";
                         if (isset($_POST[$variableName])) {
-                            $sectionScore += 1;
-                            $questionsCorrect++;
+
+                            $selectedAnswer = $_POST[$variableName];
+                            if ($selectedAnswer == $answer->getId()){
+                                $sectionScore += 1;
+                                $questionsCorrect++;
+                            }
                         } else {
                             $questionsIncorrect++;
                         }
