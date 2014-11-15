@@ -8,7 +8,7 @@
 <div class="container">
     <? include_once "common/nav.php" ?>
     <div class="row">
-        <a href="takeTest">Take a new New Test</a>
+        <a href="takeTest">Take a new English language test</a>
     </div>
 </div>
 </body>

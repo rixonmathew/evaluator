@@ -4,5 +4,5 @@
         <li><a href="#">About</a></li>
         <li><a href="#">Contact</a></li>
     </ul>
-    <h3 class="text-muted">LeapForWord English Certification</h3>
+    <img src="images/lfw_new.png"/>
 </div>
