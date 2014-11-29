@@ -10,6 +10,9 @@ class Question {
     private $id;
     private $text;
     private $number;
+    private $type;
+    private $renderingClass;
+    private $evaluatingClass;
 
     function __construct()
     {
@@ -63,8 +66,51 @@ class Question {
         $this->number = $number;
     }
 
+    /**
+     * @param mixed $evaluatingClass
+     */
+    public function setEvaluatingClass($evaluatingClass)
+    {
+        $this->evaluatingClass = $evaluatingClass;
+    }
 
+    /**
+     * @return mixed
+     */
+    public function getEvaluatingClass()
+    {
+        return $this->evaluatingClass;
+    }
 
+    /**
+     * @param mixed $renderingClass
+     */
+    public function setRenderingClass($renderingClass)
+    {
+        $this->renderingClass = $renderingClass;
+    }
 
+    /**
+     * @return mixed
+     */
+    public function getRenderingClass()
+    {
+        return $this->renderingClass;
+    }
 
+    /**
+     * @param mixed $type
+     */
+    public function setType($type)
+    {
+        $this->type = $type;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getType()
+    {
+        return $this->type;
+    }
 }

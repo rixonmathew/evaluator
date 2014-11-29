@@ -74,7 +74,10 @@ QUERY_PFS;
                 $questionPerPassageQuery = <<<QUERY_QFP
     select q.id,
            q.text,
-           q.number
+           q.number,
+           q.type,
+           q.evaluating_class as evaluatingClass,
+           q.rendering_class as renderingClass
       from question_set qs,
            question q
      where qs.passage_id = {$passage->getId()}

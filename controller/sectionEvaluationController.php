@@ -42,22 +42,39 @@ class sectionEvaluationController extends BaseController{
         foreach ($passages as $passage) {
             $questions = $testDataModel->getQuestionsForPassage($passage->getId());
             foreach ($questions as $question) {
-                $answers = $testDataModel->getAnswersForQuestion($question->getId());
-                foreach ($answers as $answer) {
-                    if ($answer->getCorrect()) {
-                        $variableName = $question->getId() . "_answer";
-                        if (isset($_POST[$variableName])) {
+                $questionType = $question->getType();
+                if ($questionType=="multiple_choice") {
+                    $answers = $testDataModel->getAnswersForQuestion($question->getId());
+                    foreach ($answers as $answer) {
+                        if ($answer->getCorrect()) {
+                            $variableName = $question->getId() . "_answer";
+                            if (isset($_POST[$variableName])) {
 
-                            $selectedAnswer = $_POST[$variableName];
-                            if ($selectedAnswer == $answer->getId()){
-                                $sectionScore += 1;
-                                $questionsCorrect++;
+                                $selectedAnswer = $_POST[$variableName];
+                                if ($selectedAnswer == $answer->getId()){
+                                    $sectionScore += 1;
+                                    $questionsCorrect++;
+                                }
+                            } else {
+                                $questionsIncorrect++;
                             }
-                        } else {
-                            $questionsIncorrect++;
                         }
                     }
+                } else {
+                    $evaluatingClass = $question->getEvaluatingClass();
+
+                    if (!is_null($evaluatingClass)) {
+                        $fileToInclude = __SITE_PATH.'/controller/custom/'.$evaluatingClass.'.php';
+                        include $fileToInclude;
+                        $variableName = $question->getId() . "_answer";
+                        $selectedAnswer = $_POST[$variableName];
+                        $objectForEvaluating = new $evaluatingClass();
+                        //todo get the user provided answer and expected answer if any;
+                        $objectForEvaluating->doEvaluate($question,$selectedAnswer);
+                    }
+
                 }
+
             }
         }
         return array($sectionScore, $questionsCorrect, $questionsIncorrect);

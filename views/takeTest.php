@@ -51,13 +51,25 @@
                         <?php
                         $questions = $testDataModel->getQuestionsForPassage($passage->getId());
                         foreach ($questions as $question) {
-                            ?>
-                            <div id="questionSet" class="row">
-                                <div class="col-md-5">
-                                    <h4><?= $question->getText() ?></h4>
+                            $questionType = $question->getType();
+                            if ($questionType=="multiple_choice") { ?>
+                                <div id="questionSet" class="row">
+                                    <div class="col-md-5">
+                                        <h4><?= $question->getText() ?></h4>
+                                    </div>
                                 </div>
-                            </div>
                             <?php
+                            } else {
+                                $renderingClass = $question->getRenderingClass();
+
+                                if (!is_null($renderingClass)) {
+                                    $fileToInclude = __SITE_PATH.'/controller/custom/'.$renderingClass.'.php';
+                                    include $fileToInclude;
+                                    $objectForRendering = new $renderingClass();
+                                    $objectForRendering->doEvaluate($question);
+                                }
+                            }
+
                             $answers = $testDataModel->getAnswersForQuestion($question->getId());
                             $counter = 1;
                             foreach ($answers as $answer) {
