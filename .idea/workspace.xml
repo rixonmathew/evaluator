@@ -2,16 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7713d51e-6f50-4eea-88bb-b6a5c258804d" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/controller/custom/SectionOneEvaluator.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sql/erd/evaluator_erd.mwb.bak" afterPath="$PROJECT_DIR$/sql/erd/evaluator_erd.mwb.bak" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sql/erd/evaluator_erd.mwb" afterPath="$PROJECT_DIR$/sql/erd/evaluator_erd.mwb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/model/Section.class.php" afterPath="$PROJECT_DIR$/model/Section.class.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/model/TestDataModel.class.php" afterPath="$PROJECT_DIR$/model/TestDataModel.class.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sql/erd/data_creation.sql" afterPath="$PROJECT_DIR$/sql/erd/data_creation.sql" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/landingPage.php" afterPath="$PROJECT_DIR$/views/landingPage.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/model/SectionEvaluationResult.class.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/controller/custom/AudioSection1Evaluator.php" afterPath="$PROJECT_DIR$/controller/custom/AudioSection1Evaluator.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/controller/custom/SectionOneEvaluator.php" afterPath="$PROJECT_DIR$/controller/custom/SectionOneEvaluator.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/sectionEvaluation.php" afterPath="$PROJECT_DIR$/views/sectionEvaluation.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/controller/sectionEvaluationController.php" afterPath="$PROJECT_DIR$/controller/sectionEvaluationController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/takeTest.php" afterPath="$PROJECT_DIR$/views/takeTest.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/controller/takeTestController.php" afterPath="$PROJECT_DIR$/controller/takeTestController.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="evaluator.iws" />
@@ -20,15 +15,15 @@
     <ignored path=".idea/dataSources.local.xml" />
     <ignored path=".idea/" />
     <ignored mask="*.bak" />
-    <file path="/Dummy.txt" changelist="7713d51e-6f50-4eea-88bb-b6a5c258804d" time="1417360267515" ignored="false" />
+    <file path="/Dummy.txt" changelist="7713d51e-6f50-4eea-88bb-b6a5c258804d" time="1417364486703" ignored="false" />
     <file path="/nav.php" changelist="7713d51e-6f50-4eea-88bb-b6a5c258804d" time="1416066861002" ignored="false" />
     <file path="/landingPage.php" changelist="7713d51e-6f50-4eea-88bb-b6a5c258804d" time="1417364201198" ignored="false" />
     <file path="/Question.class.php" changelist="7713d51e-6f50-4eea-88bb-b6a5c258804d" time="1416723564558" ignored="false" />
     <file path="/takeTest.php" changelist="7713d51e-6f50-4eea-88bb-b6a5c258804d" time="1417364349784" ignored="false" />
-    <file path="/AudioSection1Evaluator.php" changelist="7713d51e-6f50-4eea-88bb-b6a5c258804d" time="1416765306531" ignored="false" />
+    <file path="/AudioSection1Evaluator.php" changelist="7713d51e-6f50-4eea-88bb-b6a5c258804d" time="1417372343590" ignored="false" />
     <file path="/AudioSection1Renderer.php" changelist="7713d51e-6f50-4eea-88bb-b6a5c258804d" time="1417321172020" ignored="false" />
-    <file path="/sectionEvaluationController.php" changelist="7713d51e-6f50-4eea-88bb-b6a5c258804d" time="1417364399196" ignored="false" />
-    <file path="/a.dummy" changelist="7713d51e-6f50-4eea-88bb-b6a5c258804d" time="1417362779937" ignored="false" />
+    <file path="/sectionEvaluationController.php" changelist="7713d51e-6f50-4eea-88bb-b6a5c258804d" time="1417374008272" ignored="false" />
+    <file path="/a.dummy" changelist="7713d51e-6f50-4eea-88bb-b6a5c258804d" time="1417365477083" ignored="false" />
     <file path="/TestDataModel.class.php" changelist="7713d51e-6f50-4eea-88bb-b6a5c258804d" time="1417363863916" ignored="false" />
     <file path="/SectionQuestion.class.php" changelist="7713d51e-6f50-4eea-88bb-b6a5c258804d" time="1417287769758" ignored="false" />
     <file path="/QuestionSet.class.php" changelist="7713d51e-6f50-4eea-88bb-b6a5c258804d" time="1417278922968" ignored="false" />
@@ -37,7 +32,9 @@
     <file path="/takeTest.js" changelist="7713d51e-6f50-4eea-88bb-b6a5c258804d" time="1417334001770" ignored="false" />
     <file path="/Passage.class.php" changelist="7713d51e-6f50-4eea-88bb-b6a5c258804d" time="1417337687366" ignored="false" />
     <file path="/Section.class.php" changelist="7713d51e-6f50-4eea-88bb-b6a5c258804d" time="1417360740987" ignored="false" />
-    <file path="/SectionOneEvaluator.php" changelist="7713d51e-6f50-4eea-88bb-b6a5c258804d" time="1417361598674" ignored="false" />
+    <file path="/SectionOneEvaluator.php" changelist="7713d51e-6f50-4eea-88bb-b6a5c258804d" time="1417372535587" ignored="false" />
+    <file path="/SectionEvaluationResult.class.php" changelist="7713d51e-6f50-4eea-88bb-b6a5c258804d" time="1417371205874" ignored="false" />
+    <file path="/sectionEvaluation.php" changelist="7713d51e-6f50-4eea-88bb-b6a5c258804d" time="1417373301055" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,34 +78,7 @@
       <file leaf-file-name="takeTestController.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/controller/takeTestController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="28" column="51" selection-start="915" selection-end="915" vertical-scroll-proportion="-15.038462">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="landingPageController.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/controller/landingPageController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="landingPage.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/views/landingPage.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="34" selection-start="270" selection-end="270" vertical-scroll-proportion="-6.5384617">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="takeTest.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/views/takeTest.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="36" column="85" selection-start="1771" selection-end="1771" vertical-scroll-proportion="-23.538462">
+            <state line="31" column="0" selection-start="864" selection-end="1059" vertical-scroll-proportion="-17.0">
               <folding />
             </state>
           </provider>
@@ -117,8 +87,37 @@
       <file leaf-file-name="SectionOneEvaluator.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/controller/custom/SectionOneEvaluator.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="13" column="0" selection-start="322" selection-end="322" vertical-scroll-proportion="-4.576923">
+            <state line="68" column="41" selection-start="2768" selection-end="2768" vertical-scroll-proportion="-27.115385">
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="register.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/views/register.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AudioSection1Evaluator.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/controller/custom/AudioSection1Evaluator.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="15" column="33" selection-start="478" selection-end="478" vertical-scroll-proportion="-5.8846154">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SectionEvaluationResult.class.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/model/SectionEvaluationResult.class.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="96" column="37" selection-start="1737" selection-end="1754" vertical-scroll-proportion="-31.038462">
+              <folding>
+                <element signature="e#6#169#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -126,16 +125,34 @@
       <file leaf-file-name="sectionEvaluationController.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/controller/sectionEvaluationController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="35" column="55" selection-start="1482" selection-end="1482" vertical-scroll-proportion="0.5802048">
+            <state line="39" column="40" selection-start="1897" selection-end="1897" vertical-scroll-proportion="0.64798206">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TestDataModel.class.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/model/TestDataModel.class.php">
+      <file leaf-file-name="sectionEvaluation.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/views/sectionEvaluation.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="23" column="24" selection-start="492" selection-end="492" vertical-scroll-proportion="-11.769231">
+            <state line="21" column="12" selection-start="804" selection-end="804" vertical-scroll-proportion="-13.730769">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="eval-config.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/includes/eval-config.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="init.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/includes/init.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0">
               <folding />
             </state>
           </provider>
@@ -144,7 +161,7 @@
       <file leaf-file-name="Section.class.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/model/Section.class.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="95" column="32" selection-start="1434" selection-end="1446" vertical-scroll-proportion="-24.423077">
+            <state line="79" column="38" selection-start="1160" selection-end="1178" vertical-scroll-proportion="-13.961538">
               <folding />
             </state>
           </provider>
@@ -168,21 +185,21 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/views/common/nav.php" />
-        <option value="$PROJECT_DIR$/model/Question.class.php" />
         <option value="$PROJECT_DIR$/model/QuestionSet.class.php" />
         <option value="$PROJECT_DIR$/model/SectionQuestion.class.php" />
         <option value="$PROJECT_DIR$/controller/custom/AudioSection1Renderer.php" />
-        <option value="$PROJECT_DIR$/controller/custom/AudioSection1Evaluator.php" />
         <option value="$PROJECT_DIR$/js/takeTest.js" />
         <option value="$PROJECT_DIR$/model/Passage.class.php" />
         <option value="$PROJECT_DIR$/model/SectionRenderer.class.php" />
         <option value="$PROJECT_DIR$/model/Section.class.php" />
-        <option value="$PROJECT_DIR$/controller/custom/SectionOneEvaluator.php" />
         <option value="$PROJECT_DIR$/model/TestDataModel.class.php" />
         <option value="$PROJECT_DIR$/views/landingPage.php" />
         <option value="$PROJECT_DIR$/controller/takeTestController.php" />
         <option value="$PROJECT_DIR$/views/takeTest.php" />
+        <option value="$PROJECT_DIR$/model/SectionEvaluationResult.class.php" />
+        <option value="$PROJECT_DIR$/controller/custom/AudioSection1Evaluator.php" />
+        <option value="$PROJECT_DIR$/controller/custom/SectionOneEvaluator.php" />
+        <option value="$PROJECT_DIR$/views/sectionEvaluation.php" />
         <option value="$PROJECT_DIR$/controller/sectionEvaluationController.php" />
       </list>
     </option>
@@ -301,6 +318,24 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="controller" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="evaluator" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="evaluator" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="controller" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="custom" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -481,7 +516,11 @@
       <created>1417360273629</created>
       <updated>1417360273630</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="1) Added section properties">
+      <created>1417364493292</created>
+      <updated>1417364493292</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -582,7 +621,7 @@
     <option name="WRAP_WHEN_TYPING_REACHES_RIGHT_MARGIN" value="false" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="1) Fixed to render all 5 sections" />
+    <option name="LAST_COMMIT_MESSAGE" value="1) Added section properties" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -614,6 +653,7 @@
     <MESSAGE value="1) Refactored to support question set and question" />
     <MESSAGE value="1) Added support for rendering section 2" />
     <MESSAGE value="1) Fixed to render all 5 sections" />
+    <MESSAGE value="1) Added section properties" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -621,50 +661,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/basics.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/question.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/register.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/allQuestions.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/takeTest.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="3" selection-start="599" selection-end="599" vertical-scroll-proportion="0.39744952">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/model/Passage.class.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="48" column="5" selection-start="787" selection-end="787" vertical-scroll-proportion="0.7989071">
@@ -684,20 +680,6 @@
             <marker date="1417358231000" expanded="true" signature="-1:-1" placeholder="..." />
             <marker date="1417358231000" expanded="true" signature="-1:-1" placeholder="..." />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/controller/custom/SectionOneEvaluator.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="0" selection-start="322" selection-end="322" vertical-scroll-proportion="-4.576923">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/model/Section.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="95" column="32" selection-start="1434" selection-end="1446" vertical-scroll-proportion="-24.423077">
-          <folding />
         </state>
       </provider>
     </entry>
@@ -722,13 +704,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/controller/takeTestController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="51" selection-start="915" selection-end="915" vertical-scroll-proportion="-15.038462">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/views/takeTest.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="36" column="85" selection-start="1771" selection-end="1771" vertical-scroll-proportion="-23.538462">
@@ -736,9 +711,74 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/includes/eval-config.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/includes/init.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/Section.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="79" column="38" selection-start="1160" selection-end="1178" vertical-scroll-proportion="-13.961538">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controller/custom/AudioSection1Evaluator.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="15" column="33" selection-start="478" selection-end="478" vertical-scroll-proportion="-5.8846154">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/register.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/sectionEvaluation.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="21" column="12" selection-start="804" selection-end="804" vertical-scroll-proportion="-13.730769">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/SectionEvaluationResult.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="96" column="37" selection-start="1737" selection-end="1754" vertical-scroll-proportion="-31.038462">
+          <folding>
+            <element signature="e#6#169#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controller/custom/SectionOneEvaluator.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="68" column="41" selection-start="2768" selection-end="2768" vertical-scroll-proportion="-27.115385">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controller/takeTestController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="31" column="0" selection-start="864" selection-end="1059" vertical-scroll-proportion="-17.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/controller/sectionEvaluationController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="35" column="55" selection-start="1482" selection-end="1482" vertical-scroll-proportion="0.5802048">
+        <state line="39" column="40" selection-start="1897" selection-end="1897" vertical-scroll-proportion="0.64798206">
           <folding />
         </state>
       </provider>

@@ -19,7 +19,7 @@
             <strong>Section Results</strong>
         </div>
         <div class="panel panel-body">
-            <h2> Your score is <?=$sectionScore?>. You got <?=$questionsCorrect?> questions correct and <?=$questionsIncorrect?> questions incorrect.</h2>
+            <h2> Your score is <?=$sectionScore?>. You got <?=$questionsCorrect?> questions correct out of  <?=$questionsTotal?> questions</h2>
         </div>
 
     </div>

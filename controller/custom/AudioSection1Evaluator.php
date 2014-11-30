@@ -11,7 +11,7 @@ class AudioSection1Evaluator {
 
     public function doEvaluate($question,$selectedAnswer){
         $wordsMatched = 0;
-        $possibleWords = array("Hello","World","Language");
+        $possibleWords = array("Hello","World","Language"); //TODO get expected word list also from DB
         $answerArray = explode(",",$selectedAnswer);
         //var_dump($answerArray);
         //array of possible words to match to see how many words in the selected answer.
@@ -20,6 +20,6 @@ class AudioSection1Evaluator {
                 $wordsMatched++;
             }
         }
-
+        return $wordsMatched/sizeof($possibleWords);
     }
 }
