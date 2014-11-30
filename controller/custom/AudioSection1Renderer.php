@@ -18,6 +18,6 @@ class AudioSection1Renderer {
             </div>
         </div>
 RENDER_HTML;
-        echo $renderingHTML.PHP_EOL;
+        return $renderingHTML.PHP_EOL;
     }
 }

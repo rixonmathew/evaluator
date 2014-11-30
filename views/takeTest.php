@@ -37,60 +37,16 @@
                 <form id="sectionDetails" class="form" role="form" method="post" action="sectionEvaluation">
                     <input type="hidden" id="sectionNumber" name="sectionNumber" value="<?= $sectionNumber ?>">
                     <?php
-                    $passages = $testDataModel->getPassages($sectionNumber);
-                    foreach ($passages as $passage) {
-                        ?>
-                        <div class=row">
-                            <div class="col-md-9">
-                                <h2>
-                                    <block><?= $passage->getDescription() ?></block>
-                                </h2>
-                            </div>
-                        </div>
-                        <br/>
-                        <?php
-                        $questions = $testDataModel->getQuestionsForPassage($passage->getId());
-                        foreach ($questions as $question) {
-                            $questionType = $question->getType();
-                            if ($questionType=="multiple_choice") { ?>
-                                <div id="questionSet" class="row">
-                                    <div class="col-md-5">
-                                        <h4><?= $question->getText() ?></h4>
-                                    </div>
-                                </div>
-                            <?php
-                            } else {
-                                $renderingClass = $question->getRenderingClass();
-
-                                if (!is_null($renderingClass)) {
-                                    $fileToInclude = __SITE_PATH.'/controller/custom/'.$renderingClass.'.php';
-                                    include $fileToInclude;
-                                    $objectForRendering = new $renderingClass();
-                                    $objectForRendering->doEvaluate($question);
-                                }
-                            }
-
-                            $answers = $testDataModel->getAnswersForQuestion($question->getId());
-                            $counter = 1;
-                            foreach ($answers as $answer) {
-                                ?>
-                                <div id="answerSet<?= $counter ?>" class="row">
-                                    <div class="col-md-5">
-                                        <div class="radio">
-                                            <label>
-                                                <input type="radio" id="<?= $question->getId() ?>_answer"
-                                                       name="<?= $question->getId() ?>_answer"
-                                                       value="<?= $answer->getId() ?>"><?= $answer->getText() ?>
-                                            </label>
-                                            <br/>
-                                        </div>
-                                    </div>
-                                </div>
-                                <?php
-                                $counter += 1;
-                            };
-                        };
-                    };
+                    $sectionQuestions = $testDataModel->getSectionQuestions($sectionNumber);
+                    foreach($sectionQuestions as $sectionQuestion) {
+                        if ($sectionQuestion->isQuestionSet()) {
+                            $passage = $testDataModel->getPassage($sectionQuestion->getQuestionSetDefinitionId());
+                            $sectionRenderer->renderPassage($passage);
+                        } else {
+                            $question = $testDataModel->getQuestion($sectionQuestion->getQuestionId());
+                            $sectionRenderer->renderQuestion($question);
+                        }
+                    }
                     ?>
                 </form>
                 <div class="form-group">

@@ -10,8 +10,11 @@ class TestDataModel {
 
     private $testId;
     private $sections;
+    private $sectionQuestions;
     private $passagesForSection;
+    private $passages;
     private $questionsForPassage;
+    private $questions;
     private $answersForQuestion;
     private $dbh;
 
@@ -23,7 +26,8 @@ class TestDataModel {
 
     private function populateTestMetaData(){
         $this->populateSections();
-        $this->populatePassagesPerSection(); //TODO think about sceanarios where questions without passages are there.
+        $this->populateSectionQuestions();
+        $this->populatePassagesPerSection();
         $this->populateQuestionsPerPassage();
     }
 
@@ -42,8 +46,29 @@ QUERY_QFT;
         $this->sections = $stmt->fetchAll(PDO::FETCH_CLASS,"Section");
     }
 
+    private function populateSectionQuestions() {
+        $this->sectionQuestions = array();
+        foreach($this->sections as $section){
+            $sectionQuestionsQuery = <<<QUERY_SQ
+    select sq.id,
+		   sq.section_id as sectionId,
+           sq.question_id as questionId,
+           sq.`order`,
+           sq.question_set_definition_id as questionSetDefinitionId
+      from section_questions sq
+     where sq.section_id = {$section->getId()}
+     order by sq.`order`;
+QUERY_SQ;
+
+            $statement = $this->dbh->query($sectionQuestionsQuery);
+            $sectionQuestions = $statement->fetchAll(PDO::FETCH_CLASS,"SectionQuestion");
+            $this->sectionQuestions[$section->getId()] = $sectionQuestions;
+        }
+    }
+
     private function populatePassagesPerSection() {
         $this->passagesForSection = array();
+        $this->passages = array();
         foreach($this->sections as $section){
             $passagePerSectionQuery =<<<QUERY_PFS
     select p.id,
@@ -63,11 +88,16 @@ QUERY_PFS;
             $statement = $this->dbh->query($passagePerSectionQuery);
             $passagesPerSection = $statement->fetchAll(PDO::FETCH_CLASS,"Passage");
             $this->passagesForSection[$section->getId()]=$passagesPerSection;
+
+            foreach($passagesPerSection as $passage) {
+                $this->passages[$passage->getId()] = $passage;
+            }
         }
     }
 
     private function populateQuestionsPerPassage() {
         $this->questionsForPassage = array();
+        $this->questions = array();
         foreach($this->sections as $section) {
             $passagesForSection = $this->passagesForSection[$section->getId()];
             foreach($passagesForSection as $passage){
@@ -87,6 +117,10 @@ QUERY_QFP;
 
                 $statement = $this->dbh->query($questionPerPassageQuery);
                 $questionsPerPassage = $statement->fetchAll(PDO::FETCH_CLASS,"Question");
+
+                foreach($questionsPerPassage as $question){
+                    $this->questions[$question->getId()] = $question;
+                }
                 $this->questionsForPassage[$passage->getId()] = $questionsPerPassage;
                 $this->populateAnswersPerQuestion($questionsPerPassage);
             }
@@ -127,4 +161,16 @@ QUERY_AFQ;
         return $this->answersForQuestion[$questionId];
     }
 
-} 
+    public function getSectionQuestions($sectionId) {
+        return $this->sectionQuestions[$sectionId];
+    }
+
+    public function getPassage($passageId) {
+        return $this->passages[$passageId];
+    }
+
+    public function getQuestion($questionId) {
+        return $this->questions[$questionId];
+    }
+
+}
