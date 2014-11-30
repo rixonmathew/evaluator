@@ -176,6 +176,124 @@ insert into section_questions(section_id,`order`,question_id) values(2,42,60);
 insert into section_questions(section_id,`order`,question_set_definition_id) values(2,43,6);
 
 
+#questions for section #3;
+insert into section_questions(section_id,`order`,question_id) values(3,1,61);
+insert into section_questions(section_id,`order`,question_id) values(3,2,62);
+insert into section_questions(section_id,`order`,question_id) values(3,3,63);
+insert into section_questions(section_id,`order`,question_id) values(3,4,64);
+insert into section_questions(section_id,`order`,question_id) values(3,5,65);
+insert into section_questions(section_id,`order`,question_id) values(3,6,66);
+insert into section_questions(section_id,`order`,question_id) values(3,7,67);
+insert into section_questions(section_id,`order`,question_id) values(3,8,68);
+insert into section_questions(section_id,`order`,question_id) values(3,9,69);
+insert into section_questions(section_id,`order`,question_id) values(3,10,70);
+insert into section_questions(section_id,`order`,question_id) values(3,11,71);
+insert into section_questions(section_id,`order`,question_id) values(3,12,72);
+insert into section_questions(section_id,`order`,question_id) values(3,13,73);
+insert into section_questions(section_id,`order`,question_id) values(3,14,74);
+insert into section_questions(section_id,`order`,question_id) values(3,15,75);
+insert into section_questions(section_id,`order`,question_id) values(3,16,76);
+insert into section_questions(section_id,`order`,question_id) values(3,17,77);
+insert into section_questions(section_id,`order`,question_id) values(3,18,78);
+insert into section_questions(section_id,`order`,question_id) values(3,19,79);
+insert into section_questions(section_id,`order`,question_id) values(3,20,80);
+insert into section_questions(section_id,`order`,question_id) values(3,21,81);
+insert into section_questions(section_id,`order`,question_id) values(3,22,82);
+insert into section_questions(section_id,`order`,question_id) values(3,23,83);
+insert into section_questions(section_id,`order`,question_id) values(3,24,84);
+insert into section_questions(section_id,`order`,question_id) values(3,25,85);
+insert into section_questions(section_id,`order`,question_id) values(3,26,86);
+insert into section_questions(section_id,`order`,question_id) values(3,27,87);
+
+#questions for section #4;
+insert into section_questions(section_id,`order`,question_id) values(4,1,88);
+insert into section_questions(section_id,`order`,question_id) values(4,2,89);
+insert into section_questions(section_id,`order`,question_id) values(4,3,90);
+insert into section_questions(section_id,`order`,question_id) values(4,4,91);
+insert into section_questions(section_id,`order`,question_id) values(4,5,92);
+insert into section_questions(section_id,`order`,question_id) values(4,6,93);
+insert into section_questions(section_id,`order`,question_id) values(4,7,94);
+insert into section_questions(section_id,`order`,question_id) values(4,8,95);
+insert into section_questions(section_id,`order`,question_id) values(4,9,96);
+insert into section_questions(section_id,`order`,question_id) values(4,10,97);
+insert into section_questions(section_id,`order`,question_id) values(4,11,98);
+insert into section_questions(section_id,`order`,question_id) values(4,12,99);
+insert into section_questions(section_id,`order`,question_id) values(4,13,100);
+insert into section_questions(section_id,`order`,question_id) values(4,14,101);
+insert into section_questions(section_id,`order`,question_id) values(4,15,102);
+insert into section_questions(section_id,`order`,question_id) values(4,16,103);
+insert into section_questions(section_id,`order`,question_id) values(4,17,104);
+insert into section_questions(section_id,`order`,question_id) values(4,18,105);
+insert into section_questions(section_id,`order`,question_id) values(4,19,106);
+insert into section_questions(section_id,`order`,question_id) values(4,20,107);
+insert into section_questions(section_id,`order`,question_id) values(4,21,108);
+insert into section_questions(section_id,`order`,question_id) values(4,22,109);
+insert into section_questions(section_id,`order`,question_id) values(4,23,110);
+insert into section_questions(section_id,`order`,question_id) values(4,24,111);
+insert into section_questions(section_id,`order`,question_id) values(4,25,112);
+insert into section_questions(section_id,`order`,question_id) values(4,26,113);
+insert into section_questions(section_id,`order`,question_id) values(4,27,114);
+insert into section_questions(section_id,`order`,question_id) values(4,28,115);
+insert into section_questions(section_id,`order`,question_id) values(4,29,116);
+insert into section_questions(section_id,`order`,question_id) values(4,30,117);
+insert into section_questions(section_id,`order`,question_id) values(4,31,118);
+insert into section_questions(section_id,`order`,question_id) values(4,32,119);
+insert into section_questions(section_id,`order`,question_id) values(4,33,120);
+insert into section_questions(section_id,`order`,question_id) values(4,34,121);
+insert into section_questions(section_id,`order`,question_id) values(4,35,122);
+insert into section_questions(section_id,`order`,question_id) values(4,36,123);
+insert into section_questions(section_id,`order`,question_id) values(4,37,124);
+insert into section_questions(section_id,`order`,question_id) values(4,38,125);
+insert into section_questions(section_id,`order`,question_id) values(4,39,126);
+insert into section_questions(section_id,`order`,question_id) values(4,40,127);
+insert into section_questions(section_id,`order`,question_id) values(4,41,128);
+insert into section_questions(section_id,`order`,question_id) values(4,42,129);
+insert into section_questions(section_id,`order`,question_id) values(4,43,130);
+insert into section_questions(section_id,`order`,question_id) values(4,44,131);
+insert into section_questions(section_id,`order`,question_id) values(4,45,132);
+insert into section_questions(section_id,`order`,question_id) values(4,46,133);
+insert into section_questions(section_id,`order`,question_id) values(4,47,134);
+insert into section_questions(section_id,`order`,question_id) values(4,48,135);
+insert into section_questions(section_id,`order`,question_id) values(4,49,136);
+insert into section_questions(section_id,`order`,question_id) values(4,50,137);
+insert into section_questions(section_id,`order`,question_id) values(4,51,138);
+insert into section_questions(section_id,`order`,question_id) values(4,52,139);
+insert into section_questions(section_id,`order`,question_id) values(4,53,140);
+insert into section_questions(section_id,`order`,question_id) values(4,54,141);
+insert into section_questions(section_id,`order`,question_id) values(4,55,142);
+
+#questions for section #5;
+insert into section_questions(section_id,`order`,question_id) values(5,1,143);
+insert into section_questions(section_id,`order`,question_id) values(5,2,144);
+insert into section_questions(section_id,`order`,question_id) values(5,3,145);
+insert into section_questions(section_id,`order`,question_id) values(5,4,146);
+insert into section_questions(section_id,`order`,question_id) values(5,5,147);
+insert into section_questions(section_id,`order`,question_id) values(5,6,148);
+insert into section_questions(section_id,`order`,question_id) values(5,7,149);
+insert into section_questions(section_id,`order`,question_id) values(5,8,150);
+insert into section_questions(section_id,`order`,question_id) values(5,9,151);
+insert into section_questions(section_id,`order`,question_id) values(5,10,152);
+insert into section_questions(section_id,`order`,question_id) values(5,11,153);
+insert into section_questions(section_id,`order`,question_id) values(5,12,154);
+insert into section_questions(section_id,`order`,question_id) values(5,13,155);
+insert into section_questions(section_id,`order`,question_id) values(5,14,156);
+insert into section_questions(section_id,`order`,question_id) values(5,15,157);
+insert into section_questions(section_id,`order`,question_id) values(5,16,158);
+insert into section_questions(section_id,`order`,question_id) values(5,17,159);
+insert into section_questions(section_id,`order`,question_id) values(5,18,160);
+insert into section_questions(section_id,`order`,question_id) values(5,19,161);
+insert into section_questions(section_id,`order`,question_id) values(5,20,162);
+insert into section_questions(section_id,`order`,question_id) values(5,21,163);
+insert into section_questions(section_id,`order`,question_id) values(5,22,164);
+insert into section_questions(section_id,`order`,question_id) values(5,23,165);
+insert into section_questions(section_id,`order`,question_id) values(5,24,166);
+insert into section_questions(section_id,`order`,question_id) values(5,25,167);
+
+select * from question;
+
+select * from section_questions where section_id = 5;
+
+
 select * from passage;
 
 
@@ -341,7 +459,7 @@ select * from section;
     select q.*
       from section_questions sq,
            question q
-     where sq.section_id = 2
+     where sq.section_id = 3
        and q.id = question_id
      order by sq.`order`;
      
@@ -362,3 +480,9 @@ select * from section;
 select * From question where `text` like '%#answer%';
 
 update question set type = 'fill_blank' where `text` like '%#answer%';
+
+update question set number = '55' where id = 182;
+
+select  * from question;
+
+select * from section_questions where section_id = 3;

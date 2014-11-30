@@ -2,14 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7713d51e-6f50-4eea-88bb-b6a5c258804d" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/controller/custom/AudioSection1Evaluator.php" afterPath="$PROJECT_DIR$/controller/custom/AudioSection1Evaluator.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/model/Passage.class.php" afterPath="$PROJECT_DIR$/model/Passage.class.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/model/SectionRenderer.class.php" afterPath="$PROJECT_DIR$/model/SectionRenderer.class.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/model/TestDataModel.class.php" afterPath="$PROJECT_DIR$/model/TestDataModel.class.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sql/erd/data_creation.sql" afterPath="$PROJECT_DIR$/sql/erd/data_creation.sql" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/controller/sectionEvaluationController.php" afterPath="$PROJECT_DIR$/controller/sectionEvaluationController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/takeTest.js" afterPath="$PROJECT_DIR$/js/takeTest.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/takeTest.php" afterPath="$PROJECT_DIR$/views/takeTest.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/controller/takeTestController.php" afterPath="$PROJECT_DIR$/controller/takeTestController.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -19,7 +13,7 @@
     <ignored path=".idea/dataSources.local.xml" />
     <ignored path=".idea/" />
     <ignored mask="*.bak" />
-    <file path="/Dummy.txt" changelist="7713d51e-6f50-4eea-88bb-b6a5c258804d" time="1417321457180" ignored="false" />
+    <file path="/Dummy.txt" changelist="7713d51e-6f50-4eea-88bb-b6a5c258804d" time="1417337757262" ignored="false" />
     <file path="/nav.php" changelist="7713d51e-6f50-4eea-88bb-b6a5c258804d" time="1416066861002" ignored="false" />
     <file path="/landingPage.php" changelist="7713d51e-6f50-4eea-88bb-b6a5c258804d" time="1416067176165" ignored="false" />
     <file path="/Question.class.php" changelist="7713d51e-6f50-4eea-88bb-b6a5c258804d" time="1416723564558" ignored="false" />
@@ -78,33 +72,33 @@
       <file leaf-file-name="takeTestController.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/controller/takeTestController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="20" column="52" selection-start="616" selection-end="616" vertical-scroll-proportion="-9.807693">
+            <state line="23" column="1" selection-start="678" selection-end="678" vertical-scroll-proportion="-11.769231">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SectionRenderer.class.php" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="SectionRenderer.class.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/model/SectionRenderer.class.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="63" column="26" selection-start="1915" selection-end="1915" vertical-scroll-proportion="-14.038462">
+            <state line="60" column="18" selection-start="1865" selection-end="1865" vertical-scroll-proportion="0.3572241">
               <folding>
-                <marker date="1417337552000" expanded="true" signature="1721:1852" placeholder="..." />
-                <marker date="1417337552000" expanded="true" signature="1760:1833" placeholder="..." />
-                <marker date="1417337552000" expanded="true" signature="2597:3118" placeholder="..." />
-                <marker date="1417337552000" expanded="true" signature="2640:3095" placeholder="..." />
-                <marker date="1417337552000" expanded="true" signature="2684:3068" placeholder="..." />
-                <marker date="1417337552000" expanded="true" signature="2720:3003" placeholder="..." />
-                <marker date="1417337552000" expanded="true" signature="2806:2946" placeholder="..." />
+                <marker date="1417358231000" expanded="true" signature="1733:1864" placeholder="..." />
+                <marker date="1417358231000" expanded="true" signature="1772:1845" placeholder="..." />
+                <marker date="1417358231000" expanded="true" signature="2609:3130" placeholder="..." />
+                <marker date="1417358231000" expanded="true" signature="2652:3107" placeholder="..." />
+                <marker date="1417358231000" expanded="true" signature="2696:3080" placeholder="..." />
+                <marker date="1417358231000" expanded="true" signature="2732:3015" placeholder="..." />
+                <marker date="1417358231000" expanded="true" signature="2818:2958" placeholder="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Passage.class.php" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="Passage.class.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/model/Passage.class.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="49" column="0" selection-start="788" selection-end="788" vertical-scroll-proportion="0.83856505">
+            <state line="48" column="5" selection-start="787" selection-end="787" vertical-scroll-proportion="-28.115385">
               <folding />
             </state>
           </provider>
@@ -207,10 +201,10 @@
         <option value="$PROJECT_DIR$/controller/sectionEvaluationController.php" />
         <option value="$PROJECT_DIR$/js/takeTest.js" />
         <option value="$PROJECT_DIR$/views/takeTest.php" />
-        <option value="$PROJECT_DIR$/controller/takeTestController.php" />
         <option value="$PROJECT_DIR$/model/TestDataModel.class.php" />
-        <option value="$PROJECT_DIR$/model/SectionRenderer.class.php" />
         <option value="$PROJECT_DIR$/model/Passage.class.php" />
+        <option value="$PROJECT_DIR$/controller/takeTestController.php" />
+        <option value="$PROJECT_DIR$/model/SectionRenderer.class.php" />
       </list>
     </option>
   </component>
@@ -514,7 +508,11 @@
       <created>1417321467902</created>
       <updated>1417321467902</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="1) Added support for rendering section 2">
+      <created>1417337764168</created>
+      <updated>1417337764168</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -615,7 +613,7 @@
     <option name="WRAP_WHEN_TYPING_REACHES_RIGHT_MARGIN" value="false" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="1) Refactored to support question set and question" />
+    <option name="LAST_COMMIT_MESSAGE" value="1) Added support for rendering section 2" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -645,6 +643,7 @@
     <MESSAGE value="1) Changed checkbox to radio&#10;2) Changed submit button location&#10;" />
     <MESSAGE value="1) Added LFW image" />
     <MESSAGE value="1) Refactored to support question set and question" />
+    <MESSAGE value="1) Added support for rendering section 2" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -743,13 +742,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/controller/takeTestController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="52" selection-start="616" selection-end="616" vertical-scroll-proportion="-9.807693">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/model/TestDataModel.class.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="152" column="24" selection-start="4968" selection-end="4968" vertical-scroll-proportion="-19.923077">
@@ -757,25 +749,32 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/model/SectionRenderer.class.php">
+    <entry file="file://$PROJECT_DIR$/model/Passage.class.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="63" column="26" selection-start="1915" selection-end="1915" vertical-scroll-proportion="-14.038462">
-          <folding>
-            <marker date="1417337552000" expanded="true" signature="1721:1852" placeholder="..." />
-            <marker date="1417337552000" expanded="true" signature="1760:1833" placeholder="..." />
-            <marker date="1417337552000" expanded="true" signature="2597:3118" placeholder="..." />
-            <marker date="1417337552000" expanded="true" signature="2640:3095" placeholder="..." />
-            <marker date="1417337552000" expanded="true" signature="2684:3068" placeholder="..." />
-            <marker date="1417337552000" expanded="true" signature="2720:3003" placeholder="..." />
-            <marker date="1417337552000" expanded="true" signature="2806:2946" placeholder="..." />
-          </folding>
+        <state line="48" column="5" selection-start="787" selection-end="787" vertical-scroll-proportion="-28.115385">
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/model/Passage.class.php">
+    <entry file="file://$PROJECT_DIR$/controller/takeTestController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="49" column="0" selection-start="788" selection-end="788" vertical-scroll-proportion="0.83856505">
+        <state line="23" column="1" selection-start="678" selection-end="678" vertical-scroll-proportion="-11.769231">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/SectionRenderer.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="60" column="18" selection-start="1865" selection-end="1865" vertical-scroll-proportion="0.3572241">
+          <folding>
+            <marker date="1417358231000" expanded="true" signature="1733:1864" placeholder="..." />
+            <marker date="1417358231000" expanded="true" signature="1772:1845" placeholder="..." />
+            <marker date="1417358231000" expanded="true" signature="2609:3130" placeholder="..." />
+            <marker date="1417358231000" expanded="true" signature="2652:3107" placeholder="..." />
+            <marker date="1417358231000" expanded="true" signature="2696:3080" placeholder="..." />
+            <marker date="1417358231000" expanded="true" signature="2732:3015" placeholder="..." />
+            <marker date="1417358231000" expanded="true" signature="2818:2958" placeholder="..." />
+          </folding>
         </state>
       </provider>
     </entry>
