@@ -19,7 +19,7 @@ $(function(){
 
         }
     });
-    clock.setTime(300);
+    clock.setTime($("#timeForTest").val());
 });
 
 

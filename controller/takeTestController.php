@@ -17,7 +17,8 @@ class takeTestController extends BaseController{
         $sectionRenderer = new SectionRenderer($testDataModel);
         $this->registry->template->testDataModel = $testDataModel;
         $this->registry->template->sectionRenderer = $sectionRenderer;
-        $this->registry->template->sectionNumber = 1;
+        $this->registry->template->sectionNumber = 2;
+        $this->registry->template->timeForTest = 600;
         $this->registry->template->show('takeTest');
     }
 }

@@ -17,103 +17,65 @@ class SectionRenderer {
     }
 
 
-    /*
-                         $passages = $testDataModel->getPassages($sectionNumber);
-                    foreach ($passages as $passage) {
-                        ?>
-                        <div class=row">
-                            <div class="col-md-9">
-                                <h2>
-                                    <block><?= $passage->getDescription() ?></block>
-                                </h2>
-                            </div>
-                        </div>
-                        <br/>
-                        <?php
-                        $questions = $testDataModel->getQuestionsForPassage($passage->getId());
-                        foreach ($questions as $question) {
-                            $questionType = $question->getType();
-                            if ($questionType=="multiple_choice") { ?>
-                                <div id="questionSet" class="row">
-                                    <div class="col-md-5">
-                                        <h4><?= $question->getText() ?></h4>
-                                    </div>
-                                </div>
-                            <?php
-                            } else {
-                                $renderingClass = $question->getRenderingClass();
-
-                                if (!is_null($renderingClass)) {
-                                    $fileToInclude = __SITE_PATH.'/controller/custom/'.$renderingClass.'.php';
-                                    include $fileToInclude;
-                                    $objectForRendering = new $renderingClass();
-                                    $objectForRendering->doEvaluate($question);
-                                }
-                            }
-
-                            $answers = $testDataModel->getAnswersForQuestion($question->getId());
-                            $counter = 1;
-                            foreach ($answers as $answer) {
-                                ?>
-                                <div id="answerSet<?= $counter ?>" class="row">
-                                    <div class="col-md-5">
-                                        <div class="radio">
-                                            <label>
-                                                <input type="radio" id="<?= $question->getId() ?>_answer"
-                                                       name="<?= $question->getId() ?>_answer"
-                                                       value="<?= $answer->getId() ?>"><?= $answer->getText() ?>
-                                            </label>
-                                            <br/>
-                                        </div>
-                                    </div>
-                                </div>
-                                <?php
-                                $counter += 1;
-                            };
-                        };
-                    };
-                    ?>
-
-     */
-
     public function renderPassage($passage) {
         $htmlString = <<<HTML_PASSAGE
+        <div>
             <div class=row">
-                <div class="col-md-9">
-                    <h2>
-                        <block>{$passage->getDescription()}</block>
-                    </h2>
-                </div>
+               <h3>{$passage->getDescription()}</h3>
             </div>
             <br/>
 HTML_PASSAGE;
 
         $questions = $this->testDataModel->getQuestionsForPassage($passage->getId());
         foreach ($questions as $question) {
-            $questionType = $question->getType();
-            if ($questionType=="multiple_choice") {
+            $htmlString.= $this->getHTMLForQuestion($question);
+        }
+        $htmlString.="</div>".PHP_EOL;
+        $htmlString.="<hr/>".PHP_EOL;
+        echo $htmlString;
+    }
+
+    public function renderQuestion($question) {
+        echo $this->getHTMLForQuestion($question);
+    }
+
+    private function getHTMLForQuestion($question) {
+        $htmlString="";
+        $questionType = $question->getType();
+        if ($questionType=="multiple_choice") {
             $htmlString.= <<<QUESTION_PASSAGE
             <div id="questionSet" class="row">
-                <div class="col-md-5">
-                    <h4>{$question->getText()}</h4>
+                <div class="col-md-9">
+                    <h5>{$question->getText()}</h5>
                 </div>
             </div>
 QUESTION_PASSAGE;
-            } else {
-                $renderingClass = $question->getRenderingClass();
-                if (!is_null($renderingClass)) {
-                    $fileToInclude = __SITE_PATH.'/controller/custom/'.$renderingClass.'.php';
-                    include $fileToInclude;
-                    $objectForRendering = new $renderingClass();
-                    $htmlString.= $objectForRendering->doEvaluate($question);
-                }
+        } else if ($questionType=="fill_blank") {
+            $rawQuestion = $question->getText();
+            $formattedQuestion = preg_replace('/_#answer.*#_/',"<input type=\"text\" id=\"answer_{$question->getId()}\">",$rawQuestion);
+            $htmlString.= <<<QUESTION_PASSAGE
+            <div id="questionSet" class="row">
+                <div class="col-md-9">
+                    <h5>{$formattedQuestion}</h5>
+                </div>
+            </div>
+QUESTION_PASSAGE;
+        } else {
+            $renderingClass = $question->getRenderingClass();
+            if (!is_null($renderingClass)) {
+                $fileToInclude = __SITE_PATH.'/controller/custom/'.$renderingClass.'.php';
+                include $fileToInclude;
+                $objectForRendering = new $renderingClass();
+                $htmlString.= $objectForRendering->doEvaluate($question);
             }
+        }
+        if ($questionType=="multiple_choice") {
             $answers = $this->testDataModel->getAnswersForQuestion($question->getId());
             $counter = 1;
             foreach ($answers as $answer) {
                 $htmlString.= <<<ANSWER_PASSAGE
                 <div id="answerSet{$counter}" class="row">
-                    <div class="col-md-5">
+                    <div class="col-md-9">
                         <div class="radio">
                             <label>
                                 <input type="radio" id="{$question->getId()}_answer"
@@ -127,10 +89,6 @@ QUESTION_PASSAGE;
 ANSWER_PASSAGE;
             }
         }
-        echo $htmlString;
-    }
-
-    public function renderQuestion($question) {
-        echo "Rendering..Question ".$question->getId().PHP_EOL;
+        return $htmlString;
     }
 }

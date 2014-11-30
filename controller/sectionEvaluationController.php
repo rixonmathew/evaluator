@@ -23,10 +23,18 @@ class sectionEvaluationController extends BaseController{
         $questionsCorrect = 0;
         $questionsIncorrect = 0;
         list($sectionScore, $questionsCorrect, $questionsIncorrect) = $this->calculateSectionScore($passages, $testDataModel, $sectionScore, $questionsCorrect, $questionsIncorrect);
-        $this->registry->template->sectionScore = $sectionScore;
-        $this->registry->template->questionsCorrect = $questionsCorrect;
-        $this->registry->template->questionsIncorrect = $questionsIncorrect;
-        $this->registry->template->show('sectionEvaluation');
+        if ($sectionScore<=5) {
+            $this->registry->template->sectionScore = $sectionScore;
+            $this->registry->template->questionsCorrect = $questionsCorrect;
+            $this->registry->template->questionsIncorrect = $questionsIncorrect;
+            $this->registry->template->show('sectionEvaluation');
+        } else {
+            $sectionRenderer = new SectionRenderer($testDataModel);
+            $this->registry->template->testDataModel = $testDataModel;
+            $this->registry->template->sectionRenderer = $sectionRenderer;
+            $this->registry->template->sectionNumber = 2;
+            $this->registry->template->show('takeTest');
+        }
     }
 
     /**

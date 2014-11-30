@@ -343,5 +343,22 @@ select * from section;
            question q
      where sq.section_id = 2
        and q.id = question_id
-     order by sq.`order`
+     order by sq.`order`;
+     
+    select q.id,
+           q.text,
+           q.number,
+           q.type,
+           q.evaluating_class as evaluatingClass,
+           q.rendering_class as renderingClass
+       from question q 
+ where not exists
+       (select 1 
+          from question_set qs 
+		where qs.question_id = q.id
+        );
 
+
+select * From question where `text` like '%#answer%';
+
+update question set type = 'fill_blank' where `text` like '%#answer%';

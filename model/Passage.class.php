@@ -18,7 +18,10 @@ class Passage {
      */
     public function getDescription()
     {
-        return $this->getNumber().")  ".$this->description;
+        if (is_null($this->getNumber()))
+            return $this->description;
+        else
+            return $this->getNumber().")  ".$this->description;
     }
 
     /**

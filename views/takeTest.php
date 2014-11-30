@@ -18,23 +18,23 @@
         </div>
     <? } ?>
     <div class="panel panel-default">
-        <div class="panel panel-heading">
-            <strong>Section <?= $sectionNumber ?></strong>
-        </div>
-        <div class="panel panel-body">
+        <div class="panel-heading">Section <?= $sectionNumber ?></div>
+        <div class="panel-body">
             <div class="form-group">
                 <div class="row">
-                    <button type="button" class="btn btn-default btn-lg" onclick="startTest()">Start</button>
-                    <button type="reset" class="btn btn-default btn-lg">Reset</button>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-default btn-lg" onclick="startTest()">Start</button>
+                        <button type="reset" class="btn btn-default btn-lg">Reset</button>
+                    </div>
                     <div class="pull-right">
                         <div class="clock" style="margin:2em;"></div>
                         <h6>Clock provided by <a href="http://flipclockjs.com/">flipclockjs</a></h6>
                     </div>
-
                 </div>
             </div>
             <div id="testDetails" class="scroll-div" hidden="true">
                 <form id="sectionDetails" class="form" role="form" method="post" action="sectionEvaluation">
+                    <input type="hidden" id="timeForTest" name="timeForTest" value="<?= $timeForTest?>">
                     <input type="hidden" id="sectionNumber" name="sectionNumber" value="<?= $sectionNumber ?>">
                     <?php
                     $sectionQuestions = $testDataModel->getSectionQuestions($sectionNumber);
@@ -49,8 +49,9 @@
                     }
                     ?>
                 </form>
+                <br/>
                 <div class="form-group">
-                    <div class="row">
+                    <div class="btn-group">
                         <button type="submit" class="btn btn-success btn-lg" onclick="submitTest()">Submit</button>
                     </div>
                 </div>

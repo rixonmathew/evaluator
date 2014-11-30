@@ -13,7 +13,7 @@ class AudioSection1Evaluator {
         $wordsMatched = 0;
         $possibleWords = array("Hello","World","Language");
         $answerArray = explode(",",$selectedAnswer);
-        var_dump($answerArray);
+        //var_dump($answerArray);
         //array of possible words to match to see how many words in the selected answer.
         foreach($possibleWords as $word){
             if (in_array($word,$answerArray)){

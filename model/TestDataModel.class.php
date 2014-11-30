@@ -29,6 +29,7 @@ class TestDataModel {
         $this->populateSectionQuestions();
         $this->populatePassagesPerSection();
         $this->populateQuestionsPerPassage();
+        $this->populateOtherQuestions();
     }
 
     private function populateSections() {
@@ -144,6 +145,32 @@ QUERY_AFQ;
             $this->answersForQuestion[$question->getId()] = $answers;
         }
     }
+
+    private function populateOtherQuestions() {
+        $otherQuestionsQuery= <<<OTHER_QUESTIONS
+        select q.id,
+               q.text,
+               q.number,
+               q.type,
+               q.evaluating_class as evaluatingClass,
+               q.rendering_class as renderingClass
+           from question q
+          where not exists
+                (select 1
+                   from question_set qs
+                  where qs.question_id = q.id
+                );
+OTHER_QUESTIONS;
+
+        $statement = $this->dbh->query($otherQuestionsQuery);
+        $otherQuestions = $statement->fetchAll(PDO::FETCH_CLASS,"Question");
+
+        foreach($otherQuestions as $question){
+            $this->questions[$question->getId()] = $question;
+        }
+        $this->populateAnswersPerQuestion($otherQuestions);
+    }
+
 
     public function getNextSection() {
 
