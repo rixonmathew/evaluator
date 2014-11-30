@@ -17,7 +17,8 @@ class sectionEvaluationController extends BaseController{
 //          echo "Field ".htmlspecialchars($key)." is ".htmlspecialchars($value)."<br>";
 
         $section = $_POST['sectionNumber'];
-        $testDataModel = new TestDataModel(1,$this->registry->db);
+        $testId = $_POST['testId'];
+        $testDataModel = new TestDataModel($testId,$this->registry->db);
         $passages = $testDataModel->getPassages($section);
         $sectionScore = 0;
         $questionsCorrect = 0;

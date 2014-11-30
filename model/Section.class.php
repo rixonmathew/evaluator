@@ -11,6 +11,8 @@ class Section {
     private $id;
     private $name;
     private $type;
+    private $timeLimit;
+    private $evaluatingClass;
 
     function __construct()
     {
@@ -64,6 +66,37 @@ class Section {
         $this->type = $type;
     }
 
+    /**
+     * @param mixed $evaluatingClass
+     */
+    public function setEvaluatingClass($evaluatingClass)
+    {
+        $this->evaluatingClass = $evaluatingClass;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getEvaluatingClass()
+    {
+        return $this->evaluatingClass;
+    }
+
+    /**
+     * @param mixed $timeLimit
+     */
+    public function setTimeLimit($timeLimit)
+    {
+        $this->timeLimit = $timeLimit;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTimeLimit()
+    {
+        return $this->timeLimit;
+    }
 
 
     function __toString()

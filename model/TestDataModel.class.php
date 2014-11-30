@@ -36,7 +36,9 @@ class TestDataModel {
         $sectionsQueryForTest = <<<QUERY_QFT
     select s.id,
            s.name,
-           s.type
+           s.type,
+           s.timeLimit,
+           s.evaluatingClass
       from section s,
            test_section ts
      where ts.test_id = $this->testId
@@ -172,8 +174,13 @@ OTHER_QUESTIONS;
     }
 
 
-    public function getNextSection() {
-
+    public function getSection($sectionId) {
+        foreach($this->sections as $section){
+            if ($section->getId()==$sectionId){
+                return $section;
+            }
+        }
+        trigger_error("Section not found $sectionId",E_USER_ERROR);
     }
 
     public function getPassages($sectionId) {

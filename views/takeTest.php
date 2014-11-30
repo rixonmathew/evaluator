@@ -34,6 +34,7 @@
             </div>
             <div id="testDetails" class="scroll-div" hidden="true">
                 <form id="sectionDetails" class="form" role="form" method="post" action="sectionEvaluation">
+                    <input type="hidden" id="testId" name="testId" value="<?= $testId?>">
                     <input type="hidden" id="timeForTest" name="timeForTest" value="<?= $timeForTest?>">
                     <input type="hidden" id="sectionNumber" name="sectionNumber" value="<?= $sectionNumber ?>">
                     <?php

@@ -13,12 +13,22 @@ class takeTestController extends BaseController{
      */
     function index()
     {
-        $testDataModel = new TestDataModel(1,$this->registry->db);
+        if (!isset($_GET['testId'])) {
+            trigger_error("TestId not populated",E_USER_ERROR);
+        }
+        $testId =$_GET['testId'];
+        $testDataModel = new TestDataModel($testId,$this->registry->db);
         $sectionRenderer = new SectionRenderer($testDataModel);
         $this->registry->template->testDataModel = $testDataModel;
         $this->registry->template->sectionRenderer = $sectionRenderer;
-        $this->registry->template->sectionNumber = 5;
-        $this->registry->template->timeForTest = 600;
+        $sectionNumber = 1;
+        if (isset($_POST['sectionNumber'])) {
+            $sectionNumber = $_POST['sectionNumber'];
+        }
+        $section = $testDataModel->getSection($sectionNumber);
+        $this->registry->template->testId = $testId;
+        $this->registry->template->sectionNumber = $sectionNumber;
+        $this->registry->template->timeForTest = $section->getTimeLimit();
         $this->registry->template->show('takeTest');
     }
 }

@@ -486,3 +486,11 @@ update question set number = '55' where id = 182;
 select  * from question;
 
 select * from section_questions where section_id = 3;
+
+select * From section;
+
+update section set evaluatingClass = 'SectionOneEvaluator',timeLimit = 900 where id = 1;
+update section set evaluatingClass = 'SectionTwoEvaluator',timeLimit = 1320 where id = 2;
+update section set evaluatingClass = 'SectionThreeEvaluator',timeLimit = 600 where id = 3;
+update section set evaluatingClass = 'SectionFourEvaluator',timeLimit = 1200 where id = 4;
+update section set evaluatingClass = 'SectionFiveEvaluator',timeLimit = 840 where id = 5;
