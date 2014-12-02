@@ -27,6 +27,7 @@ class sectionEvaluationController extends BaseController{
             $objectForEvaluating = new $sectionEvaluatorClass();
             $sectionEvaluationResult = $objectForEvaluating->doEvaluate($testDataModel,$sectionId);
             if ($sectionEvaluationResult->getScore()<7) {
+                $_SESSION['sectionEvaluationResult'] = $sectionEvaluationResult;
                 $this->registry->template->sectionScore = $sectionEvaluationResult->getScore();
                 $this->registry->template->questionsCorrect = $sectionEvaluationResult->getQuestionsCorrect();
                 $this->registry->template->questionsTotal = $sectionEvaluationResult->getTotalQuestions();
