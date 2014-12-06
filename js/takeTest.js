@@ -20,6 +20,11 @@ $(function(){
         }
     });
     clock.setTime($("#timeForTest").val());
+    $('#sectionDetails').submit(function() {
+        var c = confirm("Are you sure you want to submit ?");
+        return c;
+    });
+
 });
 
 
@@ -31,8 +36,4 @@ function startTest(){
 function stopTest() {
     clock.stop();
     alert('Time is '+clock.timer.getElapsed());
-}
-
-function submitTest() {
-    $('#sectionDetails').submit();
 }

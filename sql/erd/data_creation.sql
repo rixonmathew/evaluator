@@ -494,3 +494,11 @@ update section set evaluatingClass = 'SectionTwoEvaluator',timeLimit = 1320 wher
 update section set evaluatingClass = 'SectionThreeEvaluator',timeLimit = 600 where id = 3;
 update section set evaluatingClass = 'SectionFourEvaluator',timeLimit = 1200 where id = 4;
 update section set evaluatingClass = 'SectionFiveEvaluator',timeLimit = 840 where id = 5;
+
+select * from test_attempt_analytics;
+
+select * from test_attempt;
+
+delete from test_attempt;
+
+insert into test_attempt(date,overall_grade,user_id,test_id,communication_grade,comprehension_grade) values(

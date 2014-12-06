@@ -49,13 +49,13 @@
                         }
                     }
                     ?>
-                </form>
-                <br/>
-                <div class="form-group">
-                    <div class="btn-group">
-                        <button type="submit" class="btn btn-success btn-lg" onclick="submitTest()">Submit</button>
+                    <br/>
+                    <div class="form-group">
+                        <div class="btn-group">
+                            <button type="submit" class="btn btn-success btn-lg">Submit</button>
+                        </div>
                     </div>
-                </div>
+                </form>
             </div>
         </div>
     </div>

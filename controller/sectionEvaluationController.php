@@ -26,12 +26,19 @@ class sectionEvaluationController extends BaseController{
             include $fileToInclude;
             $objectForEvaluating = new $sectionEvaluatorClass();
             $sectionEvaluationResult = $objectForEvaluating->doEvaluate($testDataModel,$sectionId);
+            if (session_status() == PHP_SESSION_NONE) {
+                session_start();
+            }
+            $_SESSION['sectionEvaluationResult'] = $sectionEvaluationResult;
+            //TODO add functionality to get Test Result from session and update with Section Evaluation
             if ($sectionEvaluationResult->getScore()<7) {
-                $_SESSION['sectionEvaluationResult'] = $sectionEvaluationResult;
+                $testResult = $_SESSION['testResult'];
                 $this->registry->template->sectionScore = $sectionEvaluationResult->getScore();
                 $this->registry->template->questionsCorrect = $sectionEvaluationResult->getQuestionsCorrect();
                 $this->registry->template->questionsTotal = $sectionEvaluationResult->getTotalQuestions();
-                $this->registry->template->show('sectionEvaluation');
+                $this->registry->template->comprehensionScore = $testResult->getComprehensionScore();
+                $this->registry->template->communicationScore = $testResult->getCommunicationScore();
+                $this->registry->template->show('testResult');
             } else {
                 $sectionRenderer = new SectionRenderer($testDataModel);
                 $this->registry->template->testDataModel = $testDataModel;

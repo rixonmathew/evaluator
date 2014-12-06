@@ -15,7 +15,7 @@ class authenticateController extends BaseController{
     {
         $username = $_POST['email'];
         $password = $_POST['password'];
-        $authenticateQuery = "select first_name,last_name from user where username='$username' and password='$password'";
+        $authenticateQuery = "select id,first_name,last_name from user where username='$username' and password='$password'";
         $dbh = $this->registry->db;
         $stmt = $dbh->query($authenticateQuery);
         $userData = $stmt->fetch(PDO::FETCH_OBJ);
@@ -27,6 +27,7 @@ class authenticateController extends BaseController{
         session_start();
         $_SESSION['login'] = "1";
         $_SESSION['username'] = $username;
+        $_SESSION['userId'] = $userData->id;
         header ("Location: landingPage");
     }
 }
