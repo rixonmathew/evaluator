@@ -5,7 +5,6 @@
         header ("Location: login");
     }
 ?>
-
 <!DOCTYPE html>
 <html>
 <head lang="en">

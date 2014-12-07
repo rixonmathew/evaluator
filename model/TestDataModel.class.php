@@ -8,68 +8,203 @@
 
 class TestDataModel {
 
-    private $user;
     private $testId;
-    private $testData;
     private $sections;
+    private $sectionQuestions;
     private $passagesForSection;
+    private $passages;
     private $questionsForPassage;
+    private $questions;
     private $answersForQuestion;
-    private $responses;
-    private $timeTaken;
+    private $dbh;
 
-    private function populateTestMetaData(){
-        foreach($this->testData as $testRecord) {
-            $this->sections[$testRecord->section_id]= $testRecord->section_name;
-            $this->questions[$testRecord->question_id]= $testRecord->question_text;
-        }
-    }
-
-
-    public function __construct($user,$testId,$testData) {
-        $this->user = $user;
+    public function __construct($testId,$dbh) {
         $this->testId = $testId;
-        $this->testData=$testData;
+        $this->dbh = $dbh;
         $this->populateTestMetaData();
     }
 
-
-    public function getNextSection() {
-
+    private function populateTestMetaData(){
+        $this->populateSections();
+        $this->populateSectionQuestions();
+        $this->populatePassagesPerSection();
+        $this->populateQuestionsPerPassage();
+        $this->populateOtherQuestions();
     }
 
-    public function getPassages() {
-        $this->passagesForSection = array(
-            new Passage("Fatima was very good at studies and always stood first in her class. She and her sisters studied in a government school.
-                         She was in class 10 while her younger sisters were in class 7 & class 5. Their school was almost 3 kilometers away from
-                         their house but they walked everyday to save on transport money. The sisters were not very good at studies so Fatima requested
-                         her parents to send them for extra tuition classes after school hours. Her parents did not earn so much to send all 3 daughters for
-                         tuitions so Fatima chose to study on her own. Because of this sacrifice, everyone in the house respected her very much",1),
-            new Passage("Some more Test Passage here",2),
-            new Passage("Some more Test Passage here",3),
-        );
-        return $this->passagesForSection;
+    private function populateSections() {
+        $sectionsQueryForTest = <<<QUERY_QFT
+    select s.id,
+           s.name,
+           s.type,
+           s.timeLimit,
+           s.evaluatingClass
+      from section s,
+           test_section ts
+     where ts.test_id = $this->testId
+       and s.id = ts.section_id;
+QUERY_QFT;
+
+        $stmt = $this->dbh->query($sectionsQueryForTest);
+        $this->sections = $stmt->fetchAll(PDO::FETCH_CLASS,"Section");
+    }
+
+    private function populateSectionQuestions() {
+        $this->sectionQuestions = array();
+        foreach($this->sections as $section){
+            $sectionQuestionsQuery = <<<QUERY_SQ
+    select sq.id,
+		   sq.section_id as sectionId,
+           sq.question_id as questionId,
+           sq.`order`,
+           sq.question_set_definition_id as questionSetDefinitionId
+      from section_questions sq
+     where sq.section_id = {$section->getId()}
+     order by sq.`order`;
+QUERY_SQ;
+
+            $statement = $this->dbh->query($sectionQuestionsQuery);
+            $sectionQuestions = $statement->fetchAll(PDO::FETCH_CLASS,"SectionQuestion");
+            $this->sectionQuestions[$section->getId()] = $sectionQuestions;
+        }
+    }
+
+    private function populatePassagesPerSection() {
+        $this->passagesForSection = array();
+        $this->passages = array();
+        foreach($this->sections as $section){
+            $passagePerSectionQuery =<<<QUERY_PFS
+    select p.id,
+           p.description,
+           p.number
+      from section_questions sq,
+           question_set_definition qsd,
+           question_set qs,
+           passage p
+     where sq.section_id = {$section->getId()}
+       and qsd.id = sq.question_set_definition_id
+       and qs.question_set_definition_id = qsd.id
+       and p.id = qs.passage_id
+     group by p.id,p.description
+     order by sq.`order`
+QUERY_PFS;
+            $statement = $this->dbh->query($passagePerSectionQuery);
+            $passagesPerSection = $statement->fetchAll(PDO::FETCH_CLASS,"Passage");
+            $this->passagesForSection[$section->getId()]=$passagesPerSection;
+
+            foreach($passagesPerSection as $passage) {
+                $this->passages[$passage->getId()] = $passage;
+            }
+        }
+    }
+
+    private function populateQuestionsPerPassage() {
+        $this->questionsForPassage = array();
+        $this->questions = array();
+        foreach($this->sections as $section) {
+            $passagesForSection = $this->passagesForSection[$section->getId()];
+            foreach($passagesForSection as $passage){
+                $questionPerPassageQuery = <<<QUERY_QFP
+    select q.id,
+           q.text,
+           q.number,
+           q.type,
+           q.evaluating_class as evaluatingClass,
+           q.rendering_class as renderingClass
+      from question_set qs,
+           question q
+     where qs.passage_id = {$passage->getId()}
+       and q.id = qs.question_id
+       order by qs.`order`;
+QUERY_QFP;
+
+                $statement = $this->dbh->query($questionPerPassageQuery);
+                $questionsPerPassage = $statement->fetchAll(PDO::FETCH_CLASS,"Question");
+
+                foreach($questionsPerPassage as $question){
+                    $this->questions[$question->getId()] = $question;
+                }
+                $this->questionsForPassage[$passage->getId()] = $questionsPerPassage;
+                $this->populateAnswersPerQuestion($questionsPerPassage);
+            }
+        }
+    }
+
+    private function populateAnswersPerQuestion($questionsForPassage) {
+        foreach ($questionsForPassage as $question) {
+            $answersPerQuestionQuery = <<<QUERY_AFQ
+        select a.id,
+               a.text,
+               a.correct,
+               a.number
+          from answer a
+         where a.question_id = {$question->getId()}
+           order by a.`order`;
+QUERY_AFQ;
+
+            $statement = $this->dbh->query($answersPerQuestionQuery);
+            $answers = $statement->fetchAll(PDO::FETCH_CLASS,"Answer");
+            $this->answersForQuestion[$question->getId()] = $answers;
+        }
+    }
+
+    private function populateOtherQuestions() {
+        $otherQuestionsQuery= <<<OTHER_QUESTIONS
+        select q.id,
+               q.text,
+               q.number,
+               q.type,
+               q.evaluating_class as evaluatingClass,
+               q.rendering_class as renderingClass
+           from question q
+          where not exists
+                (select 1
+                   from question_set qs
+                  where qs.question_id = q.id
+                );
+OTHER_QUESTIONS;
+
+        $statement = $this->dbh->query($otherQuestionsQuery);
+        $otherQuestions = $statement->fetchAll(PDO::FETCH_CLASS,"Question");
+
+        foreach($otherQuestions as $question){
+            $this->questions[$question->getId()] = $question;
+        }
+        $this->populateAnswersPerQuestion($otherQuestions);
+    }
+
+
+    public function getSection($sectionId) {
+        foreach($this->sections as $section){
+            if ($section->getId()==$sectionId){
+                return $section;
+            }
+        }
+        trigger_error("Section not found $sectionId",E_USER_ERROR);
+    }
+
+    public function getPassages($sectionId) {
+        return $this->passagesForSection[$sectionId];
     }
 
     public function getQuestionsForPassage($passageId) {
-        $this->questionsForPassage = array(
-            new Question(1,"How many roads must a man walk down?"),
-            new Question(2,"How many roads must a man walk down some more?"),
-            new Question(3,"How many roads must a man walk down how more?"),
-            new Question(4,"How many roads must a man walk down crazy bithces....?"),
-            new Question(4,"How many roads must a man walk down crazy bithces....?")
-        );
-        return $this->questionsForPassage;
+        return $this->questionsForPassage[$passageId];
     }
 
     public function getAnswersForQuestion($questionId) {
-        $this->answersForQuestion = array(
-            new Answer(0,1,"Answer 1"),
-            new Answer(0,2,"Answer 2"),
-            new Answer(1,3,"Answer 3"),
-            new Answer(0,4,"Answer 4"),
-        );
-        return $this->answersForQuestion;
+        return $this->answersForQuestion[$questionId];
     }
 
-} 
+    public function getSectionQuestions($sectionId) {
+        return $this->sectionQuestions[$sectionId];
+    }
+
+    public function getPassage($passageId) {
+        return $this->passages[$passageId];
+    }
+
+    public function getQuestion($questionId) {
+        return $this->questions[$questionId];
+    }
+
+}

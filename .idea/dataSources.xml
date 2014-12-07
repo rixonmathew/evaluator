@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="DataSourceManagerImpl" format="xml">
-    <data-source source="LOCAL" name="local_mysql - evaluator@localhost" uuid="712a5771-e218-4d9b-8698-116bc99232c8">
-      <driver-ref>mysql</driver-ref>
+  <component name="DataSourceManagerImpl" format="xml" hash="0">
+    <data-source source="LOCAL" name="local_mysql - evaluator@localhost" product="" version="" jdbc-version="" driver-name="" driver-version="" uuid="712a5771-e218-4d9b-8698-116bc99232c8">
       <synchronize>true</synchronize>
       <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
       <jdbc-url>jdbc:mysql://localhost:3306/evaluator</jdbc-url>
       <driver-properties>
-        <property name="zeroDateTimeBehavior" value="convertToNull" />
-        <property name="tinyInt1isBit" value="false" />
         <property name="characterEncoding" value="utf8" />
-        <property name="characterSetResults" value="utf8" />
         <property name="yearIsDateType" value="false" />
+        <property name="tinyInt1isBit" value="false" />
+        <property name="characterSetResults" value="utf8" />
+        <property name="zeroDateTimeBehavior" value="convertToNull" />
       </driver-properties>
       <libraries />
     </data-source>

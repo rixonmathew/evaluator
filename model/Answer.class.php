@@ -10,13 +10,8 @@ class Answer {
     private $id;
     private $text;
     private $correct;
+    private $number;
 
-    function __construct($correct, $id, $text)
-    {
-        $this->correct = $correct;
-        $this->id = $id;
-        $this->text = $text;
-    }
 
     /**
      * @return mixed
@@ -24,6 +19,14 @@ class Answer {
     public function getCorrect()
     {
         return $this->correct;
+    }
+
+    /**
+     * @param mixed $correct
+     */
+    public function setCorrect($correct)
+    {
+        $this->correct = $correct;
     }
 
     /**
@@ -35,14 +38,43 @@ class Answer {
     }
 
     /**
+     * @param mixed $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
+    /**
      * @return mixed
      */
     public function getText()
     {
-        return $this->text;
+        return $this->getNumber().") ".$this->text;
     }
 
+    /**
+     * @param mixed $text
+     */
+    public function setText($text)
+    {
+        $this->text = $text;
+    }
 
+    /**
+     * @return mixed
+     */
+    public function getNumber()
+    {
+        return $this->number;
+    }
 
+    /**
+     * @param mixed $number
+     */
+    public function setNumber($number)
+    {
+        $this->number = $number;
+    }
 
 } 

@@ -50,7 +50,7 @@ Field complexity is Medium
     private function insertQuestion() {
         $questionText = $_POST['text'];
         try {
-            $dbh = $dbh = $this->registry->db;
+            $dbh = $this->registry->db;
 
             $statementInsert = $dbh->prepare("INSERT INTO question (text) VALUES(?)");
 

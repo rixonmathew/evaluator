@@ -13,50 +13,61 @@ class takeTestController extends BaseController{
      */
     function index()
     {
-        //get all sections for test.
-        //Populate details for Section#1 or next Section
-        //show the view
-        $testDetailsQuery = "select t.id as test_id,
-                                   t.name as test_name,
-                                   s.id as section_id,
-                                   s.name as section_name,
-                                   q.id as question_id,
-                                   q.text as question_text,
-                                   a.id as answer_id,
-                                   a.text as answer_text,
-                                   a.correct as is_correct
-                              from test t,
-                                   test_section ts,
-                                   section_questions sq,
-                                   section s,
-                                   question_set_definition qsd,
-                                   question_set qs,
-                                   passage p,
-                                   question q,
-                                   answer a
-                             where ts.test_id = t.id
-                               and sq.section_id = ts.section_id
-                               and qsd.id = sq.question_set_definition_id
-                               and qs.question_set_definition_id = qsd.id
-                               and s.id = sq.section_id
-                               and q.id = qs.question_id
-                               and p.id = qs.passage_id
-                               and a.question_id = q.id
-                             order by ts.`order`,sq.`order`,qs.id;";
-
-        $dbh = $this->registry->db;
-        $stmt = $dbh->query($testDetailsQuery);
-        $testData = $stmt->fetchAll(PDO::FETCH_OBJ);
-        $sections = array();
-        foreach($testData as $test){
-//            echo "Test id is $test->test_id";
-//            echo "Test id is $test->question_text";
-            $sections[$test->section_id] = $test->section_name;
+        if (!isset($_GET['testId'])) {
+            trigger_error("TestId not populated",E_USER_ERROR);
         }
-        $testDataModel = new TestDataModel("rixon","1",$testData);
+        $testId =$_GET['testId'];
+        $testDataModel = new TestDataModel($testId,$this->registry->db);
+        $sectionRenderer = new SectionRenderer($testDataModel);
         $this->registry->template->testDataModel = $testDataModel;
-        $this->registry->template->sections = $sections;
-        $this->registry->template->sectionNumber = 1;
+        $this->registry->template->sectionRenderer = $sectionRenderer;
+        $sectionNumber = 1;
+        if (isset($_POST['sectionNumber'])) {
+            $sectionNumber = $_POST['sectionNumber'];
+        }
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }
+        $testResult = new TestResult();
+        $testResult->setTestId($testId);
+        $userId = $_SESSION['userId'];
+        $testResult->setUserId($userId);
+        date_default_timezone_set("Asia/Kolkata");
+        $date = date('Y-m-d h:i:s');
+        $testResult->setDate($date);
+        $testResult->setOverallScore('TBD');
+        $testResult->setComprehensionScore('1');
+        $testResult->setCommunicationScore('5');
+        $this->insertTestResult($this->registry->db,$testResult);
+
+        $section = $testDataModel->getSection($sectionNumber);
+        $this->registry->template->testId = $testId;
+        $this->registry->template->sectionNumber = $sectionNumber;
+        $this->registry->template->timeForTest = $section->getTimeLimit();
         $this->registry->template->show('takeTest');
+    }
+
+    private function insertTestResult($dbh,$testResult) {
+        $insertQuery = "insert into test_attempt(date,overall_grade,user_id,test_id,communication_grade,comprehension_grade)
+                                    values('{$testResult->getDate()}','{$testResult->getOverallScore()}',{$testResult->getUserId()},{$testResult->getTestId()},
+                                    '{$testResult->getCommunicationScore()}','{$testResult->getComprehensionScore()}')";
+        try {
+
+            $statementInsert = $dbh->prepare($insertQuery);
+
+            try {
+                $dbh->beginTransaction();
+                $statementInsert->execute();
+                $testResultId = $dbh->lastInsertId();
+                $dbh->commit();
+                $testResult->setId($testResultId);
+                $_SESSION['testResult'] = $testResult;
+            } catch(PDOExecption $e) {
+                $dbh->rollback();
+            }
+        } catch( PDOExecption $e ) {
+            print "Error!: " . $e->getMessage() . "</br>";
+        }
+
     }
 }

@@ -2,16 +2,16 @@
 /**
  * Created by PhpStorm.
  * User: rixonmathew
- * Date: 01/11/14
- * Time: 8:55 PM
+ * Date: 02/11/14
+ * Time: 2:34 PM
  */
 
-class Question {
+class Section {
+
     private $id;
-    private $text;
-    private $number;
+    private $name;
     private $type;
-    private $renderingClass;
+    private $timeLimit;
     private $evaluatingClass;
 
     function __construct()
@@ -37,33 +37,33 @@ class Question {
     /**
      * @return mixed
      */
-    public function getText()
+    public function getName()
     {
-        return $this->getNumber().") ".$this->text;
+        return $this->name;
     }
 
     /**
-     * @param mixed $text
+     * @param mixed $name
      */
-    public function setText($text)
+    public function setName($name)
     {
-        $this->text = $text;
+        $this->name = $name;
     }
 
     /**
      * @return mixed
      */
-    public function getNumber()
+    public function getType()
     {
-        return $this->number;
+        return $this->type;
     }
 
     /**
-     * @param mixed $number
+     * @param mixed $type
      */
-    public function setNumber($number)
+    public function setType($type)
     {
-        $this->number = $number;
+        $this->type = $type;
     }
 
     /**
@@ -83,34 +83,26 @@ class Question {
     }
 
     /**
-     * @param mixed $renderingClass
+     * @param mixed $timeLimit
      */
-    public function setRenderingClass($renderingClass)
+    public function setTimeLimit($timeLimit)
     {
-        $this->renderingClass = $renderingClass;
+        $this->timeLimit = $timeLimit;
     }
 
     /**
      * @return mixed
      */
-    public function getRenderingClass()
+    public function getTimeLimit()
     {
-        return $this->renderingClass;
+        return $this->timeLimit;
     }
 
-    /**
-     * @param mixed $type
-     */
-    public function setType($type)
+
+    function __toString()
     {
-        $this->type = $type;
+        return "Section [id=>$this->id,name=>$this->name,type=$this->type]";
     }
 
-    /**
-     * @return mixed
-     */
-    public function getType()
-    {
-        return $this->type;
-    }
-}
+
+} 
