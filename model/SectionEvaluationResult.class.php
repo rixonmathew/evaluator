@@ -14,7 +14,9 @@ class SectionEvaluationResult {
     private $questionsAttempted;
     private $questionsCorrect;
     private $score;
-    private $grade;
+    private $comprehensionGrade;
+    private $communicationGrade;
+    private $showResult = false;
 
     function __construct() {
 
@@ -103,16 +105,48 @@ class SectionEvaluationResult {
     /**
      * @param mixed $grade
      */
-    public function setGrade($grade)
+    public function setComprehensionGrade($grade)
     {
-        $this->grade = $grade;
+        $this->comprehensionGrade = $grade;
     }
 
     /**
      * @return mixed
      */
-    public function getGrade()
+    public function getComprehensionGrade()
     {
-        return $this->grade;
+        return $this->comprehensionGrade;
+    }
+
+    /**
+     * @param mixed $communicationGrade
+     */
+    public function setCommunicationGrade($communicationGrade)
+    {
+        $this->communicationGrade = $communicationGrade;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCommunicationGrade()
+    {
+        return $this->communicationGrade;
+    }
+
+    /**
+     * @param boolean $showResult
+     */
+    public function setShowResult($showResult)
+    {
+        $this->showResult = $showResult;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function getShowResult()
+    {
+        return $this->showResult;
     }
 }

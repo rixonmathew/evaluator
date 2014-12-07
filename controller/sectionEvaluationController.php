@@ -34,8 +34,9 @@ class sectionEvaluationController extends BaseController{
             $_SESSION['testResult'] = $testResult;
             $_SESSION['sectionEvaluationResult'] = $sectionEvaluationResult;
             //TODO add functionality to get Test Result from session and update with Section Evaluation
-            if ($sectionEvaluationResult->getGrade()=="0") {
-                $testResult->setComprehensionScore($sectionEvaluationResult->getGrade());
+            if ($sectionEvaluationResult->getShowResult()===true) {
+                $testResult->setComprehensionScore($sectionEvaluationResult->getComprehensionGrade());
+                $testResult->getCommunicationScore($sectionEvaluationResult->getCommunicationGrade());
                 $this->registry->template->sectionScore = $sectionEvaluationResult->getScore();
                 $this->registry->template->questionsCorrect = $sectionEvaluationResult->getQuestionsCorrect();
                 $this->registry->template->questionsTotal = $sectionEvaluationResult->getTotalQuestions();

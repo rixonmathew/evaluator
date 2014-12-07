@@ -511,3 +511,17 @@ select * from test_attempt;
 delete from test_attempt;
 
 update question set evaluating_class = 'FillInTheBlankEvaluator' where type='fill_blank';
+
+select * from question;
+
+select * from answer where question_id = 162;
+
+update question set text = 'Enter the english words in the text area below separated by comma(,) ' where id = 20;
+
+select * from question q where not exists (select 1 from answer a where a.question_id = q.id);
+
+insert into answer(text,correct,question_id) values('living,want to',1,144);
+insert into answer(text,correct,question_id) values('lived,were,saw,had been',1,150);
+insert into answer(text,correct,question_id) values('felt,decided,left,came',1,154);
+insert into answer(text,correct,question_id) values('was listening,rememberd,had asked',1,162);
+insert into answer(text,correct,question_id) values('the,the,the,a,the,the,the,an,a,a',1,167);

@@ -146,10 +146,12 @@ class SectionTwoEvaluator {
         $sectionEvaluationResult->setTotalQuestions($totalQuestions);
         $sectionEvaluationResult->setQuestionsCorrect($questionsCorrect);
         $sectionEvaluationResult->setScore($sectionScore);
+        $sectionEvaluationResult->setCommunicationGrade("NOT EVALUATED");
         if ($sectionScore<33) {
-            $sectionEvaluationResult->setGrade("0");
+            $sectionEvaluationResult->setComprehensionGrade("0");
+            $sectionEvaluationResult->setShowResult(true);
         } else {
-            $sectionEvaluationResult->setGrade("1");
+            $sectionEvaluationResult->setComprehensionGrade("1");
         }
     }
 }

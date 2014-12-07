@@ -85,14 +85,16 @@ class SectionOneEvaluator {
         $sectionEvaluationResult->setTotalQuestions($totalQuestions);
         $sectionEvaluationResult->setQuestionsCorrect($questionsCorrect);
         $sectionEvaluationResult->setScore($sectionScore);
+        $sectionEvaluationResult->setCommunicationGrade("NOT EVALUATED");
         if ($sectionScore==25) {
-            $sectionEvaluationResult->setGrade("3");
+            $sectionEvaluationResult->setComprehensionGrade("3");
         } else if ($sectionScore<25 && $sectionScore>=21) {
-            $sectionEvaluationResult->setGrade("2");
+            $sectionEvaluationResult->setComprehensionGrade("2");
         } else if ($sectionScore>=17) {
-            $sectionEvaluationResult->setGrade("1");
+            $sectionEvaluationResult->setComprehensionGrade("1");
         } else {
-            $sectionEvaluationResult->setGrade("0");
+            $sectionEvaluationResult->setComprehensionGrade("0");
+            $sectionEvaluationResult->setShowResult(true);
         }
     }
 

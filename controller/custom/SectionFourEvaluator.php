@@ -17,19 +17,77 @@ class SectionFourEvaluator {
     }
 
     public function getNextSection() {
-        return 2;
+        return 5;
     }
 
     private function calculateSectionScore($testDataModel,$sectionEvaluationResult,$sectionId)
     {
-        $passages = $testDataModel->getPassages($sectionId);
+        $sectionQuestions = $testDataModel->getSectionQuestions($sectionId);
         $sectionScore=0;
         $questionsCorrect=0;
         $totalQuestions=0;
         $questionsIncorrect=0;
-        foreach ($passages as $passage) {
-            $questions = $testDataModel->getQuestionsForPassage($passage->getId());
-            foreach ($questions as $question) {
+
+        foreach($sectionQuestions as $sectionQuestion) {
+            if ($sectionQuestion->isQuestionSet()) {
+                $passage = $testDataModel->getPassage($sectionQuestion->getQuestionSetDefinitionId());
+                $questions = $testDataModel->getQuestionsForPassage($passage->getId());
+                foreach ($questions as $question) {
+                    $totalQuestions++;
+                    $questionType = $question->getType();
+                    if ($questionType=="multiple_choice") {
+                        $answers = $testDataModel->getAnswersForQuestion($question->getId());
+                        foreach ($answers as $answer) {
+                            if ($answer->getCorrect()) {
+                                $variableName = $question->getId() . "_answer";
+                                if (isset($_POST[$variableName])) {
+
+                                    $selectedAnswer = $_POST[$variableName];
+                                    if ($selectedAnswer == $answer->getId()){
+                                        $sectionScore += 1;
+                                        $questionsCorrect++;
+                                    }
+                                } else {
+                                    $questionsIncorrect++;
+                                }
+                            }
+                        }
+                    } else if ($questionType=="fill_blank"){
+                        $evaluatingClass = $question->getEvaluatingClass();
+                        if (!is_null($evaluatingClass)) {
+                            $fileToInclude = __SITE_PATH.'/controller/custom/'.$evaluatingClass.'.php';
+                            include_once $fileToInclude;
+                            $objectForEvaluating = new $evaluatingClass();
+                            $variableName = $question->getId() . "_answer";
+                            $correctAnswer = $testDataModel->getAnswersForQuestion($question->getId());
+                            $arrayOfWords  = explode(",",$correctAnswer[0]->getText());
+                            foreach ($_POST as $key => $value) {
+                                if (strpos($key,$variableName)!==false){
+                                    $selectedAnswer = $_POST[$key];
+                                    $questionScore = $objectForEvaluating->doEvaluate($question,$selectedAnswer,$arrayOfWords);
+                                    $arr = explode(":",$questionScore);
+                                    $sectionScore+=$arr[0];
+                                }
+                            }
+                        }
+                    } else {
+                        $evaluatingClass = $question->getEvaluatingClass();
+                        if (!is_null($evaluatingClass)) {
+                            $fileToInclude = __SITE_PATH.'/controller/custom/'.$evaluatingClass.'.php';
+                            include_once $fileToInclude;
+                            $variableName = $question->getId() . "_answer";
+                            $selectedAnswer = $_POST[$variableName];
+                            $correctAnswer = $testDataModel->getAnswersForQuestion($question->getId());
+                            $arrayOfWords  = explode(",",$correctAnswer[0]->getText());
+                            $objectForEvaluating = new $evaluatingClass();
+                            $questionScore = $objectForEvaluating->doEvaluate($question,$selectedAnswer,$arrayOfWords);
+                            $arr = explode(":",$questionScore);
+                            $sectionScore+=$arr[0];
+                        }
+                    }
+                }
+            } else {
+                $question = $testDataModel->getQuestion($sectionQuestion->getQuestionId());
                 $totalQuestions++;
                 $questionType = $question->getType();
                 if ($questionType=="multiple_choice") {
@@ -49,26 +107,52 @@ class SectionFourEvaluator {
                             }
                         }
                     }
-                } else {
+                } else if ($questionType=="fill_blank"){
                     $evaluatingClass = $question->getEvaluatingClass();
-
                     if (!is_null($evaluatingClass)) {
                         $fileToInclude = __SITE_PATH.'/controller/custom/'.$evaluatingClass.'.php';
-                        include $fileToInclude;
+                        include_once $fileToInclude;
+                        $objectForEvaluating = new $evaluatingClass();
+                        $variableName = $question->getId() . "_answer";
+                        $correctAnswer = $testDataModel->getAnswersForQuestion($question->getId());
+                        $arrayOfWords  = explode(",",$correctAnswer[0]->getText());
+                        foreach ($_POST as $key => $value) {
+                            if (strpos($key,$variableName)!==false){
+                                $selectedAnswer = $_POST[$key];
+                                $questionScore = $objectForEvaluating->doEvaluate($question,$selectedAnswer,$arrayOfWords);
+                                $arr = explode(":",$questionScore);
+                                $sectionScore+=$arr[0];
+                            }
+                        }
+                    }
+                } else {
+                    $evaluatingClass = $question->getEvaluatingClass();
+                    if (!is_null($evaluatingClass)) {
+                        $fileToInclude = __SITE_PATH.'/controller/custom/'.$evaluatingClass.'.php';
+                        include_once $fileToInclude;
                         $variableName = $question->getId() . "_answer";
                         $selectedAnswer = $_POST[$variableName];
+                        $correctAnswer = $testDataModel->getAnswersForQuestion($question->getId());
+                        $arrayOfWords  = explode(",",$correctAnswer[0]->getText());
                         $objectForEvaluating = new $evaluatingClass();
-                        //todo get the user provided answer and expected answer if any;
-                        $objectForEvaluating->doEvaluate($question,$selectedAnswer);
+                        $questionScore = $objectForEvaluating->doEvaluate($question,$selectedAnswer,$arrayOfWords);
+                        $arr = explode(":",$questionScore);
+                        $sectionScore+=$arr[0];
                     }
-
                 }
-
             }
         }
+
         $sectionEvaluationResult->setTotalQuestions($totalQuestions);
         $sectionEvaluationResult->setQuestionsCorrect($questionsCorrect);
         $sectionEvaluationResult->setScore($sectionScore);
+        if ($sectionScore<41) {
+            $sectionEvaluationResult->setComprehensionGrade("3");
+            $sectionEvaluationResult->setCommunicationGrade("Green");
+            $sectionEvaluationResult->setShowResult(true);
+        } else {
+            $sectionEvaluationResult->setComprehensionGrade("3");
+            $sectionEvaluationResult->setCommunicationGrade("Orange");
+        }
     }
-
 }
