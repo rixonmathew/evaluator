@@ -16,9 +16,10 @@
     <? } ?>
     <div class="panel panel-default">
         <div class="panel panel-heading">
-            <strong>Section Results</strong>
+            <strong>Results</strong>
         </div>
         <div class="panel panel-body">
+            <!--TODO This needs to be hidden -->
             <h2> Your score is <?=$sectionScore?>. You got <?=$questionsCorrect?> questions correct out of  <?=$questionsTotal?> questions</h2>
             <h2> Comprehension Score  : <?=$comprehensionScore?></h2>
             <h2> Communication Score  : <?=$communicationScore?></h2>

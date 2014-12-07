@@ -24,7 +24,7 @@
                 <div class="row">
                     <div class="btn-group">
                         <button type="button" class="btn btn-default btn-lg" onclick="startTest()">Start</button>
-                        <button type="reset" class="btn btn-default btn-lg">Reset</button>
+                        <button type="reset" class="btn btn-default btn-lg"  onclick="resetForm()">Reset</button>
                     </div>
                     <div class="pull-right">
                         <div class="clock" style="margin:2em;"></div>

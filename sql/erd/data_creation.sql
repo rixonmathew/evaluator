@@ -483,7 +483,16 @@ update question set type = 'fill_blank' where `text` like '%#answer%';
 
 update question set number = '55' where id = 182;
 
-select  * from question;
+select  * from passage;
+
+update passage set description ='Listen to the audio, and find appropriate English word after reading the text below.<br/><br/>He decided to steal. He saw a rich lady shopping at a road-side stall. She was wearing a necklace. Rahim went close to her, snatched it and ran away. The lady started shouting for help. When people heard the lady screaming, they chased Rahim and caught him. They grabbed him by his neck, pushed him, punched him, slapped him and beat him so much that he broke his left hand. They recovered the stolen necklace and dropped him by the roadside. People then tied him with a rope and dragged him to the police station. The lady reported the crime and police arrested him. They put him in jail. Rahim was badly hurt, his hand was broken and his left eye was swollen. He began vomiting and became unconscious. In the morning when he woke up he saw Fatima and her sisters standing outside the jail. He was very ashamed and started crying. Fatima held his hand and told him that the hospital had thrown out their mother because he failed to pay the remaining money. Rahim started crying and fell down on the floor. He knew that Waheeda would die if she found out that police had arrested him and his daughters would never forgive him for letting their mother die.'
+ where id = 3;
+
+select * from answer where question_id = 20;
+
+delete from answer where question_id = 20;
+
+insert into answer(text,correct,question_id) values('decided,steal,snatched,lady,chased,grabbed,beat,dropped,dragged,crime,unconscious,ashamed,failed,remaining,forgive',1,20);
 
 select * from section_questions where section_id = 3;
 
@@ -501,4 +510,4 @@ select * from test_attempt;
 
 delete from test_attempt;
 
-insert into test_attempt(date,overall_grade,user_id,test_id,communication_grade,comprehension_grade) values(
+update question set evaluating_class = 'FillInTheBlankEvaluator' where type='fill_blank';

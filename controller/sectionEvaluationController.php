@@ -29,10 +29,13 @@ class sectionEvaluationController extends BaseController{
             if (session_status() == PHP_SESSION_NONE) {
                 session_start();
             }
+            $testResult = $_SESSION['testResult'];
+            $testResult->setSectionResults($sectionId,$sectionEvaluationResult);
+            $_SESSION['testResult'] = $testResult;
             $_SESSION['sectionEvaluationResult'] = $sectionEvaluationResult;
             //TODO add functionality to get Test Result from session and update with Section Evaluation
-            if ($sectionEvaluationResult->getScore()<7) {
-                $testResult = $_SESSION['testResult'];
+            if ($sectionEvaluationResult->getGrade()=="0") {
+                $testResult->setComprehensionScore($sectionEvaluationResult->getGrade());
                 $this->registry->template->sectionScore = $sectionEvaluationResult->getScore();
                 $this->registry->template->questionsCorrect = $sectionEvaluationResult->getQuestionsCorrect();
                 $this->registry->template->questionsTotal = $sectionEvaluationResult->getTotalQuestions();
@@ -50,6 +53,5 @@ class sectionEvaluationController extends BaseController{
                 $this->registry->template->show('takeTest');
             }
         }
-
     }
 }

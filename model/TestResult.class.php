@@ -20,6 +20,7 @@ class TestResult {
 
     function __construct()
     {
+        $this->sectionResults = array();
     }
 
 
@@ -58,17 +59,17 @@ class TestResult {
     /**
      * @param mixed $sectionResults
      */
-    public function setSectionResults($sectionResults)
+    public function setSectionResults($section,$sectionEvaluationResult)
     {
-        $this->sectionResults = $sectionResults;
+        $this->sectionResults[$section] = $sectionEvaluationResult;
     }
 
     /**
      * @return mixed
      */
-    public function getSectionResults()
+    public function getSectionResults($section)
     {
-        return $this->sectionResults;
+        return $this->sectionResults[$section];
     }
 
     /**

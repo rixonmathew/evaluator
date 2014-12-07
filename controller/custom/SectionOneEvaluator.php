@@ -49,17 +49,33 @@ class SectionOneEvaluator {
                             }
                         }
                     }
-                } else {
+                } else if ($questionType=="fill_blank"){
                     $evaluatingClass = $question->getEvaluatingClass();
-
                     if (!is_null($evaluatingClass)) {
                         $fileToInclude = __SITE_PATH.'/controller/custom/'.$evaluatingClass.'.php';
                         include $fileToInclude;
                         $variableName = $question->getId() . "_answer";
                         $selectedAnswer = $_POST[$variableName];
+                        //TODO loop over all answer where keyname is like the patter and add answer in selected answer
+                        //TODO From question get correct answer in array
                         $objectForEvaluating = new $evaluatingClass();
                         //todo get the user provided answer and expected answer if any;
                         $objectForEvaluating->doEvaluate($question,$selectedAnswer);
+                    }
+
+                } else {
+                    $evaluatingClass = $question->getEvaluatingClass();
+                    if (!is_null($evaluatingClass)) {
+                        $fileToInclude = __SITE_PATH.'/controller/custom/'.$evaluatingClass.'.php';
+                        include $fileToInclude;
+                        $variableName = $question->getId() . "_answer";
+                        $selectedAnswer = $_POST[$variableName];
+                        $correctAnswer = $testDataModel->getAnswersForQuestion($question->getId());
+                        $arrayOfWords  = explode(",",$correctAnswer[0]->getText());
+                        $objectForEvaluating = new $evaluatingClass();
+                        $questionScore = $objectForEvaluating->doEvaluate($question,$selectedAnswer,$arrayOfWords);
+                        $arr = explode(":",$questionScore);
+                        $sectionScore+=$arr[0];
                     }
 
                 }
@@ -69,6 +85,15 @@ class SectionOneEvaluator {
         $sectionEvaluationResult->setTotalQuestions($totalQuestions);
         $sectionEvaluationResult->setQuestionsCorrect($questionsCorrect);
         $sectionEvaluationResult->setScore($sectionScore);
+        if ($sectionScore==25) {
+            $sectionEvaluationResult->setGrade("3");
+        } else if ($sectionScore<25 && $sectionScore>=21) {
+            $sectionEvaluationResult->setGrade("2");
+        } else if ($sectionScore>=17) {
+            $sectionEvaluationResult->setGrade("1");
+        } else {
+            $sectionEvaluationResult->setGrade("0");
+        }
     }
 
 }

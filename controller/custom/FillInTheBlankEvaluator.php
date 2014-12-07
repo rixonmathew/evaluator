@@ -2,13 +2,12 @@
 /**
  * Created by JetBrains PhpStorm.
  * User: rixonmathew
- * Date: 23/11/14
- * Time: 11:58 AM
+ * Date: 07/12/14
+ * Time: 10:45 AM
  * To change this template use File | Settings | File Templates.
  */
 
-class AudioSection1Evaluator {
-
+class FillInTheBlankEvaluator {
     public function doEvaluate($question,$selectedAnswer,$correctAnswer){
         $wordsMatched = 0;
         $answerArray = explode(",",$selectedAnswer);

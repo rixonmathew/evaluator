@@ -17,7 +17,7 @@ class SectionTwoEvaluator {
     }
 
     public function getNextSection() {
-        return 2;
+        return 3;
     }
 
     private function calculateSectionScore($testDataModel,$sectionEvaluationResult,$sectionId)

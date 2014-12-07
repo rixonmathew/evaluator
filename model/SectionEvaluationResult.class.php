@@ -14,6 +14,7 @@ class SectionEvaluationResult {
     private $questionsAttempted;
     private $questionsCorrect;
     private $score;
+    private $grade;
 
     function __construct() {
 
@@ -99,7 +100,19 @@ class SectionEvaluationResult {
         return $this->totalQuestions;
     }
 
+    /**
+     * @param mixed $grade
+     */
+    public function setGrade($grade)
+    {
+        $this->grade = $grade;
+    }
 
-
-
+    /**
+     * @return mixed
+     */
+    public function getGrade()
+    {
+        return $this->grade;
+    }
 }

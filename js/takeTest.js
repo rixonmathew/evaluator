@@ -14,6 +14,7 @@ $(function(){
                 if (time==0) {
                     //TODO add call here to display alert when last 30 seconds are remaining. and to disable any
                     //more edits when time elapsed is 0.
+                    $('#sectionDetails *').attr('readonly', 'true');
                 }
             }
 
@@ -36,4 +37,9 @@ function startTest(){
 function stopTest() {
     clock.stop();
     alert('Time is '+clock.timer.getElapsed());
+}
+
+function resetForm(){
+    $('#sectionDetails').reset();
+    $('#sectionDetails *').attr('readonly', 'false');
 }
