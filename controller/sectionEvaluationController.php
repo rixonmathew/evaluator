@@ -23,7 +23,7 @@ class sectionEvaluationController extends BaseController{
         $sectionEvaluatorClass = $section->getEvaluatingClass();
         if (!is_null($sectionEvaluatorClass)) {
             $fileToInclude = __SITE_PATH.'/controller/custom/'.$sectionEvaluatorClass.'.php';
-            include $fileToInclude;
+            include_once $fileToInclude;
             $objectForEvaluating = new $sectionEvaluatorClass();
             $sectionEvaluationResult = $objectForEvaluating->doEvaluate($testDataModel,$sectionId);
             if (session_status() == PHP_SESSION_NONE) {

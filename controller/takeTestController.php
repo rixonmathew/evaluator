@@ -21,7 +21,7 @@ class takeTestController extends BaseController{
         $sectionRenderer = new SectionRenderer($testDataModel);
         $this->registry->template->testDataModel = $testDataModel;
         $this->registry->template->sectionRenderer = $sectionRenderer;
-        $sectionNumber = 1;
+        $sectionNumber = 2;
         if (isset($_POST['sectionNumber'])) {
             $sectionNumber = $_POST['sectionNumber'];
         }

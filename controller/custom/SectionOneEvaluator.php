@@ -53,7 +53,7 @@ class SectionOneEvaluator {
                     $evaluatingClass = $question->getEvaluatingClass();
                     if (!is_null($evaluatingClass)) {
                         $fileToInclude = __SITE_PATH.'/controller/custom/'.$evaluatingClass.'.php';
-                        include $fileToInclude;
+                        include_once $fileToInclude;
                         $variableName = $question->getId() . "_answer";
                         $selectedAnswer = $_POST[$variableName];
                         //TODO loop over all answer where keyname is like the patter and add answer in selected answer
@@ -67,7 +67,7 @@ class SectionOneEvaluator {
                     $evaluatingClass = $question->getEvaluatingClass();
                     if (!is_null($evaluatingClass)) {
                         $fileToInclude = __SITE_PATH.'/controller/custom/'.$evaluatingClass.'.php';
-                        include $fileToInclude;
+                        include_once $fileToInclude;
                         $variableName = $question->getId() . "_answer";
                         $selectedAnswer = $_POST[$variableName];
                         $correctAnswer = $testDataModel->getAnswersForQuestion($question->getId());
