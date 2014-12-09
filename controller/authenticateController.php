@@ -24,9 +24,12 @@ class authenticateController extends BaseController{
             $this->registry->template->show('login');
             return;
         }
-        session_start();
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }
         $_SESSION['login'] = "1";
         $_SESSION['username'] = $username;
+        $_SESSION['first_name'] = $userData->first_name;
         $_SESSION['userId'] = $userData->id;
         header ("Location: landingPage");
     }

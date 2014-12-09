@@ -1,0 +1,3 @@
+function showAbout() {
+    $('#myModal').show();
+}

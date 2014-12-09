@@ -101,6 +101,7 @@ Field complexity is Medium
 
     function index()
     {
+        $this->checkAuthenticated();
         $this->saveOrUpdateQuestion();
         $this->registry->template->show('question');
     }

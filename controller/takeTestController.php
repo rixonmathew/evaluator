@@ -13,6 +13,7 @@ class takeTestController extends BaseController{
      */
     function index()
     {
+        $this->checkAuthenticated();
         if (!isset($_GET['testId'])) {
             trigger_error("TestId not populated",E_USER_ERROR);
         }

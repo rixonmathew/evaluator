@@ -15,7 +15,7 @@ class sectionEvaluationController extends BaseController{
     {
 //        foreach ($_POST as $key => $value)
 //          echo "Field ".htmlspecialchars($key)." is ".htmlspecialchars($value)."<br>";
-
+        $this->checkAuthenticated();
         $sectionId = $_POST['sectionNumber'];
         $testId = $_POST['testId'];
         $testDataModel = new TestDataModel($testId,$this->registry->db);
