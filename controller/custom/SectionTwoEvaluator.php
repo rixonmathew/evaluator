@@ -9,6 +9,7 @@
 
 class SectionTwoEvaluator {
 
+    private $nextSection = 3;
     public function doEvaluate($testDataModel,$sectionId) {
         $sectionEvaluationResult = new SectionEvaluationResult();
         $sectionEvaluationResult->setSectionId($sectionId);
@@ -17,8 +18,18 @@ class SectionTwoEvaluator {
     }
 
     public function getNextSection() {
-        return 3;
+        return $this->nextSection;
     }
+
+    /**
+     * @param int $nextSection
+     */
+    public function setNextSection($nextSection)
+    {
+        $this->nextSection = $nextSection;
+    }
+
+
 
     private function calculateSectionScore($testDataModel,$sectionEvaluationResult,$sectionId)
     {
@@ -147,11 +158,12 @@ class SectionTwoEvaluator {
         $sectionEvaluationResult->setQuestionsCorrect($questionsCorrect);
         $sectionEvaluationResult->setScore($sectionScore);
         $sectionEvaluationResult->setCommunicationGrade("NOT EVALUATED");
+        $sectionEvaluationResult->setComprehensionGrade("1");
         if ($sectionScore<33) {
-            $sectionEvaluationResult->setComprehensionGrade("0");
-            $sectionEvaluationResult->setShowResult(true);
+            //TODO add logic for checking topic scores
+            $this->nextSection=3;
         } else {
-            $sectionEvaluationResult->setComprehensionGrade("1");
+            $this->nextSection=4;
         }
     }
 }

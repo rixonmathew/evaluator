@@ -9,6 +9,8 @@
 
 class SectionOneEvaluator {
 
+    private $nextSection = 2;
+
     public function doEvaluate($testDataModel,$sectionId) {
         $sectionEvaluationResult = new SectionEvaluationResult();
         $sectionEvaluationResult->setSectionId($sectionId);
@@ -17,7 +19,15 @@ class SectionOneEvaluator {
     }
 
     public function getNextSection() {
-        return 2;
+        return $this->nextSection;
+    }
+
+    /**
+     * @param int $nextSection
+     */
+    public function setNextSection($nextSection)
+    {
+        $this->nextSection = $nextSection;
     }
 
     private function calculateSectionScore($testDataModel,$sectionEvaluationResult,$sectionId)
@@ -85,7 +95,7 @@ class SectionOneEvaluator {
         $sectionEvaluationResult->setTotalQuestions($totalQuestions);
         $sectionEvaluationResult->setQuestionsCorrect($questionsCorrect);
         $sectionEvaluationResult->setScore($sectionScore);
-        $sectionEvaluationResult->setCommunicationGrade("NOT EVALUATED");
+        $sectionEvaluationResult->setCommunicationGrade("RED");
         if ($sectionScore==25) {
             $sectionEvaluationResult->setComprehensionGrade("3");
         } else if ($sectionScore<25 && $sectionScore>=21) {

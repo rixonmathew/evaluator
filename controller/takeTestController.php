@@ -37,8 +37,8 @@ class takeTestController extends BaseController{
         $date = date('Y-m-d h:i:s');
         $testResult->setDate($date);
         $testResult->setOverallScore('TBD');
-        $testResult->setComprehensionScore('1');
-        $testResult->setCommunicationScore('5');
+        $testResult->setComprehensionScore('0');
+        $testResult->setCommunicationScore('RED');
         $this->insertTestResult($this->registry->db,$testResult);
 
         $section = $testDataModel->getSection($sectionNumber);

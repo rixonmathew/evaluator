@@ -33,15 +33,17 @@ class sectionEvaluationController extends BaseController{
             $testResult->setSectionResults($sectionId,$sectionEvaluationResult);
             $_SESSION['testResult'] = $testResult;
             $_SESSION['sectionEvaluationResult'] = $sectionEvaluationResult;
-            //TODO add functionality to get Test Result from session and update with Section Evaluation
+            $testResult->setComprehensionScore($sectionEvaluationResult->getComprehensionGrade());
+            $testResult->setCommunicationScore($sectionEvaluationResult->getCommunicationGrade());
+            $_SESSION['testResult'] = $testResult;
+            $this->persistTestResult($this->registry->db,$testResult);
             if ($sectionEvaluationResult->getShowResult()===true) {
-                $testResult->setComprehensionScore($sectionEvaluationResult->getComprehensionGrade());
-                $testResult->getCommunicationScore($sectionEvaluationResult->getCommunicationGrade());
                 $this->registry->template->sectionScore = $sectionEvaluationResult->getScore();
                 $this->registry->template->questionsCorrect = $sectionEvaluationResult->getQuestionsCorrect();
                 $this->registry->template->questionsTotal = $sectionEvaluationResult->getTotalQuestions();
                 $this->registry->template->comprehensionScore = $testResult->getComprehensionScore();
                 $this->registry->template->communicationScore = $testResult->getCommunicationScore();
+                $this->registry->template->testDateAndTime = $testResult->getDate();
                 $this->registry->template->show('testResult');
             } else {
                 $sectionRenderer = new SectionRenderer($testDataModel);
@@ -55,4 +57,27 @@ class sectionEvaluationController extends BaseController{
             }
         }
     }
+
+    private function persistTestResult($dbh,$testResult) {
+        $updateQuery = "update test_attempt
+                           set overall_grade = '{$testResult->getOverallScore()}',
+                               communication_grade = '{$testResult->getCommunicationScore()}',
+                               comprehension_grade = '{$testResult->getComprehensionScore()}'
+                         where id = {$testResult->getId()}";
+
+        try {
+            $statementInsert = $dbh->prepare($updateQuery);
+
+            try {
+                $dbh->beginTransaction();
+                $statementInsert->execute();
+                $dbh->commit();
+                $_SESSION['testResult'] = $testResult;
+            } catch(PDOExecption $e) {
+                $dbh->rollback();
+            }
+        } catch( PDOExecption $e ) {
+            print "Error!: " . $e->getMessage() . "</br>";
+        }
+   }
 }

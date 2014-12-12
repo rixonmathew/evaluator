@@ -9,6 +9,8 @@
 
 class SectionThreeEvaluator {
 
+    private $nextSection = 4;
+
     public function doEvaluate($testDataModel,$sectionId) {
         $sectionEvaluationResult = new SectionEvaluationResult();
         $sectionEvaluationResult->setSectionId($sectionId);
@@ -17,7 +19,15 @@ class SectionThreeEvaluator {
     }
 
     public function getNextSection() {
-        return 4;
+        return $this->nextSection;
+    }
+
+    /**
+     * @param int $nextSection
+     */
+    public function setNextSection($nextSection)
+    {
+        $this->nextSection = $nextSection;
     }
 
     private function calculateSectionScore($testDataModel,$sectionEvaluationResult,$sectionId)
@@ -153,6 +163,7 @@ class SectionThreeEvaluator {
         } else {
             $sectionEvaluationResult->setComprehensionGrade("3");
             $sectionEvaluationResult->setCommunicationGrade("Yellow");
+            $sectionEvaluationResult->setShowResult(true);
         }
     }
 }

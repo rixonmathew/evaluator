@@ -9,6 +9,8 @@
 
 class SectionFiveEvaluator {
 
+    private $nextSection = "NA";
+
     public function doEvaluate($testDataModel,$sectionId) {
         $sectionEvaluationResult = new SectionEvaluationResult();
         $sectionEvaluationResult->setSectionId($sectionId);
@@ -17,8 +19,17 @@ class SectionFiveEvaluator {
     }
 
     public function getNextSection() {
-        return "NA";
+        return $this->nextSection;
     }
+
+    /**
+     * @param int $nextSection
+     */
+    public function setNextSection($nextSection)
+    {
+        $this->nextSection = $nextSection;
+    }
+
 
     private function calculateSectionScore($testDataModel,$sectionEvaluationResult,$sectionId)
     {
