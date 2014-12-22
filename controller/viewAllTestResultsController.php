@@ -1,11 +1,4 @@
 <?php
-/**
- * Created by JetBrains PhpStorm.
- * User: rixonmathew
- * Date: 12/12/14
- * Time: 8:04 AM
- * To change this template use File | Settings | File Templates.
- */
 
 class viewAllTestResultsController extends BaseController {
 

@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: rixonmathew
- * Date: 01/11/14
- * Time: 11:15 PM
- */
 
 class TestDataModel {
 

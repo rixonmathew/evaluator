@@ -1,12 +1,4 @@
 <?php
-/**
- * Created by JetBrains PhpStorm.
- * User: rixonmathew
- * Date: 29/11/14
- * Time: 10:02 PM
- * To change this template use File | Settings | File Templates.
- */
-
 class SectionQuestion {
 
     private $id;

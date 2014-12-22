@@ -1,11 +1,4 @@
 <?php
-/**
- * Created by JetBrains PhpStorm.
- * User: rixonmathew
- * Date: 04/12/14
- * Time: 7:52 AM
- * To change this template use File | Settings | File Templates.
- */
 
 class TestResult {
 

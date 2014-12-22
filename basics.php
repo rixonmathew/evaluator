@@ -1,11 +1,4 @@
 <?php
-/**
- * Created by JetBrains PhpStorm.
- * User: rixonmathew
- * Date: 28/09/14
- * Time: 4:30 PM
- * To change this template use File | Settings | File Templates.
- */
     $y=10;
 
     function doSomething() {

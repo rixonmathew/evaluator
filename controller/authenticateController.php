@@ -1,11 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: rixonmathew
- * Date: 23/10/14
- * Time: 3:10 PM
- */
-
 class authenticateController extends BaseController{
 
     /**

@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: rixonmathew
- * Date: 02/11/14
- * Time: 1:40 AM
- */
 
 class Passage {
 

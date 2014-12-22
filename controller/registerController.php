@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: rixonmathew
- * Date: 09/11/14
- * Time: 5:36 PM
- */
 
 class registerController extends BaseController {
 

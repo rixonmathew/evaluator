@@ -1,16 +1,6 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: rixonmathew
- * Date: 02/11/14
- * Time: 11:59 PM
- */
-
 class sectionEvaluationController extends BaseController{
 
-    /**
-     * @all controllers must contain an index method
-     */
     function index()
     {
 //        foreach ($_POST as $key => $value)

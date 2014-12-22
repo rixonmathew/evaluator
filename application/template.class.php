@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: rixonmathew
- * Date: 19/10/14
- * Time: 6:58 PM
- */
 Class Template {
 
     /*
@@ -63,4 +57,3 @@ Class Template {
 
 
 }
-?>

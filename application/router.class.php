@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: rixonmathew
- * Date: 19/10/14
- * Time: 6:58 PM
- */
 class Router{
     /*
     * @the registry
@@ -30,13 +24,10 @@ class Router{
     }
 
     /**
-     *
      * @set controller directory path
-     *
      * @param string $path
-     *
+     * @throws Exception
      * @return void
-     *
      */
     function setPath($path) {
 
@@ -50,13 +41,9 @@ class Router{
     }
 
     /**
-     *
      * @load the controller
-     *
      * @access public
-     *
      * @return void
-     *
      */
     public function loader()
     {
@@ -91,13 +78,9 @@ class Router{
     }
 
     /**
-     *
      * @get the controller
-     *
      * @access private
-     *
      * @return void
-     *
      */
     private function getController() {
 
@@ -134,4 +117,3 @@ class Router{
         $this->file = $this->path .'/'. $this->controller . 'Controller.php';
     }
 }
-?>

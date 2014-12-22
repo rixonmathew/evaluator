@@ -30,5 +30,3 @@ $registry = new registry;
 $registry->db = db::getInstance();
 /*** load the router ***/
 $registry->router = new router($registry);
-
-?>

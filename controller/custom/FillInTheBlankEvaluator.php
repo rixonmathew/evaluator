@@ -1,11 +1,4 @@
 <?php
-/**
- * Created by JetBrains PhpStorm.
- * User: rixonmathew
- * Date: 07/12/14
- * Time: 10:45 AM
- * To change this template use File | Settings | File Templates.
- */
 
 class FillInTheBlankEvaluator {
     public function doEvaluate($question,$selectedAnswer,$correctAnswer){

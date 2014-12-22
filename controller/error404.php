@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: rixonmathew
- * Date: 23/10/14
- * Time: 12:54 PM
- */
 Class Error404Controller extends BaseController {
 
 

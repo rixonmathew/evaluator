@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: rixonmathew
- * Date: 23/10/14
- * Time: 12:41 PM
- */
 
 include_once('includes/eval-config.php');
 class db {

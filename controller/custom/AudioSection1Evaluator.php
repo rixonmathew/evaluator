@@ -1,11 +1,4 @@
 <?php
-/**
- * Created by JetBrains PhpStorm.
- * User: rixonmathew
- * Date: 23/11/14
- * Time: 11:58 AM
- * To change this template use File | Settings | File Templates.
- */
 
 class AudioSection1Evaluator {
 
