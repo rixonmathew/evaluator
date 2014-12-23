@@ -12,6 +12,9 @@ include __SITE_PATH . '/application/' . 'router.class.php';
 /*** include the template class ***/
 include __SITE_PATH . '/application/' . 'template.class.php';
 
+/*** include the AbstractSectionEvaluator class ***/
+include __SITE_PATH . '/controller/custom/AbstractSectionEvaluator.php';
+
 /*** auto load model classes ***/
 function __autoload($class_name) {
     $filename = $class_name.'.class.php';

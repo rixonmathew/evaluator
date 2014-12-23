@@ -7,6 +7,7 @@ class Question {
     private $type;
     private $renderingClass;
     private $evaluatingClass;
+    private $topic;
 
     function __construct()
     {
@@ -107,4 +108,22 @@ class Question {
     {
         return $this->type;
     }
+
+    /**
+     * @param mixed $topic
+     */
+    public function setTopic($topic)
+    {
+        $this->topic = $topic;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTopic()
+    {
+        return $this->topic;
+    }
+
+
 }

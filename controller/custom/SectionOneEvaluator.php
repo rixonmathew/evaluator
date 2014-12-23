@@ -59,7 +59,7 @@ class SectionOneEvaluator {
                         include_once $fileToInclude;
                         $variableName = $question->getId() . "_answer";
                         $selectedAnswer = $_POST[$variableName];
-                        //TODO loop over all answer where keyname is like the patter and add answer in selected answer
+                        //TODO loop over all answer where keyname is like the pattern and add answer in selected answer
                         //TODO From question get correct answer in array
                         $objectForEvaluating = new $evaluatingClass();
                         //todo get the user provided answer and expected answer if any;
@@ -80,15 +80,14 @@ class SectionOneEvaluator {
                         $arr = explode(":",$questionScore);
                         $sectionScore+=$arr[0];
                     }
-
                 }
-
             }
         }
         $sectionEvaluationResult->setTotalQuestions($totalQuestions);
         $sectionEvaluationResult->setQuestionsCorrect($questionsCorrect);
         $sectionEvaluationResult->setScore($sectionScore);
-        $sectionEvaluationResult->setCommunicationGrade("RED");
+        $sectionEvaluationResult->setCommunicationGrade("Red");
+
         if ($sectionScore==25) {
             $sectionEvaluationResult->setComprehensionGrade("3");
         } else if ($sectionScore<25 && $sectionScore>=21) {

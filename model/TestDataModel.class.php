@@ -104,7 +104,8 @@ QUERY_PFS;
            q.number,
            q.type,
            q.evaluating_class as evaluatingClass,
-           q.rendering_class as renderingClass
+           q.rendering_class as renderingClass,
+           (select value from question_attribute qa where qa.question_id = q.id and qa.attribute='topic') as topic
       from question_set qs,
            question q
      where qs.passage_id = {$passage->getId()}
@@ -149,7 +150,8 @@ QUERY_AFQ;
                q.number,
                q.type,
                q.evaluating_class as evaluatingClass,
-               q.rendering_class as renderingClass
+               q.rendering_class as renderingClass,
+               (select value from question_attribute qa where qa.question_id = q.id and qa.attribute='topic') as topic
            from question q
           where not exists
                 (select 1

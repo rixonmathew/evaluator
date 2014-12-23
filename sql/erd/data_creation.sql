@@ -508,13 +508,23 @@ select * from test_attempt_analytics;
 
 select * from test_attempt;
 
+select id,
+       date,
+       test_id as testId,
+       overall_grade as overallGrade,
+       communication_grade as communicationGrade,
+       comprehension_grade as comprehensionGrade
+  from test_attempt
+ where user_id = 5;  
+  
+
 delete from test_attempt;
 
 update question set evaluating_class = 'FillInTheBlankEvaluator' where type='fill_blank';
 
 select * from question;
 
-select * from answer where question_id = 162;
+select * from answer where question_id = 20;
 
 update question set text = 'Enter the english words in the text area below separated by comma(,) ' where id = 20;
 
@@ -525,3 +535,181 @@ insert into answer(text,correct,question_id) values('lived,were,saw,had been',1,
 insert into answer(text,correct,question_id) values('felt,decided,left,came',1,154);
 insert into answer(text,correct,question_id) values('was listening,rememberd,had asked',1,162);
 insert into answer(text,correct,question_id) values('the,the,the,a,the,the,the,an,a,a',1,167);
+
+update question set text = '' where id = 167;
+
+select * from question where id >=21 order by id;
+
+select * from question_attribute;
+
+
+
+delete from question_attribute;
+
+insert into question_attribute(question_id,attribute,value) values(21,'topic','Preposition');
+
+insert into question_attribute(question_id,attribute,`value`) values(100,'topic','Preposition');
+
+
+#script to populate question attribute
+insert into question_attribute(question_id,attribute,value) values(22,'topic','SVA');
+insert into question_attribute(question_id,attribute,value) values(23,'topic','Tenses');
+insert into question_attribute(question_id,attribute,value) values(24,'topic','Preposition');
+insert into question_attribute(question_id,attribute,value) values(25,'topic','SVA');
+insert into question_attribute(question_id,attribute,value) values(26,'topic','Tenses');
+insert into question_attribute(question_id,attribute,value) values(27,'topic','Preposition');
+insert into question_attribute(question_id,attribute,value) values(28,'topic','Preposition');
+insert into question_attribute(question_id,attribute,value) values(29,'topic','Preposition');
+insert into question_attribute(question_id,attribute,value) values(30,'topic','SVA');
+insert into question_attribute(question_id,attribute,value) values(31,'topic','SVA');
+insert into question_attribute(question_id,attribute,value) values(32,'topic','Tenses');
+insert into question_attribute(question_id,attribute,value) values(33,'topic','SVA');
+insert into question_attribute(question_id,attribute,value) values(34,'topic','Preposition');
+insert into question_attribute(question_id,attribute,value) values(35,'topic','SVA');
+insert into question_attribute(question_id,attribute,value) values(36,'topic','Tenses');
+insert into question_attribute(question_id,attribute,value) values(37,'topic','SVA');
+insert into question_attribute(question_id,attribute,value) values(38,'topic','Tenses');
+insert into question_attribute(question_id,attribute,value) values(39,'topic','Preposition');
+insert into question_attribute(question_id,attribute,value) values(40,'topic','SVA');
+insert into question_attribute(question_id,attribute,value) values(41,'topic','Tenses');
+insert into question_attribute(question_id,attribute,value) values(42,'topic','SVA');
+insert into question_attribute(question_id,attribute,value) values(43,'topic','Preposition');
+insert into question_attribute(question_id,attribute,value) values(44,'topic','SVA');
+insert into question_attribute(question_id,attribute,value) values(45,'topic','Tenses');
+insert into question_attribute(question_id,attribute,value) values(46,'topic','SVA');
+insert into question_attribute(question_id,attribute,value) values(47,'topic','Tenses');
+insert into question_attribute(question_id,attribute,value) values(48,'topic','Preposition');
+insert into question_attribute(question_id,attribute,value) values(49,'topic','Tenses');
+insert into question_attribute(question_id,attribute,value) values(50,'topic','SVA');
+insert into question_attribute(question_id,attribute,value) values(51,'topic','Tenses');
+insert into question_attribute(question_id,attribute,value) values(52,'topic','Preposition');
+insert into question_attribute(question_id,attribute,value) values(53,'topic','Tenses');
+insert into question_attribute(question_id,attribute,value) values(54,'topic','Preposition');
+insert into question_attribute(question_id,attribute,value) values(55,'topic','Tenses');
+insert into question_attribute(question_id,attribute,value) values(56,'topic','Preposition');
+insert into question_attribute(question_id,attribute,value) values(57,'topic','Tenses');
+insert into question_attribute(question_id,attribute,value) values(58,'topic','Preposition');
+insert into question_attribute(question_id,attribute,value) values(59,'topic','Tenses');
+insert into question_attribute(question_id,attribute,value) values(60,'topic','SVA');
+insert into question_attribute(question_id,attribute,value) values(61,'topic','Conjunction');
+insert into question_attribute(question_id,attribute,value) values(62,'topic','Pronouns');
+insert into question_attribute(question_id,attribute,value) values(63,'topic','Conjunction');
+insert into question_attribute(question_id,attribute,value) values(64,'topic','Pronouns');
+insert into question_attribute(question_id,attribute,value) values(65,'topic','Conjunction');
+insert into question_attribute(question_id,attribute,value) values(66,'topic','Pronouns');
+insert into question_attribute(question_id,attribute,value) values(67,'topic','Conjunction');
+insert into question_attribute(question_id,attribute,value) values(68,'topic','Pronouns');
+insert into question_attribute(question_id,attribute,value) values(69,'topic','Conjunction');
+insert into question_attribute(question_id,attribute,value) values(70,'topic','Pronouns');
+insert into question_attribute(question_id,attribute,value) values(71,'topic','Conjunction');
+insert into question_attribute(question_id,attribute,value) values(72,'topic','Pronouns');
+insert into question_attribute(question_id,attribute,value) values(73,'topic','Conjunction');
+insert into question_attribute(question_id,attribute,value) values(74,'topic','Pronouns');
+insert into question_attribute(question_id,attribute,value) values(75,'topic','Conjunction');
+insert into question_attribute(question_id,attribute,value) values(76,'topic','Pronouns');
+insert into question_attribute(question_id,attribute,value) values(77,'topic','Conjunction');
+insert into question_attribute(question_id,attribute,value) values(78,'topic','Pronouns');
+insert into question_attribute(question_id,attribute,value) values(79,'topic','Conjunction');
+insert into question_attribute(question_id,attribute,value) values(80,'topic','Pronouns');
+insert into question_attribute(question_id,attribute,value) values(81,'topic','Pronouns');
+insert into question_attribute(question_id,attribute,value) values(82,'topic','Conjunction');
+insert into question_attribute(question_id,attribute,value) values(83,'topic','Pronouns');
+insert into question_attribute(question_id,attribute,value) values(84,'topic','Pronouns');
+insert into question_attribute(question_id,attribute,value) values(85,'topic','Conjunction');
+insert into question_attribute(question_id,attribute,value) values(86,'topic','Pronouns');
+insert into question_attribute(question_id,attribute,value) values(87,'topic','Pronouns');
+insert into question_attribute(question_id,attribute,value) values(88,'topic','Quantifiers');
+insert into question_attribute(question_id,attribute,value) values(89,'topic','Modals');
+insert into question_attribute(question_id,attribute,value) values(90,'topic','Tenses');
+insert into question_attribute(question_id,attribute,value) values(91,'topic','SVA');
+insert into question_attribute(question_id,attribute,value) values(92,'topic','Quantifiers');
+insert into question_attribute(question_id,attribute,value) values(93,'topic','Modals');
+insert into question_attribute(question_id,attribute,value) values(94,'topic','Tenses');
+insert into question_attribute(question_id,attribute,value) values(95,'topic','SVA');
+insert into question_attribute(question_id,attribute,value) values(96,'topic','Quantifiers');
+insert into question_attribute(question_id,attribute,value) values(97,'topic','Modals');
+insert into question_attribute(question_id,attribute,value) values(98,'topic','Tenses');
+insert into question_attribute(question_id,attribute,value) values(99,'topic','SVA');
+insert into question_attribute(question_id,attribute,value) values(100,'topic','Quantifiers');
+insert into question_attribute(question_id,attribute,value) values(101,'topic','Modals');
+insert into question_attribute(question_id,attribute,value) values(102,'topic','Tenses');
+insert into question_attribute(question_id,attribute,value) values(103,'topic','SVA');
+insert into question_attribute(question_id,attribute,value) values(104,'topic','Quantifiers');
+insert into question_attribute(question_id,attribute,value) values(105,'topic','Modals');
+insert into question_attribute(question_id,attribute,value) values(106,'topic','Tenses');
+insert into question_attribute(question_id,attribute,value) values(107,'topic','SVA');
+insert into question_attribute(question_id,attribute,value) values(108,'topic','Quantifiers');
+insert into question_attribute(question_id,attribute,value) values(109,'topic','Modals');
+insert into question_attribute(question_id,attribute,value) values(110,'topic','Quantifiers');
+insert into question_attribute(question_id,attribute,value) values(111,'topic','Modals');
+insert into question_attribute(question_id,attribute,value) values(112,'topic','SVA');
+insert into question_attribute(question_id,attribute,value) values(113,'topic','Modals');
+insert into question_attribute(question_id,attribute,value) values(114,'topic','Quantifiers');
+insert into question_attribute(question_id,attribute,value) values(115,'topic','SVA');
+insert into question_attribute(question_id,attribute,value) values(116,'topic','Tenses');
+insert into question_attribute(question_id,attribute,value) values(117,'topic','Modals');
+insert into question_attribute(question_id,attribute,value) values(118,'topic','SVA');
+insert into question_attribute(question_id,attribute,value) values(119,'topic','Modals');
+insert into question_attribute(question_id,attribute,value) values(120,'topic','Quantifiers');
+insert into question_attribute(question_id,attribute,value) values(121,'topic','Tenses');
+insert into question_attribute(question_id,attribute,value) values(122,'topic','Modals');
+insert into question_attribute(question_id,attribute,value) values(123,'topic','SVA');
+insert into question_attribute(question_id,attribute,value) values(124,'topic','Quantifiers');
+insert into question_attribute(question_id,attribute,value) values(125,'topic','SVA');
+insert into question_attribute(question_id,attribute,value) values(126,'topic','Modals');
+insert into question_attribute(question_id,attribute,value) values(127,'topic','Quantifiers');
+insert into question_attribute(question_id,attribute,value) values(128,'topic','SVA');
+insert into question_attribute(question_id,attribute,value) values(129,'topic','Tenses');
+insert into question_attribute(question_id,attribute,value) values(130,'topic','Modals');
+insert into question_attribute(question_id,attribute,value) values(131,'topic','Quantifiers');
+insert into question_attribute(question_id,attribute,value) values(132,'topic','SVA');
+insert into question_attribute(question_id,attribute,value) values(133,'topic','Quantifiers');
+insert into question_attribute(question_id,attribute,value) values(134,'topic','Tenses');
+insert into question_attribute(question_id,attribute,value) values(135,'topic','SVA');
+insert into question_attribute(question_id,attribute,value) values(136,'topic','Modals');
+insert into question_attribute(question_id,attribute,value) values(137,'topic','Quantifiers');
+insert into question_attribute(question_id,attribute,value) values(138,'topic','Modals');
+insert into question_attribute(question_id,attribute,value) values(139,'topic','SVA');
+insert into question_attribute(question_id,attribute,value) values(140,'topic','Quantifiers');
+insert into question_attribute(question_id,attribute,value) values(141,'topic','SVA');
+insert into question_attribute(question_id,attribute,value) values(142,'topic','Tenses');
+insert into question_attribute(question_id,attribute,value) values(143,'topic','Gerund');
+insert into question_attribute(question_id,attribute,value) values(144,'topic','Tenses');
+insert into question_attribute(question_id,attribute,value) values(145,'topic','Conjunction');
+insert into question_attribute(question_id,attribute,value) values(146,'topic','Gerund');
+insert into question_attribute(question_id,attribute,value) values(147,'topic','Conjunction');
+insert into question_attribute(question_id,attribute,value) values(148,'topic','Gerund');
+insert into question_attribute(question_id,attribute,value) values(149,'topic','Conjunction');
+insert into question_attribute(question_id,attribute,value) values(150,'topic','Tenses');
+insert into question_attribute(question_id,attribute,value) values(151,'topic','Gerund');
+insert into question_attribute(question_id,attribute,value) values(152,'topic','Conjunction');
+insert into question_attribute(question_id,attribute,value) values(153,'topic','Gerund');
+insert into question_attribute(question_id,attribute,value) values(154,'topic','Tenses');
+insert into question_attribute(question_id,attribute,value) values(155,'topic','Conjunction');
+insert into question_attribute(question_id,attribute,value) values(156,'topic','Gerund');
+insert into question_attribute(question_id,attribute,value) values(157,'topic','Conjunction');
+insert into question_attribute(question_id,attribute,value) values(158,'topic','Gerund');
+insert into question_attribute(question_id,attribute,value) values(159,'topic','Conjunction');
+insert into question_attribute(question_id,attribute,value) values(160,'topic','Conjunction');
+insert into question_attribute(question_id,attribute,value) values(161,'topic','Gerund');
+insert into question_attribute(question_id,attribute,value) values(162,'topic','Tenses');
+insert into question_attribute(question_id,attribute,value) values(163,'topic','Gerund');
+insert into question_attribute(question_id,attribute,value) values(164,'topic','Conjunction');
+insert into question_attribute(question_id,attribute,value) values(165,'topic','Gerund');
+insert into question_attribute(question_id,attribute,value) values(166,'topic','Conjunction');
+insert into question_attribute(question_id,attribute,value) values(167,'topic','Article');
+insert into question_attribute(question_id,attribute,value) values(168,'topic','Verbs');
+insert into question_attribute(question_id,attribute,value) values(169,'topic','Verbs');
+insert into question_attribute(question_id,attribute,value) values(170,'topic','Verbs');
+insert into question_attribute(question_id,attribute,value) values(171,'topic','Verbs');
+insert into question_attribute(question_id,attribute,value) values(172,'topic','Verbs');
+insert into question_attribute(question_id,attribute,value) values(173,'topic','Verbs');
+insert into question_attribute(question_id,attribute,value) values(174,'topic','Verbs');
+insert into question_attribute(question_id,attribute,value) values(175,'topic','Verbs');
+insert into question_attribute(question_id,attribute,value) values(176,'topic','Verbs');
+insert into question_attribute(question_id,attribute,value) values(177,'topic','Verbs');
+insert into question_attribute(question_id,attribute,value) values(178,'topic','Verbs');
+insert into question_attribute(question_id,attribute,value) values(179,'topic','Verbs');
+insert into question_attribute(question_id,attribute,value) values(180,'topic','Verbs');
+insert into question_attribute(question_id,attribute,value) values(181,'topic','Verbs');
+insert into question_attribute(question_id,attribute,value) values(182,'topic','Verbs');

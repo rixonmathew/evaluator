@@ -10,6 +10,7 @@ class SectionEvaluationResult {
     private $comprehensionGrade;
     private $communicationGrade;
     private $showResult = false;
+    private $topicScores;
 
     function __construct() {
 
@@ -142,4 +143,22 @@ class SectionEvaluationResult {
     {
         return $this->showResult;
     }
+
+    /**
+     * @param mixed $topicScores
+     */
+    public function setTopicScores($topicScores)
+    {
+        $this->topicScores = $topicScores;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTopicScores()
+    {
+        return $this->topicScores;
+    }
+
+
 }

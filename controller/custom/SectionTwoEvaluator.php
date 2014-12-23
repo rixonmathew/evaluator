@@ -1,162 +1,31 @@
 <?php
 
-class SectionTwoEvaluator {
-
-    private $nextSection = 3;
-    public function doEvaluate($testDataModel,$sectionId) {
-        $sectionEvaluationResult = new SectionEvaluationResult();
-        $sectionEvaluationResult->setSectionId($sectionId);
-        $this->calculateSectionScore($testDataModel,$sectionEvaluationResult,$sectionId);
-        return $sectionEvaluationResult;
+class SectionTwoEvaluator extends AbstractSectionEvaluator
+{
+    function __construct()
+    {
+        $this->nextSection=3;
     }
 
-    public function getNextSection() {
-        return $this->nextSection;
-    }
 
     /**
-     * @param int $nextSection
+     * @param $sectionEvaluationResult
+     * @param $totalQuestions
+     * @param $questionsCorrect
+     * @param $sectionScore
+     * @param $minTopicScore
      */
-    public function setNextSection($nextSection)
+    protected function populateResults($sectionEvaluationResult, $totalQuestions, $questionsCorrect, $sectionScore,$minTopicScore)
     {
-        $this->nextSection = $nextSection;
-    }
-
-
-
-    private function calculateSectionScore($testDataModel,$sectionEvaluationResult,$sectionId)
-    {
-        $sectionQuestions = $testDataModel->getSectionQuestions($sectionId);
-        $sectionScore=0;
-        $questionsCorrect=0;
-        $totalQuestions=0;
-        $questionsIncorrect=0;
-
-        foreach($sectionQuestions as $sectionQuestion) {
-            if ($sectionQuestion->isQuestionSet()) {
-                $passage = $testDataModel->getPassage($sectionQuestion->getQuestionSetDefinitionId());
-                $questions = $testDataModel->getQuestionsForPassage($passage->getId());
-                foreach ($questions as $question) {
-                    $totalQuestions++;
-                    $questionType = $question->getType();
-                    if ($questionType=="multiple_choice") {
-                        $answers = $testDataModel->getAnswersForQuestion($question->getId());
-                        foreach ($answers as $answer) {
-                            if ($answer->getCorrect()) {
-                                $variableName = $question->getId() . "_answer";
-                                if (isset($_POST[$variableName])) {
-
-                                    $selectedAnswer = $_POST[$variableName];
-                                    if ($selectedAnswer == $answer->getId()){
-                                        $sectionScore += 1;
-                                        $questionsCorrect++;
-                                    }
-                                } else {
-                                    $questionsIncorrect++;
-                                }
-                            }
-                        }
-                    } else if ($questionType=="fill_blank"){
-                        $evaluatingClass = $question->getEvaluatingClass();
-                        if (!is_null($evaluatingClass)) {
-                            $fileToInclude = __SITE_PATH.'/controller/custom/'.$evaluatingClass.'.php';
-                            include_once $fileToInclude;
-                            $objectForEvaluating = new $evaluatingClass();
-                            $variableName = $question->getId() . "_answer";
-                            $correctAnswer = $testDataModel->getAnswersForQuestion($question->getId());
-                            $arrayOfWords  = explode(",",$correctAnswer[0]->getText());
-                            foreach ($_POST as $key => $value) {
-                                if (strpos($key,$variableName)!==false){
-                                    $selectedAnswer = $_POST[$key];
-                                    $questionScore = $objectForEvaluating->doEvaluate($question,$selectedAnswer,$arrayOfWords);
-                                    $arr = explode(":",$questionScore);
-                                    $sectionScore+=$arr[0];
-                                }
-                            }
-                        }
-                    } else {
-                        $evaluatingClass = $question->getEvaluatingClass();
-                        if (!is_null($evaluatingClass)) {
-                            $fileToInclude = __SITE_PATH.'/controller/custom/'.$evaluatingClass.'.php';
-                            include_once $fileToInclude;
-                            $variableName = $question->getId() . "_answer";
-                            $selectedAnswer = $_POST[$variableName];
-                            $correctAnswer = $testDataModel->getAnswersForQuestion($question->getId());
-                            $arrayOfWords  = explode(",",$correctAnswer[0]->getText());
-                            $objectForEvaluating = new $evaluatingClass();
-                            $questionScore = $objectForEvaluating->doEvaluate($question,$selectedAnswer,$arrayOfWords);
-                            $arr = explode(":",$questionScore);
-                            $sectionScore+=$arr[0];
-                        }
-                    }
-                }
-            } else {
-                $question = $testDataModel->getQuestion($sectionQuestion->getQuestionId());
-                $totalQuestions++;
-                $questionType = $question->getType();
-                if ($questionType=="multiple_choice") {
-                    $answers = $testDataModel->getAnswersForQuestion($question->getId());
-                    foreach ($answers as $answer) {
-                        if ($answer->getCorrect()) {
-                            $variableName = $question->getId() . "_answer";
-                            if (isset($_POST[$variableName])) {
-
-                                $selectedAnswer = $_POST[$variableName];
-                                if ($selectedAnswer == $answer->getId()){
-                                    $sectionScore += 1;
-                                    $questionsCorrect++;
-                                }
-                            } else {
-                                $questionsIncorrect++;
-                            }
-                        }
-                    }
-                } else if ($questionType=="fill_blank"){
-                    $evaluatingClass = $question->getEvaluatingClass();
-                    if (!is_null($evaluatingClass)) {
-                        $fileToInclude = __SITE_PATH.'/controller/custom/'.$evaluatingClass.'.php';
-                        include_once $fileToInclude;
-                        $objectForEvaluating = new $evaluatingClass();
-                        $variableName = $question->getId() . "_answer";
-                        $correctAnswer = $testDataModel->getAnswersForQuestion($question->getId());
-                        $arrayOfWords  = explode(",",$correctAnswer[0]->getText());
-                        foreach ($_POST as $key => $value) {
-                            if (strpos($key,$variableName)!==false){
-                                $selectedAnswer = $_POST[$key];
-                                $questionScore = $objectForEvaluating->doEvaluate($question,$selectedAnswer,$arrayOfWords);
-                                $arr = explode(":",$questionScore);
-                                $sectionScore+=$arr[0];
-                            }
-                        }
-                    }
-                } else {
-                    $evaluatingClass = $question->getEvaluatingClass();
-                    if (!is_null($evaluatingClass)) {
-                        $fileToInclude = __SITE_PATH.'/controller/custom/'.$evaluatingClass.'.php';
-                        include_once $fileToInclude;
-                        $variableName = $question->getId() . "_answer";
-                        $selectedAnswer = $_POST[$variableName];
-                        $correctAnswer = $testDataModel->getAnswersForQuestion($question->getId());
-                        $arrayOfWords  = explode(",",$correctAnswer[0]->getText());
-                        $objectForEvaluating = new $evaluatingClass();
-                        $questionScore = $objectForEvaluating->doEvaluate($question,$selectedAnswer,$arrayOfWords);
-                        $arr = explode(":",$questionScore);
-                        $sectionScore+=$arr[0];
-                    }
-                }
-            }
-        }
-
         $sectionEvaluationResult->setTotalQuestions($totalQuestions);
         $sectionEvaluationResult->setQuestionsCorrect($questionsCorrect);
         $sectionEvaluationResult->setScore($sectionScore);
         $sectionEvaluationResult->setCommunicationGrade("NOT EVALUATED");
         $sectionEvaluationResult->setComprehensionGrade("1");
-        if ($sectionScore<33) {
-            //TODO add logic for checking topic scores
-            $this->nextSection=3;
+        if ($sectionScore >= 33 && $minTopicScore>=0.6) {
+            $this->nextSection = 4;
         } else {
-            $this->nextSection=4;
+            $this->nextSection = 3;
         }
     }
 }
