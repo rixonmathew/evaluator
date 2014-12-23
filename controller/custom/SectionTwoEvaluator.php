@@ -15,7 +15,7 @@ class SectionTwoEvaluator extends AbstractSectionEvaluator
      * @param $sectionScore
      * @param $minTopicScore
      */
-    protected function populateResults($sectionEvaluationResult, $totalQuestions, $questionsCorrect, $sectionScore,$minTopicScore)
+    protected function populateResults(&$sectionEvaluationResult, $totalQuestions, $questionsCorrect, $sectionScore,$minTopicScore)
     {
         $sectionEvaluationResult->setTotalQuestions($totalQuestions);
         $sectionEvaluationResult->setQuestionsCorrect($questionsCorrect);

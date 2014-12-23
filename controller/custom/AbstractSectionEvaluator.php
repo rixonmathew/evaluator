@@ -18,6 +18,9 @@ abstract class AbstractSectionEvaluator {
     }
 
     public function doEvaluate($testDataModel,$sectionId) {
+//        foreach ($_POST as $key => $value) {
+//            echo "Got [$key] with value [$value] <br/>";
+//        }
         $this->sectionEvaluationResult = new SectionEvaluationResult();
         $this->sectionEvaluationResult->setSectionId($sectionId);
         $this->calculateSectionScore($testDataModel,$this->sectionEvaluationResult,$sectionId);
@@ -38,7 +41,7 @@ abstract class AbstractSectionEvaluator {
 
 
 
-    private function calculateSectionScore($testDataModel,$sectionEvaluationResult,$sectionId)
+    protected function calculateSectionScore($testDataModel,&$sectionEvaluationResult,$sectionId)
     {
         $this->sectionQuestions = $testDataModel->getSectionQuestions($sectionId);
 
@@ -65,17 +68,18 @@ abstract class AbstractSectionEvaluator {
 
         $sectionEvaluationResult->setTopicScores($topicScores);
         $minTopicScore = $this->calculateMinimumTopicScore($topicScores);
+        //echo "In Evaluator {$this->totalQuestions}, {$this->questionsCorrect}, {$this->sectionScore},$minTopicScore <br/>";
         $this->populateResults($sectionEvaluationResult, $this->totalQuestions, $this->questionsCorrect, $this->sectionScore,$minTopicScore);
     }
 
     /**
-     * @param $sectionEvaluationResult
+     * @param $sectionEvaluationResult passed by reference as its updated
      * @param $totalQuestions
      * @param $questionsCorrect
      * @param $sectionScore
      * @param $minTopicScore
      */
-    protected abstract function populateResults($sectionEvaluationResult, $totalQuestions, $questionsCorrect, $sectionScore, $minTopicScore);
+    protected abstract function populateResults(&$sectionEvaluationResult, $totalQuestions, $questionsCorrect, $sectionScore, $minTopicScore);
 
     private function calculateMinimumTopicScore($topicScores) {
         $minTopicScore = 1;
@@ -84,6 +88,7 @@ abstract class AbstractSectionEvaluator {
                 $minTopicScore = $score;
             }
         }
+        return $minTopicScore;
     }
 
     /**
@@ -134,16 +139,15 @@ abstract class AbstractSectionEvaluator {
                 $fileToInclude = __SITE_PATH . '/controller/custom/' . $evaluatingClass . '.php';
                 include_once $fileToInclude;
                 $objectForEvaluating = new $evaluatingClass();
-                $variableName = $question->getId() . "_answer";
+                $variableName = "q_".$question->getId() . "_answer_";
                 $correctAnswer = $testDataModel->getAnswersForQuestion($question->getId());
-                $arrayOfWords = explode(",", $correctAnswer[0]->getText());
+                $arrayOfWords = explode(",", $correctAnswer[0]->getRawText());
                 foreach ($_POST as $key => $value) {
                     if (strpos($key, $variableName) !== false) {
                         $selectedAnswer = $_POST[$key];
                         $questionScore = $objectForEvaluating->doEvaluate($question, $selectedAnswer, $arrayOfWords);
                         $arr = explode(":", $questionScore);
                         $this->sectionScore += $arr[0];
-
                         if ($arr[0] > 0 && $question->getTopic() !== null) {
                             $countOFCorrectAnswersPerTopic = 1;
                             if (isset($this->correctQuestionsForTopic[$question->getTopic()])) {

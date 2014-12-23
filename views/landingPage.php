@@ -14,7 +14,7 @@
             <h3><p>What would you like to do today?</p></h3>
             <ul class="nav nav-pills nav-stacked">
                 <li role="presentation"><a href="takeTest?testId=1">Take a new English language test</a></li>
-                <li role="presentation"><a href="viewTestResults">View previous Test results</a></li>
+                <li role="presentation"><a href="viewAllTestResults">View previous Test results</a></li>
                 <li role="presentation"><a href="#">View profile</a></li>
                 <li role="presentation"><a href="#">Update profile</a></li>
             </ul>

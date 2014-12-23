@@ -552,6 +552,7 @@ insert into question_attribute(question_id,attribute,`value`) values(100,'topic'
 
 
 #script to populate question attribute
+insert into question_attribute(question_id,attribute,value) values(21,'topic','Preposition');
 insert into question_attribute(question_id,attribute,value) values(22,'topic','SVA');
 insert into question_attribute(question_id,attribute,value) values(23,'topic','Tenses');
 insert into question_attribute(question_id,attribute,value) values(24,'topic','Preposition');
@@ -713,3 +714,25 @@ insert into question_attribute(question_id,attribute,value) values(179,'topic','
 insert into question_attribute(question_id,attribute,value) values(180,'topic','Verbs');
 insert into question_attribute(question_id,attribute,value) values(181,'topic','Verbs');
 insert into question_attribute(question_id,attribute,value) values(182,'topic','Verbs');
+
+
+select q.id,
+               q.text,
+               q.number,
+               q.type,
+               q.evaluating_class as evaluatingClass,
+               q.rendering_class as renderingClass,
+               (select value from question_attribute qa where qa.question_id = q.id and qa.attribute='topic') as topic
+           from question q				
+          where not exists
+                (select 1
+                   from question_set qs
+                  where qs.question_id = q.id
+                );
+                
+                
+select * from test_attempt;
+
+select * from test_attempt_analytics;
+
+select * from question;

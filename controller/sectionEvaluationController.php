@@ -27,6 +27,10 @@ class sectionEvaluationController extends BaseController{
             $testResult->setCommunicationScore($sectionEvaluationResult->getCommunicationGrade());
             $_SESSION['testResult'] = $testResult;
             $this->persistTestResult($this->registry->db,$testResult);
+//            echo "<pre>";
+//            echo "Next section is {$objectForEvaluating->getNextSection()} <br/>";
+//            var_dump($sectionEvaluationResult);
+//            echo "</pre>";
             if ($sectionEvaluationResult->getShowResult()===true) {
                 $this->registry->template->sectionScore = $sectionEvaluationResult->getScore();
                 $this->registry->template->questionsCorrect = $sectionEvaluationResult->getQuestionsCorrect();
@@ -55,6 +59,7 @@ class sectionEvaluationController extends BaseController{
                                comprehension_grade = '{$testResult->getComprehensionScore()}'
                          where id = {$testResult->getId()}";
 
+        //TODO add logic to persist section attributes in test_attempt_analytics in addition to test_attempt
         try {
             $statementInsert = $dbh->prepare($updateQuery);
 

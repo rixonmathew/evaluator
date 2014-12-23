@@ -45,7 +45,7 @@ HTML_PASSAGE;
 QUESTION_PASSAGE;
         } else if ($questionType=="fill_blank") {
             $rawQuestion = $question->getText();
-            $formattedQuestion = preg_replace('/_#answer(\d{1,2})#_/',"<input type=\"text\" id=\"q_{$question->getId()}_answer_$1\">",$rawQuestion);
+            $formattedQuestion = preg_replace('/_#answer(\d{1,2})#_/',"<input type=\"text\" id=\"q_{$question->getId()}_answer_$1\" name=\"q_{$question->getId()}_answer_$1\"/>",$rawQuestion);
             $htmlString.= <<<QUESTION_PASSAGE
             <div id="questionSet" class="row">
                 <div class="col-md-9">

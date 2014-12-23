@@ -70,4 +70,9 @@ class Answer {
         $this->number = $number;
     }
 
+
+    public function getRawText() {
+        return $this->text;
+    }
+
 } 
