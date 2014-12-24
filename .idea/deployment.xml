@@ -2,6 +2,17 @@
 <project version="4">
   <component name="PublishConfigData" autoUpload="Always" serverName="local_apache">
     <serverData>
+      <paths name="leapforword">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/home/leapfh8k/public_html/evaluator" local="$PROJECT_DIR$" web="/evaluator" />
+          </mappings>
+          <excludedPaths>
+            <excludedPath local="true" path="$PROJECT_DIR$/includes" />
+            <excludedPath local="true" path="$PROJECT_DIR$/.htaccess" />
+          </excludedPaths>
+        </serverdata>
+      </paths>
       <paths name="local_apache">
         <serverdata>
           <mappings>
@@ -13,4 +24,3 @@
     <option name="myAutoUpload" value="ALWAYS" />
   </component>
 </project>
-

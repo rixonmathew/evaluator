@@ -19,14 +19,12 @@ class SectionThreeEvaluator extends AbstractSectionEvaluator{
         $sectionEvaluationResult->setTotalQuestions($totalQuestions);
         $sectionEvaluationResult->setQuestionsCorrect($questionsCorrect);
         $sectionEvaluationResult->setScore($sectionScore);
-        if ($sectionScore>=21 && $minTopicScore>=0.75) {
-            $sectionEvaluationResult->setComprehensionGrade("3");
+        $sectionEvaluationResult->setComprehensionGrade("3");
+        $sectionEvaluationResult->setShowResult(true);
+        if ($sectionScore>=21 ) {
             $sectionEvaluationResult->setCommunicationGrade("Yellow");
-            $sectionEvaluationResult->setShowResult(true);
         } else {
-            $sectionEvaluationResult->setComprehensionGrade("3");
             $sectionEvaluationResult->setCommunicationGrade("Red");
-            $sectionEvaluationResult->setShowResult(true);
         }
     }
 

@@ -20,15 +20,12 @@ class SectionFourEvaluator extends AbstractSectionEvaluator{
         $sectionEvaluationResult->setTotalQuestions($totalQuestions);
         $sectionEvaluationResult->setQuestionsCorrect($questionsCorrect);
         $sectionEvaluationResult->setScore($sectionScore);
-        if ($sectionScore>=41 && $minTopicScore>=0.75) {
-            $sectionEvaluationResult->setComprehensionGrade("3");
+        $sectionEvaluationResult->setComprehensionGrade("3");
+        if ($sectionScore>=41) {
             $sectionEvaluationResult->setCommunicationGrade("Orange");
         } else {
-            $sectionEvaluationResult->setComprehensionGrade("3");
             $sectionEvaluationResult->setCommunicationGrade("Green");
             $sectionEvaluationResult->setShowResult(true);
         }
-
     }
-
 }

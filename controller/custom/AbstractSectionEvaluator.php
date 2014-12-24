@@ -97,7 +97,7 @@ abstract class AbstractSectionEvaluator {
      */
     private function evaluateQuestion($testDataModel,$question)
     {
-        $this->totalQuestions++;
+
         if ($question->getTopic() !== null) {
             $countPerTopic = 1;
             if (isset($this->totalQuestionsForTopic[$question->getTopic()])) {
@@ -109,6 +109,7 @@ abstract class AbstractSectionEvaluator {
 
         $questionType = $question->getType();
         if ($questionType == "multiple_choice") {
+            $this->totalQuestions++;
             $answers = $testDataModel->getAnswersForQuestion($question->getId());
             foreach ($answers as $answer) {
                 if ($answer->getCorrect()) {
@@ -144,6 +145,7 @@ abstract class AbstractSectionEvaluator {
                 $arrayOfWords = explode(",", $correctAnswer[0]->getRawText());
                 foreach ($_POST as $key => $value) {
                     if (strpos($key, $variableName) !== false) {
+                        $this->totalQuestions++;
                         $selectedAnswer = $_POST[$key];
                         $questionScore = $objectForEvaluating->doEvaluate($question, $selectedAnswer, $arrayOfWords);
                         $arr = explode(":", $questionScore);
@@ -164,6 +166,7 @@ abstract class AbstractSectionEvaluator {
             if (!is_null($evaluatingClass)) {
                 $fileToInclude = __SITE_PATH . '/controller/custom/' . $evaluatingClass . '.php';
                 include_once $fileToInclude;
+                $this->totalQuestions++;
                 $variableName = $question->getId() . "_answer";
                 $selectedAnswer = $_POST[$variableName];
                 $correctAnswer = $testDataModel->getAnswersForQuestion($question->getId());
