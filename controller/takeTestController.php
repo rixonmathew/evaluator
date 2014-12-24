@@ -14,9 +14,14 @@ class takeTestController extends BaseController{
         $this->registry->template->testDataModel = $testDataModel;
         $this->registry->template->sectionRenderer = $sectionRenderer;
         $sectionNumber = 1;
+        $displaySectionNumber=1;
         if (isset($_POST['sectionNumber'])) {
             $sectionNumber = $_POST['sectionNumber'];
         }
+        if (isset($_POST['displaySectionNumber'])) {
+            $displaySectionNumber = $_POST['displaySectionNumber']+1;
+        }
+
         if (session_status() == PHP_SESSION_NONE) {
             session_start();
         }
@@ -35,6 +40,7 @@ class takeTestController extends BaseController{
         $section = $testDataModel->getSection($sectionNumber);
         $this->registry->template->testId = $testId;
         $this->registry->template->sectionNumber = $sectionNumber;
+        $this->registry->template->displaySectionNumber = $displaySectionNumber;
         $this->registry->template->timeForTest = $section->getTimeLimit();
         $this->registry->template->show('takeTest');
     }

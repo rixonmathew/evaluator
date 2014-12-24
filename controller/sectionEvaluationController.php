@@ -7,6 +7,11 @@ class sectionEvaluationController extends BaseController{
 //          echo "Field ".htmlspecialchars($key)." is ".htmlspecialchars($value)."<br>";
         $this->checkAuthenticated();
         $sectionId = $_POST['sectionNumber'];
+        $displaySectionNumber=$sectionId;
+        if (isset($_POST['displaySectionNumber'])) {
+            $displaySectionNumber = $_POST['displaySectionNumber']+1;
+        }
+
         $testId = $_POST['testId'];
         $testDataModel = new TestDataModel($testId,$this->registry->db);
         $section = $testDataModel->getSection($sectionId);
@@ -43,6 +48,7 @@ class sectionEvaluationController extends BaseController{
                 $sectionRenderer = new SectionRenderer($testDataModel);
                 $this->registry->template->testDataModel = $testDataModel;
                 $this->registry->template->sectionRenderer = $sectionRenderer;
+                $this->registry->template->displaySectionNumber = $displaySectionNumber;
                 $this->registry->template->sectionNumber = $objectForEvaluating->getNextSection();
                 $this->registry->template->testId = $testId;
                 $section = $testDataModel->getSection($objectForEvaluating->getNextSection());
@@ -74,5 +80,12 @@ class sectionEvaluationController extends BaseController{
         } catch( PDOExecption $e ) {
             print "Error!: " . $e->getMessage() . "</br>";
         }
+   }
+
+   private function computeDisplaySection($sectionId,$nextSectionId) {
+     if (($nextSectionId-$sectionId)>1) {
+           return $sectionId+1;
+       }
+     return $nextSectionId;
    }
 }

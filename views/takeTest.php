@@ -18,7 +18,7 @@
         </div>
     <? } ?>
     <div class="panel panel-default">
-        <div class="panel-heading">Section <?= $sectionNumber ?></div>
+        <div class="panel-heading">Section <?= $displaySectionNumber ?></div>
         <div class="panel-body">
             <div class="form-group">
                 <div class="row">
@@ -36,6 +36,7 @@
                 <form id="sectionDetails" class="form" role="form" method="post" action="sectionEvaluation">
                     <input type="hidden" id="testId" name="testId" value="<?= $testId?>">
                     <input type="hidden" id="timeForTest" name="timeForTest" value="<?= $timeForTest?>">
+                    <input type="hidden" id="displaySectionNumber" name="displaySectionNumber" value="<?= $displaySectionNumber ?>">
                     <input type="hidden" id="sectionNumber" name="sectionNumber" value="<?= $sectionNumber ?>">
                     <?php
                     $sectionQuestions = $testDataModel->getSectionQuestions($sectionNumber);
