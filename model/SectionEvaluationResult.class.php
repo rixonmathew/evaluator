@@ -11,9 +11,10 @@ class SectionEvaluationResult {
     private $communicationGrade;
     private $showResult = false;
     private $topicScores;
+    private $testAttemptAnswers;
 
     function __construct() {
-
+        $this->testAttemptAnswers = array();
     }
 
     /**
@@ -158,6 +159,22 @@ class SectionEvaluationResult {
     public function getTopicScores()
     {
         return $this->topicScores;
+    }
+
+    /**
+     * @return mixed an array of TestAttemptResult objects
+     */
+    public function getTestAttemptAnswers()
+    {
+        return $this->testAttemptAnswers;
+    }
+
+    /**
+     * @param $testAttemptAnswer an instance of TestAttemptResult
+     */
+    public function addTestAttemptAnswer($testAttemptAnswer)
+    {
+        array_push($this->testAttemptAnswers,$testAttemptAnswer);
     }
 
 

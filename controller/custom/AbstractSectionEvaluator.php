@@ -23,7 +23,7 @@ abstract class AbstractSectionEvaluator {
 //        }
         $this->sectionEvaluationResult = new SectionEvaluationResult();
         $this->sectionEvaluationResult->setSectionId($sectionId);
-        $this->calculateSectionScore($testDataModel,$this->sectionEvaluationResult,$sectionId);
+        $this->calculateSectionScore($testDataModel,$sectionId);
         return $this->sectionEvaluationResult;
     }
 
@@ -41,7 +41,7 @@ abstract class AbstractSectionEvaluator {
 
 
 
-    protected function calculateSectionScore($testDataModel,&$sectionEvaluationResult,$sectionId)
+    protected function calculateSectionScore($testDataModel,$sectionId)
     {
         $this->sectionQuestions = $testDataModel->getSectionQuestions($sectionId);
 
@@ -66,10 +66,10 @@ abstract class AbstractSectionEvaluator {
             }
         }
 
-        $sectionEvaluationResult->setTopicScores($topicScores);
+        $this->sectionEvaluationResult->setTopicScores($topicScores);
         $minTopicScore = $this->calculateMinimumTopicScore($topicScores);
         //echo "In Evaluator {$this->totalQuestions}, {$this->questionsCorrect}, {$this->sectionScore},$minTopicScore <br/>";
-        $this->populateResults($sectionEvaluationResult, $this->totalQuestions, $this->questionsCorrect, $this->sectionScore,$minTopicScore);
+        $this->populateResults($this->sectionEvaluationResult, $this->totalQuestions, $this->questionsCorrect, $this->sectionScore,$minTopicScore);
     }
 
     /**
@@ -107,31 +107,37 @@ abstract class AbstractSectionEvaluator {
             $this->totalQuestionsForTopic[$question->getTopic()] = $countPerTopic;
         }
 
+        $testAttemptAnswer = new TestAttemptAnswer();
+        $testAttemptAnswer->setQuestionId($question->getId());
+
         $questionType = $question->getType();
         if ($questionType == "multiple_choice") {
             $this->totalQuestions++;
             $answers = $testDataModel->getAnswersForQuestion($question->getId());
             foreach ($answers as $answer) {
-                if ($answer->getCorrect()) {
-                    $variableName = $question->getId() . "_answer";
-                    if (isset($_POST[$variableName])) {
+                $variableName = $question->getId() . "_answer";
+                $selectedAnswer = "";
+                if (isset($_POST[$variableName])) {
+                    $selectedAnswer = $_POST[$variableName];
+                }
+                if ($answer->getCorrect() && ($answer->getId()==$selectedAnswer)) {
+                    $this->sectionScore += 1;
+                    $this->questionsCorrect++;
+                    $testAttemptAnswer->setAnswer($answer->getRawText());
+                    $testAttemptAnswer->setCorrect(1);
 
-                        $selectedAnswer = $_POST[$variableName];
-                        if ($selectedAnswer == $answer->getId()) {
-                            $this->sectionScore += 1;
-                            $this->questionsCorrect++;
-                            if ($question->getTopic() !== null) {
-                                $countOFCorrectAnswersPerTopic = 1;
-                                if (isset($this->correctQuestionsForTopic[$question->getTopic()])) {
-                                    $countOFCorrectAnswersPerTopic = $this->correctQuestionsForTopic[$question->getTopic()];
-                                    $countOFCorrectAnswersPerTopic++;
-                                }
-                                $this->correctQuestionsForTopic[$question->getTopic()] = $countOFCorrectAnswersPerTopic;
-                            }
+                    if ($question->getTopic() !== null) {
+                        $countOFCorrectAnswersPerTopic = 1;
+                        if (isset($this->correctQuestionsForTopic[$question->getTopic()])) {
+                            $countOFCorrectAnswersPerTopic = $this->correctQuestionsForTopic[$question->getTopic()];
+                            $countOFCorrectAnswersPerTopic++;
                         }
-                    } else {
-                        $this->questionsIncorrect++;
+                        $this->correctQuestionsForTopic[$question->getTopic()] = $countOFCorrectAnswersPerTopic;
                     }
+                } else if ($answer->getId()==$selectedAnswer) {
+                    $this->questionsIncorrect++;
+                    $testAttemptAnswer->setAnswer($answer->getRawText());
+                    $testAttemptAnswer->setCorrect(0);
                 }
             }
         } else if ($questionType == "fill_blank") {
@@ -150,13 +156,17 @@ abstract class AbstractSectionEvaluator {
                         $questionScore = $objectForEvaluating->doEvaluate($question, $selectedAnswer, $arrayOfWords);
                         $arr = explode(":", $questionScore);
                         $this->sectionScore += $arr[0];
+                        $testAttemptAnswer->setAnswer($selectedAnswer);
                         if ($arr[0] > 0 && $question->getTopic() !== null) {
+                            $testAttemptAnswer->setCorrect(1);
                             $countOFCorrectAnswersPerTopic = 1;
                             if (isset($this->correctQuestionsForTopic[$question->getTopic()])) {
                                 $countOFCorrectAnswersPerTopic = $this->correctQuestionsForTopic[$question->getTopic()];
                                 $countOFCorrectAnswersPerTopic++;
                             }
                             $this->correctQuestionsForTopic[$question->getTopic()] = $countOFCorrectAnswersPerTopic;
+                        } else {
+                            $testAttemptAnswer->setCorrect(0);
                         }
                     }
                 }
@@ -169,6 +179,7 @@ abstract class AbstractSectionEvaluator {
                 $this->totalQuestions++;
                 $variableName = $question->getId() . "_answer";
                 $selectedAnswer = $_POST[$variableName];
+                $testAttemptAnswer->setAnswer($selectedAnswer);
                 $correctAnswer = $testDataModel->getAnswersForQuestion($question->getId());
                 $arrayOfWords = explode(",", $correctAnswer[0]->getText());
                 $objectForEvaluating = new $evaluatingClass();
@@ -177,13 +188,17 @@ abstract class AbstractSectionEvaluator {
                 $this->sectionScore += $arr[0];
                 if ($arr[0] > 0 && $question->getTopic() !== null) {
                     $countOFCorrectAnswersPerTopic = 1;
+                    $testAttemptAnswer->setCorrect(1);
                     if (isset($this->correctQuestionsForTopic[$question->getTopic()])) {
                         $countOFCorrectAnswersPerTopic = $this->correctQuestionsForTopic[$question->getTopic()];
                         $countOFCorrectAnswersPerTopic++;
                     }
                     $this->correctQuestionsForTopic[$question->getTopic()] = $countOFCorrectAnswersPerTopic;
+                } else {
+                    $testAttemptAnswer->setCorrect(0);
                 }
             }
         }
+        $this->sectionEvaluationResult->addTestAttemptAnswer($testAttemptAnswer);
     }
 }

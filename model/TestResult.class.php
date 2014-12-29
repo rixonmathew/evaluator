@@ -144,4 +144,5 @@ class TestResult {
     {
         return $this->overallScore;
     }
+
 }

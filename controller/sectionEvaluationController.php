@@ -32,6 +32,7 @@ class sectionEvaluationController extends BaseController{
             $testResult->setCommunicationScore($sectionEvaluationResult->getCommunicationGrade());
             $_SESSION['testResult'] = $testResult;
             $this->persistTestResult($this->registry->db,$testResult);
+            $this->insertTestAttemptAnswer($this->registry->db,$testResult->getId(),$sectionEvaluationResult);
 //            echo "<pre>";
 //            echo "Next section is {$objectForEvaluating->getNextSection()} <br/>";
 //            var_dump($sectionEvaluationResult);
@@ -88,4 +89,28 @@ class sectionEvaluationController extends BaseController{
        }
      return $nextSectionId;
    }
+
+   private function insertTestAttemptAnswer($dbh,$testAttemptId,$sectionEvaluationResult) {
+
+       foreach ($sectionEvaluationResult->getTestAttemptAnswers() as $testAttemptAnswer) {
+           $insertQuery= <<<TAE_INS_QUERY
+                insert into test_attempt_answers(test_attempt_id,question_id,answer,correct) values
+                ($testAttemptId,{$testAttemptAnswer->getQuestionId()},'{$testAttemptAnswer->getAnswer()}',{$testAttemptAnswer->getCorrect()});
+TAE_INS_QUERY;
+            try{
+                $statementInsert = $dbh->prepare($insertQuery);
+                try {
+                    $dbh->beginTransaction();
+                    $statementInsert->execute();
+                    $dbh->commit();
+                } catch(PDOExecption $e) {
+                    $dbh->rollback();
+                    print "Error! (test_attempt_answer): " . $e->getMessage() . "</br>";
+                }
+            } catch (PDOException $e) {
+                print " (Outer) Error! (test_attempt_answer): " . $e->getMessage() . "</br>";
+            }
+       }
+   }
+
 }
