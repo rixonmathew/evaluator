@@ -36,6 +36,7 @@ class SectionOneEvaluator {
                 $totalQuestions++;
                 $testAttemptAnswer = new TestAttemptAnswer();
                 $testAttemptAnswer->setQuestionId($question->getId());
+                $testAttemptAnswer->setCorrect(0);
                 $questionType = $question->getType();
                 if ($questionType=="multiple_choice") {
                     $answers = $testDataModel->getAnswersForQuestion($question->getId());

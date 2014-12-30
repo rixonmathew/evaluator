@@ -13,11 +13,7 @@
             <?=$question_message?>
         </div>
     <? } ?>
-    <div class="panel panel-default">
-        <div class="panel panel-heading">
-            <strong>Question and Answers</strong>
-        </div>
-        <div class="panel panel-body">
+        <div>
             <div class="row">
                 <div class="col-md-8">
                     <h3>Question</h3>
@@ -48,7 +44,6 @@
                 </div>
             <?}?>
        </div>
-    </div>
 </div>
 </body>
 </html>

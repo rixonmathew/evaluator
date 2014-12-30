@@ -109,6 +109,7 @@ abstract class AbstractSectionEvaluator {
 
         $testAttemptAnswer = new TestAttemptAnswer();
         $testAttemptAnswer->setQuestionId($question->getId());
+        $testAttemptAnswer->setCorrect(0);
 
         $questionType = $question->getType();
         if ($questionType == "multiple_choice") {

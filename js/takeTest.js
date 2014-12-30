@@ -26,8 +26,12 @@ $(function(){
     clock.setTime($("#timeForTest").val());
 
     $('#sectionDetails').submit(function() {
-        var c = confirm("Are you sure you want to submit ?");
-        return c;
+        var time = clock.getTime().time;
+        if (time>0) {
+            var c = confirm("Are you sure you want to submit ?");
+            return c;
+        }
+        return true;
     });
 
 });
