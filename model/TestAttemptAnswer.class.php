@@ -12,10 +12,11 @@ class TestAttemptAnswer {
     private $questionId;
     private $answer;
     private $correct;
+    private $questionText;
 
     function __construct()
     {
-        $this->correct=0;
+
     }
 
 
@@ -82,5 +83,23 @@ class TestAttemptAnswer {
     {
         $this->correct = $correct;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getQuestionText()
+    {
+        return $this->questionText;
+    }
+
+    /**
+     * @param mixed $questionText
+     */
+    public function setQuestionText($questionText)
+    {
+        $this->questionText = $questionText;
+    }
+
+
 
 }

@@ -24,6 +24,7 @@
             <h2> Test Date and time  : <?=$testDateAndTime?></h2>
             <h2> Comprehension Score  : <?=$comprehensionScore?></h2>
             <h2> Communication Score  : <?=$communicationScore?></h2>
+            <h2> <a href="testAttemptAnswer?testAttemptId=<?=$testAttemptId?>">View Answers</a></h2>
         </div>
 
     </div>

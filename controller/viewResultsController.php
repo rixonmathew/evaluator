@@ -7,6 +7,7 @@ class viewResultsController extends BaseController {
         $this->checkAuthenticated();
         $testResults = $this->getTestResult($_GET['resultId']);
         $testResult = $testResults[0];
+        $this->registry->template->testAttemptId = $testResult->getId();
         $this->registry->template->sectionScore = $testResult->getOverallScore();
         $this->registry->template->comprehensionScore = $testResult->getComprehensionScore();
         $this->registry->template->communicationScore = $testResult->getCommunicationScore();
