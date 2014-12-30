@@ -38,6 +38,7 @@ class sectionEvaluationController extends BaseController{
 //            var_dump($sectionEvaluationResult);
 //            echo "</pre>";
             if ($sectionEvaluationResult->getShowResult()===true) {
+                $this->registry->template->testAttemptId = $testResult->getId();
                 $this->registry->template->sectionScore = $sectionEvaluationResult->getScore();
                 $this->registry->template->questionsCorrect = $sectionEvaluationResult->getQuestionsCorrect();
                 $this->registry->template->questionsTotal = $sectionEvaluationResult->getTotalQuestions();
@@ -93,9 +94,10 @@ class sectionEvaluationController extends BaseController{
    private function insertTestAttemptAnswer($dbh,$testAttemptId,$sectionEvaluationResult) {
 
        foreach ($sectionEvaluationResult->getTestAttemptAnswers() as $testAttemptAnswer) {
+           $answerValue = htmlspecialchars($testAttemptAnswer->getAnswer(),ENT_QUOTES);
            $insertQuery= <<<TAE_INS_QUERY
                 insert into test_attempt_answers(test_attempt_id,question_id,answer,correct) values
-                ($testAttemptId,{$testAttemptAnswer->getQuestionId()},'{$testAttemptAnswer->getAnswer()}',{$testAttemptAnswer->getCorrect()});
+                ($testAttemptId,{$testAttemptAnswer->getQuestionId()},'$answerValue',{$testAttemptAnswer->getCorrect()});
 TAE_INS_QUERY;
             try{
                 $statementInsert = $dbh->prepare($insertQuery);
@@ -106,9 +108,12 @@ TAE_INS_QUERY;
                 } catch(PDOExecption $e) {
                     $dbh->rollback();
                     print "Error! (test_attempt_answer): " . $e->getMessage() . "</br>";
+                    echo "$insertQuery <br/>";
                 }
             } catch (PDOException $e) {
                 print " (Outer) Error! (test_attempt_answer): " . $e->getMessage() . "</br>";
+                $dbh->rollback();
+                echo "$insertQuery <br/>";
             }
        }
    }

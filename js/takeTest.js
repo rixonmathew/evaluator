@@ -11,16 +11,20 @@ $(function(){
         callbacks: {
             interval:function() {
                 var time = clock.getTime().time;
+                if (time==30) {
+                    alert('Last 30 seconds remaining. Test will be auto submitted at the end.');
+                }
                 if (time==0) {
-                    //TODO add call here to display alert when last 30 seconds are remaining. and to disable any
-                    //more edits when time elapsed is 0.
                     $('#sectionDetails *').attr('readonly', 'true');
+                    $('#sectionDetails').submit();
                 }
             }
 
         }
     });
+
     clock.setTime($("#timeForTest").val());
+
     $('#sectionDetails').submit(function() {
         var c = confirm("Are you sure you want to submit ?");
         return c;
