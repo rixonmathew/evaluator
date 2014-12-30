@@ -7,10 +7,17 @@ class AudioSection1Renderer {
         $renderingHTML = <<<RENDER_HTML
         <div id="questionSet" class="row">
             <div class="col-md-5">
-                <audio controls>
-                    <source src="media/audio_hin.mp3" type="audio/mpeg"/>
-                    <source src="media/audio_hin.mp3" type="audio/mpeg"/>
-                    <source src="media/audio_hin.mp3" type="audio/mpeg"/>
+                <div class="radio">
+                   <label class="radio-inline">Select the language for the audio:</label>
+                   <label class="radio-inline">
+                      <input type="radio" name = "audioLanguage" id="audioLanguage" value="hindi" onclick="flipAudioLanguage('hindi')" checked>Hindi
+                   </label>
+                   <label class="radio-inline">
+                      <input type="radio" name = "audioLanguage" id="audioLanguage" value="marathi" onclick="flipAudioLanguage('marathi')">Marathi
+                   </label>
+                </div>
+                <audio controls id="audio_question_1" name="audio_question_1">
+                    <source id="audio_file_1" src="media/audio_hindi.mp3" type="audio/mp3"/>
                     Your browser does not support audio control
                 </audio>
                 <h4>{$question->getText()}</h4>

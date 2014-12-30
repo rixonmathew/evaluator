@@ -43,3 +43,20 @@ function resetForm(){
     $('#sectionDetails').reset();
     $('#sectionDetails *').attr('readonly', 'false');
 }
+
+function flipAudioLanguage(langauge) {
+    //alert('change audio language was clicked '+langauge);
+    var audio = $("#audio_question_1");
+    var newUrl;
+    if (langauge=='hindi') {
+        newUrl='media/audio_hindi.mp3';
+    } else if (langauge=='marathi') {
+        newUrl='media/audio_marathi.mp3';
+    }
+    $("#audio_file_1").attr("src", newUrl);
+    /****************/
+    audio[0].pause();
+    audio[0].load();//suspends and restores all audio element
+    //audio[0].play();
+    /****************/
+}
