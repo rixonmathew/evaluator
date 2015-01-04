@@ -1,25 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7713d51e-6f50-4eea-88bb-b6a5c258804d" name="Default" comment="Fixed the issue where auto form submission was causing errors">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/word1.mp3" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/word10.mp3" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/word11.mp3" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/word12.mp3" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/word13.MP3" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/word14.mp3" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/word15.mp3" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/word2.mp3" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/word3.mp3" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/word4.mp3" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/word5.mp3" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/word6.mp3" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/word7.mp3" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/word8.mp3" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/word9.mp3" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/audio_hindi.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/audio_marathi.mp3" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/controller/custom/AudioSection1Renderer.php" afterPath="$PROJECT_DIR$/controller/custom/AudioSection1Renderer.php" />
+    <list default="true" id="7713d51e-6f50-4eea-88bb-b6a5c258804d" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/dataSources.ids" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="evaluator.iws" />
@@ -43,25 +26,10 @@
     <disable_hints />
   </component>
   <component name="DatabaseView">
-    <option name="SHOW_TOOLBAR" value="true" />
     <option name="FLATTEN" value="false" />
     <option name="GROUP_BY_TYPE" value="true" />
     <option name="SORT_CHILDREN" value="false" />
     <option name="SHOW_TABLE_CONSTRAINTS" value="true" />
-    <PATH>
-      <PATH_ELEMENT>
-        <option name="myItemId" />
-        <option name="myItemType" value="com.intellij.database.view.DbRootNodeDescriptor" />
-      </PATH_ELEMENT>
-      <PATH_ELEMENT>
-        <option name="myItemId" value="local_mysql - evaluator@localhost" />
-        <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
-      </PATH_ELEMENT>
-      <PATH_ELEMENT>
-        <option name="myItemId" value="evaluator" />
-        <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
-      </PATH_ELEMENT>
-    </PATH>
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FavoritesManager">
@@ -114,8 +82,8 @@
       <file leaf-file-name="AudioSection1Renderer.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/controller/custom/AudioSection1Renderer.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.38123754" vertical-offset="118" max-vertical-offset="1140">
-              <caret line="25" column="33" selection-start-line="25" selection-start-column="33" selection-end-line="25" selection-end-column="33" />
+            <state vertical-scroll-proportion="0.6692015" vertical-offset="0" max-vertical-offset="1315">
+              <caret line="44" column="88" selection-start-line="44" selection-start-column="88" selection-end-line="44" selection-end-column="88" />
               <folding />
             </state>
           </provider>
@@ -295,20 +263,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="evaluator" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="evaluator" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="media" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
     </panes>
@@ -356,6 +310,12 @@
       <method />
     </configuration>
     <configuration default="true" type="PhpLocalRunConfigurationType" factoryName="PHP Console">
+      <method />
+    </configuration>
+    <configuration default="true" type="com.intellij.database.run.ConsoleRunConfigurationType" factoryName="Query Language Console">
+      <option name="VM_PARAMETERS" value="" />
+      <option name="USER_CFG_CLASS" />
+      <option name="CONTEXT_PROVIDER" />
       <method />
     </configuration>
     <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
@@ -659,7 +619,13 @@
       <option name="project" value="LOCAL" />
       <updated>1419969925067</updated>
     </task>
-    <option name="localTasksCounter" value="46" />
+    <task id="LOCAL-00046" summary="Added the audio files">
+      <created>1420350507837</created>
+      <option name="number" value="00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1420350507837</updated>
+    </task>
+    <option name="localTasksCounter" value="47" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -687,14 +653,15 @@
     <editor active="true" />
     <layout>
       <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32507288" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22959183" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.229927" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.329927" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32962668" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3287172" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.12867355" sideWeight="0.67208046" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.12867355" sideWeight="0.67208046" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32928678" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.43962848" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24980143" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -703,7 +670,6 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -725,7 +691,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="1) Added LFW image" />
     <MESSAGE value="1) Refactored to support question set and question" />
     <MESSAGE value="1) Added support for rendering section 2" />
     <MESSAGE value="1) Fixed to render all 5 sections" />
@@ -750,7 +715,8 @@
     <MESSAGE value="1) Added functionality to switch between Hindi and Marathi audio samples" />
     <MESSAGE value="Fixed the defects" />
     <MESSAGE value="Fixed the issue where auto form submission was causing errors" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed the issue where auto form submission was causing errors" />
+    <MESSAGE value="Added the audio files" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added the audio files" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1145,8 +1111,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/controller/custom/AudioSection1Renderer.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.38123754" vertical-offset="118" max-vertical-offset="1140">
-          <caret line="25" column="33" selection-start-line="25" selection-start-column="33" selection-end-line="25" selection-end-column="33" />
+        <state vertical-scroll-proportion="0.6692015" vertical-offset="0" max-vertical-offset="1315">
+          <caret line="44" column="88" selection-start-line="44" selection-start-column="88" selection-end-line="44" selection-end-column="88" />
           <folding />
         </state>
       </provider>
