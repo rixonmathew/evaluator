@@ -1,12 +1,2 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project version="4">
-  <component name="dataSourceStorageLocal">
-    <data-source name="local_mysql - evaluator@localhost" uuid="712a5771-e218-4d9b-8698-116bc99232c8">
-      <secret-storage>master_key</secret-storage>
-      <user-name>lfw_evaluator</user-name>
-      <schema-pattern>evaluator.*</schema-pattern>
-      <default-schemas>evaluator.*</default-schemas>
-    </data-source>
-  </component>
-</project>
-
+<project version="4" />

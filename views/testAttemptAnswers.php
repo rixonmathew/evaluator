@@ -36,9 +36,9 @@
                     </div>
                     <div class="col-md-1">
                         <? if ($testAttemptAnswer->getCorrect()=="Yes") { ?>
-                            <h4><span class="label label-success">Ok</span></h4>
+                            <h4><span class="label label-success">Right</span></h4>
                         <? } else {?>
-                            <h4><span class="label label-danger">Incorrect</span></h4>
+                            <h4><span class="label label-danger">Wrong</span></h4>
                         <?} ?>
                     </div>
                 </div>

@@ -65,7 +65,11 @@ class TestAttemptAnswer {
      */
     public function setAnswer($answer)
     {
-        $this->answer = $answer;
+        if (is_null($this->answer))
+            $this->answer = $answer;
+        else {
+            $this->answer = $this->answer.",".$answer;
+        }
     }
 
     /**
