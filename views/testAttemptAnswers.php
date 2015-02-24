@@ -15,7 +15,10 @@
     <? } ?>
         <div>
             <div class="row">
-                <div class="col-md-8">
+                <div class="col-md-1">
+                    <h3>#</h3>
+                </div>
+                <div class="col-md-7">
                     <h3>Question</h3>
                 </div>
                 <div class="col-md-3">
@@ -26,13 +29,18 @@
                 </div>
             </div>
             <hr/>
-            <? foreach($testAttemptAnswers as $testAttemptAnswer) { ?>
+            <?
+            $counter=1;
+            foreach($testAttemptAnswers as $testAttemptAnswer) { ?>
                 <div class="row">
-                    <div class="col-md-8">
+                    <div class="col-md-1">
+                        <h3><?=$counter++;?></h3>
+                    </div>
+                    <div class="col-md-7">
                         <h3><?=$testAttemptAnswer->getQuestionText();?></h3>
                     </div>
-                    <div class="col-md-3">
-                        <h4><span><?=$testAttemptAnswer->getAnswer();?></span></h4>
+                    <div class="col-md-3" style="word-wrap: break-word;">
+                        <h4><p><?=$testAttemptAnswer->getAnswer();?></p></h4>
                     </div>
                     <div class="col-md-1">
                         <? if ($testAttemptAnswer->getCorrect()=="Yes") { ?>

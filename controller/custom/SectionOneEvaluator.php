@@ -57,35 +57,38 @@ class SectionOneEvaluator {
                             $testAttemptAnswer->setCorrect(0);
                         }
                     }
-                } else if ($questionType=="fill_blank"){
-                    $evaluatingClass = $question->getEvaluatingClass();
-                    if (!is_null($evaluatingClass)) {
-                        $fileToInclude = __SITE_PATH.'/controller/custom/'.$evaluatingClass.'.php';
-                        include_once $fileToInclude;
-                        $variableName = $question->getId() . "_answer";
-                        $selectedAnswer = $_POST[$variableName];
-                        //TODO loop over all answer where keyname is like the pattern and add answer in selected answer
-                        //TODO From question get correct answer in array
-                        $objectForEvaluating = new $evaluatingClass();
-                        //todo get the user provided answer and expected answer if any;
-                        $questionScore = $objectForEvaluating->doEvaluate($question,$selectedAnswer);
-                        $arr = explode(":",$questionScore);
-                        $this->updateTestAttemptAnswerForSpecialQuestion($testAttemptAnswer,$selectedAnswer,$arr);
-                    }
                 } else {
                     $evaluatingClass = $question->getEvaluatingClass();
                     if (!is_null($evaluatingClass)) {
                         $fileToInclude = __SITE_PATH.'/controller/custom/'.$evaluatingClass.'.php';
                         include_once $fileToInclude;
-                        $variableName = $question->getId() . "_answer";
-                        $selectedAnswer = $_POST[$variableName];
                         $correctAnswer = $testDataModel->getAnswersForQuestion($question->getId());
-                        $arrayOfWords  = explode(",",$correctAnswer[0]->getText());
-                        $objectForEvaluating = new $evaluatingClass();
-                        $questionScore = $objectForEvaluating->doEvaluate($question,$selectedAnswer,$arrayOfWords);
-                        $arr = explode(":",$questionScore);
-                        $this->updateTestAttemptAnswerForSpecialQuestion($testAttemptAnswer,$selectedAnswer,$arr);
-                        $sectionScore+=$arr[0];
+                        $arrayOfWords  = explode(",",$correctAnswer[0]->getRawText());
+                        $variableName = "q_".$question->getId() . "_answer_";
+                        $selectedAnswerArray = array();
+                        $allWordsCorrect = true;
+                        foreach ($_POST as $key => $value) {
+                            if (strpos($key, $variableName) !== false) {
+                                $totalQuestions++;
+                                $selectedAnswer = $_POST[$key];
+                                array_push($selectedAnswerArray,$selectedAnswer);
+                                $variableNameParts = explode("_",$key);
+                                $answerId = $variableNameParts[3];
+                                $expectedCorrectAnswer = $arrayOfWords[$answerId-1];
+                                if (trim($selectedAnswer)==$expectedCorrectAnswer){
+                                    $sectionScore+= 1;
+                                    $questionsCorrect++;
+                                } else {
+                                    $allWordsCorrect = false;
+                                }
+                            }
+                        }
+                        $testAttemptAnswer->setAnswer(join(",",$selectedAnswerArray));
+                        if ($allWordsCorrect) {
+                            $testAttemptAnswer->setCorrect(1);
+                        } else {
+                            $testAttemptAnswer->setCorrect(0);
+                        }
                     }
                 }
                 $sectionEvaluationResult->addTestAttemptAnswer($testAttemptAnswer);
@@ -105,17 +108,6 @@ class SectionOneEvaluator {
         } else {
             $sectionEvaluationResult->setComprehensionGrade("0");
             $sectionEvaluationResult->setShowResult(true);
-        }
-    }
-
-
-    private function updateTestAttemptAnswerForSpecialQuestion(&$testAttemptAnswer,$selectedAnswer,$arrayOfResult) {
-        $testAttemptAnswer->setAnswer($selectedAnswer);
-        $isCorrect = $arrayOfResult[0]/$arrayOfResult[1];
-        if ($isCorrect=="1") {
-            $testAttemptAnswer->setCorrect(1);
-        } else {
-            $testAttemptAnswer->setCorrect(0);
         }
     }
 }
