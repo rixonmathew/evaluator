@@ -37,7 +37,7 @@
                         <h3><?=$counter++;?></h3>
                     </div>
                     <div class="col-md-7">
-                        <h3><?=$testAttemptAnswer->getQuestionText();?></h3>
+                        <h3><?=preg_replace('/_#answer(\d{1,2})#_/',"____",$testAttemptAnswer->getQuestionText());?></h3>
                     </div>
                     <div class="col-md-3" style="word-wrap: break-word;">
                         <h4><p><?=$testAttemptAnswer->getAnswer();?></p></h4>
