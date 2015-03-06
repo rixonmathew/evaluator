@@ -68,3 +68,8 @@ function flipAudioLanguage(langauge) {
     //audio[0].play();
     /****************/
 }
+
+function play(questionId){
+    var audio = $("#audio_question_"+questionId);
+    audio[0].play();
+}

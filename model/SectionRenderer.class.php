@@ -12,8 +12,8 @@ class SectionRenderer {
 
     public function renderPassage($passage) {
         $htmlString = <<<HTML_PASSAGE
-        <div>
-            <div class=row">
+        <div id="passageSet" class="row">
+            <div class="col-md-9">
                <h3>{$passage->getDescription()}</h3>
             </div>
             <br/>
