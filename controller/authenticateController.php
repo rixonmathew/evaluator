@@ -23,7 +23,7 @@ class authenticateController extends BaseController{
         $_SESSION['login'] = "1";
         $_SESSION['username'] = $username;
         $_SESSION['first_name'] = $userData->first_name;
-        $_SESSION['last_name'] = $userData->first_name;
+        $_SESSION['last_name'] = $userData->last_name;
         $_SESSION['userId'] = $userData->id;
         $_SESSION['admin'] = $userData->admin;
         header ("Location: landingPage");
